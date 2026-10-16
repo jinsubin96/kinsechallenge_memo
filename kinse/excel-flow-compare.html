@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>킨스 엑셀 · 플로우 비교</title>
+<style>
+  :root{--ink:#1f2a37;--muted:#6b7686;--line:#e3e8ef;--bg:#f6f8fb;--card:#fff;
+    --same:#e9edf2;--same-t:#55606e;--chg:#fff1d6;--chg-t:#9a5b00;--add:#e2f0ff;--add-t:#1658b8;--no:#f1e6ff;--no-t:#6b2fb3;--warn:#ffe3e3;--warn-t:#c0262d}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 "Malgun Gothic","Apple SD Gothic Neo",sans-serif}
+  .wrap{max-width:1180px;margin:0 auto;padding:28px 16px 60px}
+  h1{font-size:24px;margin:0 0 4px}
+  .sub{color:var(--muted);margin:0 0 20px;font-size:13px}
+  .legend{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+  .tag{display:inline-block;padding:2px 9px;border-radius:999px;font-size:12px;font-weight:700;white-space:nowrap}
+  .same{background:var(--same);color:var(--same-t)} .chg{background:var(--chg);color:var(--chg-t)}
+  .add{background:var(--add);color:var(--add-t)} .no{background:var(--no);color:var(--no-t)} .warn{background:var(--warn);color:var(--warn-t)}
+  .box{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin-bottom:22px}
+  .box h2{font-size:16px;margin:0 0 10px}
+  .box ol,.box ul{margin:0;padding-left:20px} .box li{margin:4px 0}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  section{margin-bottom:26px}
+  section h2{font-size:18px;margin:0 0 10px;padding-left:10px;border-left:4px solid #3b82f6}
+  section h2 small{font-weight:400;color:var(--muted);font-size:13px}
+  table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  th,td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}
+  th{background:#eef2f7;font-size:13px;color:#445}
+  tr:last-child td{border-bottom:0}
+  td.k{width:96px} td.item{width:22%;font-weight:700}
+  td.p{width:30%;color:#3c4654}
+  .note{display:block;margin-top:4px;color:var(--warn-t);font-size:13px}
+  .new{display:inline-block;margin-left:6px;padding:0 6px;border-radius:4px;background:#dcfce7;color:#166534;font-size:11px;font-weight:700;vertical-align:1px}
+  @media (max-width:760px){.grid2{grid-template-columns:1fr} td.item,td.p{width:auto} table{font-size:14px}}
+  @media print{body{background:#fff} .box,table{break-inside:avoid}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>킨스 챌린지 · 퍼블 엑셀 ↔ 플로우 md 비교</h1>
+  <p class="sub">2026-10-16 서버 기준 · 퍼블 명세 엑셀 킨스챌린지_퍼블_정리.xlsx (1.페이지 목록 · 2.조건별 노출 · 3.상호작용 · 4.상태 클래스) · 플로우 md 킨스챌린지_메인태스크_화면플로우.md (Figma 「챌린지 사이트 플로우, 디자인 261007」 › 킨스 챌린지 메인 태스크에 따른 화면 나열)</p>
+
+  <div class="legend">
+    <span class="tag same">같음</span><span class="tag chg">다름</span><span class="tag add">md에만</span><span class="tag no">미구현</span><span class="tag warn">지금 방식 유지</span>
+  </div>
+
+  <div class="grid2">
+    <div class="box">
+      <h2>결론</h2>
+      <ul>
+        <li>사용자 화면 조건문 기준 = <b>퍼블 엑셀 + 퍼블 원본</b></li>
+        <li>엑셀 조건은 서버에 거의 그대로 들어가 있음</li>
+        <li>엑셀과 다른 2가지(메인 카드 · 상세 비로그인 버튼)는 <b>지금 방식이 맞아서 유지</b> (엑셀대로 바꿨다가 되돌림)</li>
+        <li>md 는 참고용 — 엑셀과 다른 내용은 반영하지 않음</li>
+      </ul>
+    </div>
+    <div class="box">
+      <h2>두 문서의 성격</h2>
+      <ul>
+        <li><b>엑셀</b> : 퍼블리셔가 개발용으로 넘긴 명세 — 화면 파일별로 어떤 조건에 어떤 클래스 · 문구가 붙는지</li>
+        <li><b>md</b> : 기획 화면 흐름 — 어디서 들어와 어디로 가는지 + 운영 조건 (CRM · 인스타 인증 데이 등)</li>
+        <li>겹치는 부분은 대부분 같음</li>
+      </ul>
+    </div>
+  </div>
+
+  <section>
+    <h2>1. 엑셀 · md 가 같은 것</h2>
+    <table>
+      <tr><th>구분</th><th>항목</th><th>엑셀 · md</th><th>지금</th></tr>
+      <tr><td class="k"><span class="tag same">같음</span></td><td class="item">챌린지 상태 4단계</td><td class="p">진행중 → 결과대기중 → 결과발표 → 종료 (엑셀은 진행예정 포함 배지 5종)</td><td>같음 — 나의 챌린지 배지 하나만</td></tr>
+      <tr><td class="k"><span class="tag same">같음</span></td><td class="item">전체 흐름</td><td class="p">신청 → 인증 → 검수 → 결과(성공 / 실패) → 내 기록</td><td>같음 — 결과 화면 "내 기록 보기" → 도장판</td></tr>
+      <tr><td class="k"><span class="tag same">같음</span></td><td class="item">신청 화면</td><td class="p">"회원 정보와 동일해요" 누르면 이름 · 전화번호 채움</td><td>같음</td></tr>
+      <tr><td class="k"><span class="tag same">같음</span></td><td class="item">신청 후 시작 전 카드</td><td class="p">우측 하단 D-n (시작까지 남은 날)</td><td>같음 "곧 시작돼요 :-) D-n"</td></tr>
+      <tr><td class="k"><span class="tag same">같음</span></td><td class="item">검수중 인증 화면</td><td class="p">인증하기 비활성화</td><td>같음 — 사진 칸 off, "결과 대기중이에요"</td></tr>
+      <tr><td class="k"><span class="tag same">같음</span></td><td class="item">도장 누르면</td><td class="p">그날 올린 사진 표시, 안 올린 날은 다른 표시</td><td>같음 — on / fail / today + 반려 표시</td></tr>
+      <tr><td class="k"><span class="tag same">같음</span></td><td class="item">마이페이지 체크리스트 히스토리</td><td class="p">최신순 최대 4개, 없으면 안내</td><td>같음 (로그인만)</td></tr>
+      <tr><td class="k"><span class="tag same">같음</span></td><td class="item">체크리스트 결과</td><td class="p">부정 답변 수 = 신호 카드 수, 전부 긍정이면 안정형, 링크 공유 · 갤러리 저장(간단히 / 전체)</td><td>같음</td></tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>2. 엑셀 · md 가 다른 것</h2>
+    <table>
+      <tr><th>구분</th><th>항목</th><th>엑셀</th><th>md</th></tr>
+      <tr><td class="k"><span class="tag chg">다름</span></td><td class="item">신청 후 시작 전 마이페이지</td><td class="p">'진행예정(노랑)' 배지로 나의 챌린지에 나옴</td><td>"신청 후 마이페이지는 변화 없음"<span class="note">지금 : 엑셀대로 진행예정</span></td></tr>
+      <tr><td class="k"><span class="tag chg">다름</span></td><td class="item">결과발표 → 종료 시점</td><td class="p">배지 '결과발표' · '종료'만 있고 바뀌는 시점은 없음</td><td>사용자가 결과를 확인하면 종료, 홈은 '챌린지 미참여'<span class="note">지금 : 날짜 기준 (검수기간이 끝나면 종료)</span></td></tr>
+      <tr><td class="k"><span class="tag chg">다름</span></td><td class="item">챌린지 목록 기간 표시</td><td class="p">탭은 on 이동만, 분류는 개발</td><td>상태별 — 신청 기간 / 진행 기간 / 종료는 진행했던 기간<span class="note">지금 : 신청 기간 기준 분류 (9/28 결정), 종료 카드만 진행 기간</span></td></tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>3. md 에만 있는 것</h2>
+    <table>
+      <tr><th>구분</th><th>항목</th><th>md 내용</th><th>지금</th></tr>
+      <tr><td class="k"><span class="tag no">미구현</span></td><td class="item">카카오톡 CRM 4종</td><td class="p">새 챌린지 신청 열림 · 신청 완료 · 챌린지 시작 · 결과 발표 (+ 진행 3일차 인스타 공유 데이 리마인드)</td><td>없음 (발송 서비스 미연동)</td></tr>
+      <tr><td class="k"><span class="tag no">미구현</span></td><td class="item">인스타 인증 데이</td><td class="p">진행 기간 중 하루 — ① 스토리 업로드(@kinse_official + #챌린지명) ② 사이트에 게시물 URL 공유 (비공개 · 스토리는 캡처)</td><td>없음 (퍼블 화면 없음)</td></tr>
+      <tr><td class="k"><span class="tag no">미구현</span></td><td class="item">성공 시 적립금 코드</td><td class="p">성공 화면에 들어오면 적립금 코드 CRM 발송</td><td>없음</td></tr>
+      <tr><td class="k"><span class="tag add">md에만</span></td><td class="item">햅삐들의 챌린지 인증</td><td class="p">관리자가 인증 사진 중 골라서 노출</td><td>이 챌린지 최신 6장 (반려 제외), 없으면 숨김</td></tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>4. 엑셀 ↔ 지금 서버 <small>(엑셀 2.조건별 노출 기준)</small></h2>
+    <table>
+      <tr><th>구분</th><th>항목</th><th>엑셀</th><th>지금</th></tr>
+      <tr><td class="k"><span class="tag warn">지금 방식 유지</span></td><td class="item">메인 카드 · 신청한 챌린지 없음</td><td class="p">신청한 챌린지 0개 → none-challenge "챌린지 참여하기"</td><td>① 신청한 챌린지 → ② 신청기간인 챌린지 → ③ "챌린지 참여하기"<span class="note">엑셀대로 바꿨다가 되돌림 (2026-10-16)</span></td></tr>
+      <tr><td class="k"><span class="tag warn">지금 방식 유지</span></td><td class="item">상세 버튼 · 비로그인</td><td class="p">기간 구분 없이 "로그인 후 신청하기"</td><td>신청기간에만 "로그인 후 신청하기", 그 외 "지금은 신청할 수 없어요" / "다음에 다시 돌아올게요 :-)"<span class="note">엑셀대로 바꿨다가 되돌림 (2026-10-16)</span></td></tr>
+      <tr><td class="k"><span class="tag same">같음</span></td><td class="item">카드 상태</td><td class="p">upcoming / missed / review / ended / none-challenge, 진행바 인증한 날 수만큼 on</td><td>같음 (진행중 + 신청함은 마크업대로 클래스 없음 — 엑셀 오기)</td></tr>
+      <tr><td class="k"><span class="tag same">같음</span></td><td class="item">상세 버튼 (로그인)</td><td class="p">신청하기 / done 신청 완료 / verify 인증하기 / verify review 인증 확인중 / off</td><td>같음, .apply-tip 은 인증할 수 있을 때만</td></tr>
+      <tr><td class="k"><span class="tag same">같음</span></td><td class="item">사진 인증</td><td class="p">.verify-upload 기본 / off + disabled, 도장 on · fail · today, 사진 골라야 인증 버튼</td><td>같음 + 오늘 올렸으면 "오늘의 루틴 완료 :-)"</td></tr>
+      <tr><td class="k"><span class="tag same">같음</span></td><td class="item">마이페이지</td><td class="p">프로필 로그인 / 비로그인, 챌린지 0개 my-empty, 배지 5종 하나만, 히스토리 비로그인은 제목만</td><td>같음</td></tr>
+      <tr><td class="k"><span class="tag same">같음</span></td><td class="item">챌린지 신청</td><td class="p">동의 3개 체크 시 신청 버튼 활성</td><td>같음</td></tr>
+    </table>
+  </section>
+</div>
+</body>
+</html>
