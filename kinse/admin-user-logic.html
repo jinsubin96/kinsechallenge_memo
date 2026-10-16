@@ -29,6 +29,17 @@
   .pill{display:inline-block;padding:2px 10px;border-radius:999px;font-size:13px;font-weight:700;white-space:nowrap}
   .ok{background:#dcfce7;color:#166534} .no{background:#ffe3e3;color:#c0262d} .wait{background:#e9edf2;color:#55606e}
   .tip{font-size:14px;color:var(--muted)}
+  .dg{margin:0 0 14px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 12px}
+  .dg .scroll{overflow-x:auto}
+  .dg svg{display:block;width:100%;min-width:760px;height:auto;color:var(--ink)}
+  .dg figcaption{font-size:14px;color:var(--muted);margin-top:8px}
+  .dg .hd{fill:#eef2f7} .dg .ht{font-size:12px;font-weight:700;fill:#445}
+  .dg .bx{fill:#fff;stroke:#c9d2de;stroke-width:1.2}
+  .dg .t{font-size:13px;font-weight:700;fill:currentColor} .dg .s{font-size:11px;fill:#55606e}
+  .dg .ln{stroke:currentColor;stroke-width:1.3;fill:none} .dg .dash{stroke-dasharray:4 3}
+  .dg .okb{fill:#dcfce7;stroke:#86efac} .dg .okt{fill:#166534}
+  .dg .ngb{fill:#ffe3e3;stroke:#fca5a5} .dg .ngt{fill:#c0262d}
+  .dg .acb{fill:#e2f0ff;stroke:#93c5fd} .dg .act{fill:#1658b8}
   @media (max-width:820px){.flow{grid-template-columns:1fr 1fr} td.when{white-space:normal}}
   @media print{body{background:#fff} .box,table,.step{break-inside:avoid}}
 </style>
@@ -64,6 +75,48 @@
   </div>
 
   <h2>관리자가 하는 일</h2>
+  <figure class="dg">
+    <div class="scroll">
+    <svg viewBox="0 0 960 324" role="img" aria-label="관리자 운영 흐름: 챌린지 일정 등록, 신청현황 운송장 등록, 인증현황에서 문제 사진만 반려, 진행기간이 끝나면 횟수 부족 일괄 탈락, 검수기간에 최종완료하면 미처리 사진 자동 승인 후 반려 제외 인증 수가 성공 횟수 이상이면 성공 아니면 탈락(반려). 결과가 정해지는 즉시 회원에게 발표.">
+      <defs><marker id="arrA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker></defs>
+      <rect class="hd" x="8" y="8" width="176" height="26" rx="6"/><text class="ht" x="96" y="26" text-anchor="middle">준비</text>
+      <rect class="hd" x="200" y="8" width="176" height="26" rx="6"/><text class="ht" x="288" y="26" text-anchor="middle">신청기간</text>
+      <rect class="hd" x="392" y="8" width="176" height="26" rx="6"/><text class="ht" x="480" y="26" text-anchor="middle">진행기간</text>
+      <rect class="hd" x="584" y="8" width="176" height="26" rx="6"/><text class="ht" x="672" y="26" text-anchor="middle">진행기간 끝</text>
+      <rect class="hd" x="776" y="8" width="176" height="26" rx="6"/><text class="ht" x="864" y="26" text-anchor="middle">검수기간</text>
+
+      <rect class="bx" x="8" y="50" width="176" height="60" rx="10"/><text class="t" x="96" y="76" text-anchor="middle">챌린지 일정 등록</text><text class="s" x="96" y="96" text-anchor="middle">기간 · 성공 횟수 · 추천 루틴</text>
+      <rect class="bx" x="200" y="50" width="176" height="60" rx="10"/><text class="t" x="288" y="76" text-anchor="middle">신청현황</text><text class="s" x="288" y="96" text-anchor="middle">운송장 등록 (엑셀 · 직접 입력)</text>
+      <rect class="bx" x="392" y="50" width="176" height="60" rx="10"/><text class="t" x="480" y="76" text-anchor="middle">인증현황</text><text class="s" x="480" y="96" text-anchor="middle">문제 사진만 반려 · 반려 취소</text>
+      <rect class="bx" x="584" y="50" width="176" height="60" rx="10"/><text class="t" x="672" y="76" text-anchor="middle">횟수 부족 일괄 탈락</text><text class="s" x="672" y="96" text-anchor="middle">기준 미만 회원 (0회 포함)</text>
+      <rect class="bx" x="776" y="50" width="176" height="60" rx="10"/><text class="t" x="864" y="76" text-anchor="middle">심사상태 → 최종완료</text><text class="s" x="864" y="96" text-anchor="middle">미처리 사진 자동 승인</text>
+
+      <line class="ln" x1="184" y1="80" x2="199" y2="80" marker-end="url(#arrA)"/>
+      <line class="ln" x1="376" y1="80" x2="391" y2="80" marker-end="url(#arrA)"/>
+      <line class="ln" x1="568" y1="80" x2="583" y2="80" marker-end="url(#arrA)"/>
+      <line class="ln" x1="760" y1="80" x2="775" y2="80" marker-end="url(#arrA)"/>
+
+      <line class="ln dash" x1="480" y1="110" x2="480" y2="140"/>
+      <rect class="bx dash" x="400" y="140" width="160" height="36" rx="8"/><text class="s" x="480" y="162" text-anchor="middle">반려된 사진은 인증 수에서 빠짐</text>
+
+      <line class="ln" x1="672" y1="110" x2="672" y2="148" marker-end="url(#arrA)"/>
+      <rect class="ngb" x="607" y="150" width="130" height="30" rx="15"/><text class="t ngt" x="672" y="170" text-anchor="middle">탈락(횟수 부족)</text>
+
+      <line class="ln" x1="864" y1="110" x2="864" y2="138" marker-end="url(#arrA)"/>
+      <rect class="bx" x="784" y="140" width="160" height="46" rx="8"/><text class="s" x="864" y="159" text-anchor="middle">반려 제외 인증 수</text><text class="t" x="864" y="177" text-anchor="middle">≥ 성공 횟수 ?</text>
+      <line class="ln" x1="836" y1="186" x2="818" y2="220" marker-end="url(#arrA)"/><text class="s" x="822" y="206" text-anchor="end">예</text>
+      <line class="ln" x1="892" y1="186" x2="904" y2="220" marker-end="url(#arrA)"/><text class="s" x="904" y="206">아니오</text>
+      <rect class="okb" x="780" y="222" width="70" height="30" rx="15"/><text class="t okt" x="815" y="242" text-anchor="middle">성공</text>
+      <rect class="ngb" x="860" y="222" width="92" height="30" rx="15"/><text class="t ngt" x="906" y="242" text-anchor="middle">탈락(반려)</text>
+
+      <line class="ln" x1="672" y1="180" x2="672" y2="278" marker-end="url(#arrA)"/>
+      <line class="ln" x1="815" y1="252" x2="815" y2="278" marker-end="url(#arrA)"/>
+      <line class="ln" x1="906" y1="252" x2="906" y2="278" marker-end="url(#arrA)"/>
+      <rect class="acb" x="584" y="280" width="368" height="34" rx="10"/><text class="t act" x="768" y="302" text-anchor="middle">결과가 정해지는 즉시 회원 화면에 발표</text>
+    </svg>
+    </div>
+    <figcaption>결과가 정해지는 길은 '횟수 부족 일괄 탈락'과 '최종완료' 두 가지뿐이고, 둘 다 진행기간이 끝나야 누를 수 있어요. 최종완료한 회원을 심사중으로 되돌리면 자동 승인이 풀리고 다시 결과 대기가 돼요.</figcaption>
+  </figure>
   <table>
     <tr><th>언제</th><th>어디서 · 무엇을</th></tr>
     <tr><td class="when">준비</td><td><b>챌린지 &gt; 챌린지 일정</b>에서 등록<br>제목, 이미지, 신청기간 · 진행기간 · 검수기간, <b>성공 인증 횟수</b>, 실패한 회원에게 추천할 루틴</td></tr>
@@ -85,6 +138,55 @@
   <p class="tip">※ 성공 기준을 바꾼 뒤 결과를 다시 받고 싶으면, 심사상태를 '심사중'으로 바꿨다가 다시 '최종완료'로 바꾸면 돼요.</p>
 
   <h2 class="pink">회원에게 보이는 화면</h2>
+  <figure class="dg">
+    <div class="scroll">
+    <svg viewBox="0 0 960 320" role="img" aria-label="회원 화면 흐름: 진행 예정, 챌린지 신청하기, 신청 완료 D-n, 사진 인증하기(올리면 오늘의 루틴 완료, 반려되면 다시 인증), 결과 대기중, 관리자 결과 확정 후 결과 화면과 내 기록 보기, 검수기간이 끝나면 종료. 신청하지 않은 회원은 신청 기간 종료 안내 후 종료. 아래에 마이페이지 배지.">
+      <defs><marker id="arrU" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker></defs>
+      <rect class="hd" x="8" y="8" width="124" height="26" rx="6"/><text class="ht" x="70" y="26" text-anchor="middle">신청 전</text>
+      <rect class="hd" x="144" y="8" width="124" height="26" rx="6"/><text class="ht" x="206" y="26" text-anchor="middle">신청기간</text>
+      <rect class="hd" x="280" y="8" width="124" height="26" rx="6"/><text class="ht" x="342" y="26" text-anchor="middle">신청 후 · 시작 전</text>
+      <rect class="hd" x="416" y="8" width="124" height="26" rx="6"/><text class="ht" x="478" y="26" text-anchor="middle">진행기간</text>
+      <rect class="hd" x="552" y="8" width="124" height="26" rx="6"/><text class="ht" x="614" y="26" text-anchor="middle">진행 끝 · 결과 전</text>
+      <rect class="hd" x="688" y="8" width="124" height="26" rx="6"/><text class="ht" x="750" y="26" text-anchor="middle">결과 발표</text>
+      <rect class="hd" x="824" y="8" width="124" height="26" rx="6"/><text class="ht" x="886" y="26" text-anchor="middle">검수기간 끝</text>
+
+      <rect class="bx" x="8" y="60" width="124" height="56" rx="10"/><text class="t" x="70" y="84" text-anchor="middle">진행 예정</text><text class="s" x="70" y="103" text-anchor="middle">곧 신청할 수 있어요</text>
+      <rect class="bx" x="144" y="60" width="124" height="56" rx="10"/><text class="t" x="206" y="84" text-anchor="middle">챌린지 신청하기</text><text class="s" x="206" y="103" text-anchor="middle">비로그인: 로그인 후</text>
+      <rect class="bx" x="280" y="60" width="124" height="56" rx="10"/><text class="t" x="342" y="84" text-anchor="middle">신청 완료</text><text class="s" x="342" y="103" text-anchor="middle">곧 시작돼요 D-n</text>
+      <rect class="bx" x="416" y="60" width="124" height="56" rx="10"/><text class="t" x="478" y="84" text-anchor="middle">사진 인증하기</text><text class="s" x="478" y="103" text-anchor="middle">하루 1장</text>
+      <rect class="bx" x="552" y="60" width="124" height="56" rx="10"/><text class="t" x="614" y="84" text-anchor="middle">결과 대기중이에요</text><text class="s" x="614" y="103" text-anchor="middle">사진 올릴 수 없음</text>
+      <rect class="acb" x="688" y="60" width="124" height="56" rx="10"/><text class="t" x="750" y="84" text-anchor="middle">결과 화면</text><text class="s" x="750" y="103" text-anchor="middle">성공 · 실패</text>
+      <rect class="bx" x="824" y="60" width="124" height="56" rx="10"/><text class="t" x="886" y="84" text-anchor="middle">종료</text><text class="s" x="886" y="103" text-anchor="middle">다시 돌아올게요</text>
+
+      <line class="ln" x1="132" y1="88" x2="143" y2="88" marker-end="url(#arrU)"/>
+      <line class="ln" x1="268" y1="88" x2="279" y2="88" marker-end="url(#arrU)"/>
+      <line class="ln" x1="404" y1="88" x2="415" y2="88" marker-end="url(#arrU)"/>
+      <line class="ln" x1="540" y1="88" x2="551" y2="88" marker-end="url(#arrU)"/>
+      <line class="ln" x1="676" y1="88" x2="687" y2="88" marker-end="url(#arrU)"/>
+      <line class="ln" x1="812" y1="88" x2="823" y2="88" marker-end="url(#arrU)"/>
+      <text class="s act" x="682" y="50" text-anchor="middle">관리자 결과 확정</text>
+
+      <line class="ln" x1="462" y1="116" x2="462" y2="152" marker-end="url(#arrU)"/><text class="s" x="456" y="138" text-anchor="end">올림</text>
+      <rect class="okb" x="416" y="154" width="124" height="44" rx="10"/><text class="t okt" x="478" y="172" text-anchor="middle" style="font-size:12px">오늘의 루틴 완료</text><text class="s" x="478" y="190" text-anchor="middle">다음 날 다시 인증</text>
+      <line class="ln dash" x1="494" y1="152" x2="494" y2="118" marker-end="url(#arrU)"/><text class="s" x="500" y="138">반려되면</text>
+
+      <line class="ln" x1="750" y1="116" x2="750" y2="152" marker-end="url(#arrU)"/>
+      <rect class="bx" x="688" y="154" width="124" height="44" rx="10"/><text class="t" x="750" y="172" text-anchor="middle">내 기록 보기</text><text class="s" x="750" y="190" text-anchor="middle">도장판</text>
+
+      <polyline class="ln dash" points="206,116 206,246 278,246" marker-end="url(#arrU)"/><text class="s" x="212" y="140">신청 안 함</text>
+      <rect class="bx dash" x="280" y="228" width="396" height="36" rx="10"/><text class="s" x="478" y="250" text-anchor="middle" style="font-size:12px">신청 안 한 회원 : 신청 기간이 종료됐어요 / 지금은 신청할 수 없어요</text>
+      <polyline class="ln dash" points="676,246 886,246 886,118" marker-end="url(#arrU)"/>
+
+      <text class="t" x="8" y="300" style="font-size:12px">마이페이지 배지</text>
+      <rect x="300" y="284" width="84" height="24" rx="12" fill="#fff3b0"/><text class="t" x="342" y="300" text-anchor="middle" fill="#8a6d00" style="font-size:12px">진행예정</text>
+      <rect x="436" y="284" width="84" height="24" rx="12" fill="#fde2ef"/><text class="t" x="478" y="300" text-anchor="middle" fill="#be185d" style="font-size:12px">진행중</text>
+      <rect x="572" y="284" width="84" height="24" rx="12" fill="#e6f7c8"/><text class="t" x="614" y="300" text-anchor="middle" fill="#4d7c0f" style="font-size:12px">결과대기중</text>
+      <rect x="708" y="284" width="84" height="24" rx="12" fill="#dbeefe"/><text class="t" x="750" y="300" text-anchor="middle" fill="#1d4ed8" style="font-size:12px">결과발표</text>
+      <rect x="844" y="284" width="84" height="24" rx="12" fill="#e9edf2"/><text class="t" x="886" y="300" text-anchor="middle" fill="#55606e" style="font-size:12px">종료</text>
+    </svg>
+    </div>
+    <figcaption>진행기간에는 하루 1장 — 올리면 바로 '오늘의 루틴 완료', 반려되면 그날 다시 올릴 수 있어요. 관리자 쪽에서 결과가 정해지는 순간 인증 화면 대신 결과 화면(성공 · 실패)이 열려요.</figcaption>
+  </figure>
   <table>
     <tr><th>언제</th><th>회원이 보는 것</th></tr>
     <tr><td class="when">신청기간 전</td><td>"진행 예정 챌린지 · 곧 신청할 수 있어요"</td></tr>
@@ -102,8 +204,6 @@
     <ol>
       <li>결과가 이미 발표된 회원도 검수기간 동안 메인 카드와 상세 버튼에 "인증 확인중이에요"가 보여요. (퍼블에 '결과 발표' 문구가 없음)</li>
       <li>결과 화면이 '완주'라는 표현을 쓰는데, 성공 기준이 'N번 이상'이라 뜻이 안 맞아요. 회원 화면에 성공 기준 안내도 없어요.</li>
-      <li>메인 카드 — 퍼블은 신청한 챌린지가 없으면 바로 "챌린지 참여하기"인데, 지금은 신청 중인 챌린지를 먼저 보여 줘요.</li>
-      <li>로그인 안 한 회원 버튼 — 퍼블은 언제나 "로그인 후 신청하기"인데, 지금은 신청기간에만 보여요.</li>
       <li>신청할 때 전화번호 인증은 아직 연결되지 않았어요. (인증 서비스 정보 대기)</li>
     </ol>
   </div>
