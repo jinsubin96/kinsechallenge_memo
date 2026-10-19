@@ -60,9 +60,9 @@
   <div class="flow">
     <div class="step"><span class="when">준비</span><b>챌린지 등록</b><p>기간과 성공 기준(몇 번 인증하면 성공인지)을 정해요</p></div>
     <div class="step"><span class="when">신청기간</span><b>회원 신청</b><p>회원이 신청하고, 관리자는 제품 운송장을 등록해요</p></div>
-    <div class="step"><span class="when">진행기간</span><b>하루 1장 인증</b><p>회원이 매일 사진을 올려요. 이상한 사진은 반려해요</p></div>
+    <div class="step"><span class="when">진행기간</span><b>하루 1장 인증</b><p>회원이 매일 사진을 올려요. 이때는 승인 · 반려하지 않아요</p></div>
     <div class="step"><span class="when">진행기간 끝</span><b>횟수 부족 탈락</b><p>기준만큼 못 올린 회원을 한 번에 탈락시켜요</p></div>
-    <div class="step"><span class="when">검수기간</span><b>검수 · 결과 발표</b><p>남은 회원 사진을 확인하고 '최종완료'를 누르면 결과가 정해져요. 발표는 검수기간이 끝난 뒤 한 번에</p></div>
+    <div class="step"><span class="when">검수기간</span><b>검수 · 결과 발표</b><p>사진을 검수해 문제 사진만 반려하고 '최종완료'를 누르면 결과가 정해져요. 발표는 검수기간이 끝난 뒤 한 번에</p></div>
   </div>
 
   <h2>꼭 알아둘 규칙</h2>
@@ -84,7 +84,7 @@
   <h2>관리자가 하는 일</h2>
   <figure class="dg">
     <div class="scroll">
-    <svg viewBox="0 0 960 324" role="img" aria-label="관리자 운영 흐름: 챌린지 일정 등록, 신청현황 운송장 등록, 인증현황에서 문제 사진만 반려, 진행기간이 끝나면 횟수 부족 일괄 탈락, 검수기간에 최종완료하면 미처리 사진 자동 승인 후 반려 제외 인증 수가 성공 횟수 이상이면 성공 아니면 탈락(반려). 결과는 검수기간이 끝난 뒤 모든 회원에게 한 번에 발표.">
+    <svg viewBox="0 0 960 324" role="img" aria-label="관리자 운영 흐름: 챌린지 일정 등록, 신청현황 운송장 등록, 진행기간에는 인증현황에서 사진 확인만, 진행기간이 끝나면 횟수 부족 일괄 탈락, 검수기간에 문제 사진만 반려하고 최종완료하면 나머지 사진 자동 승인 후 반려 제외 인증 수가 성공 횟수 이상이면 성공 아니면 탈락(반려). 결과는 검수기간이 끝난 뒤 모든 회원에게 한 번에 발표.">
       <defs><marker id="arrA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker></defs>
       <rect class="hd" x="8" y="8" width="176" height="26" rx="6"/><text class="ht" x="96" y="26" text-anchor="middle">준비</text>
       <rect class="hd" x="200" y="8" width="176" height="26" rx="6"/><text class="ht" x="288" y="26" text-anchor="middle">신청기간</text>
@@ -94,9 +94,9 @@
 
       <rect class="bx" x="8" y="50" width="176" height="60" rx="10"/><text class="t" x="96" y="76" text-anchor="middle">챌린지 일정 등록</text><text class="s" x="96" y="96" text-anchor="middle">기간 · 성공 횟수 · 추천 루틴</text>
       <rect class="bx" x="200" y="50" width="176" height="60" rx="10"/><text class="t" x="288" y="76" text-anchor="middle">신청현황</text><text class="s" x="288" y="96" text-anchor="middle">운송장 등록 (엑셀 · 직접 입력)</text>
-      <rect class="bx" x="392" y="50" width="176" height="60" rx="10"/><text class="t" x="480" y="76" text-anchor="middle">인증현황</text><text class="s" x="480" y="96" text-anchor="middle">문제 사진만 반려 · 반려 취소</text>
+      <rect class="bx" x="392" y="50" width="176" height="60" rx="10"/><text class="t" x="480" y="76" text-anchor="middle">인증현황</text><text class="s" x="480" y="96" text-anchor="middle">사진 확인만 (처리는 검수기간)</text>
       <rect class="bx" x="584" y="50" width="176" height="60" rx="10"/><text class="t" x="672" y="76" text-anchor="middle">횟수 부족 일괄 탈락</text><text class="s" x="672" y="96" text-anchor="middle">기준 미만 회원 (0회 포함)</text>
-      <rect class="bx" x="776" y="50" width="176" height="60" rx="10"/><text class="t" x="864" y="76" text-anchor="middle">심사상태 → 최종완료</text><text class="s" x="864" y="96" text-anchor="middle">미처리 사진 자동 승인</text>
+      <rect class="bx" x="776" y="50" width="176" height="60" rx="10"/><text class="t" x="864" y="76" text-anchor="middle">검수 → 최종완료</text><text class="s" x="864" y="96" text-anchor="middle">문제 사진 반려 · 나머지 자동 승인</text>
 
       <line class="ln" x1="184" y1="80" x2="199" y2="80" marker-end="url(#arrA)"/>
       <line class="ln" x1="376" y1="80" x2="391" y2="80" marker-end="url(#arrA)"/>
@@ -128,9 +128,9 @@
     <tr><th>언제</th><th>어디서 · 무엇을</th></tr>
     <tr><td class="when">준비</td><td><b>챌린지 &gt; 챌린지 일정</b>에서 등록<br>제목, 이미지, 신청기간 · 진행기간 · 검수기간, <b>성공 인증 횟수</b>(1 ~ 진행 일수, 입력칸 옆에 "최대 N회" 표시 · 넘으면 저장 안 됨), 실패한 회원에게 추천할 루틴</td></tr>
     <tr><td class="when">신청기간</td><td><b>챌린지 &gt; 신청현황</b>에서 신청자 확인<br>엑셀로 내려받아 운송장 번호를 채워 다시 올리거나, 목록에서 바로 입력</td></tr>
-    <tr><td class="when">진행기간</td><td><b>챌린지 &gt; 인증현황</b>에서 사진 확인<br>문제 있는 사진만 체크해서 <span class="q">반려</span> (잘못 반려했으면 <span class="q">반려 취소</span>)<br>여러 회원의 사진을 한꺼번에 체크해서 처리할 수도 있어요</td></tr>
+    <tr><td class="when">진행기간</td><td><b>챌린지 &gt; 인증현황</b>에서 올라오는 사진 확인만<br>인증 직후 바로 승인 · 반려하지 않아요 (검수는 검수기간에)</td></tr>
     <tr><td class="when">진행기간 끝</td><td><span class="q">횟수 부족 일괄 탈락</span> 버튼 클릭<br>사진을 기준보다 적게 올린 회원(한 번도 안 올린 회원 포함)이 한 번에 탈락돼요 → 회원에게는 검수기간이 끝난 뒤 실패 결과</td></tr>
-    <tr><td class="when">검수기간</td><td>남은 회원 사진을 확인하고 필요하면 반려<br>확인이 끝난 회원을 체크해 심사상태를 <span class="q">최종완료</span>로 변경 → 결과가 자동으로 정해짐 (회원 발표는 검수기간이 끝난 다음 날 모든 회원 한 번에)</td></tr>
+    <tr><td class="when">검수기간</td><td><b>챌린지 &gt; 인증현황</b>에서 검수 : 문제 있는 사진만 체크해서 <span class="q">반려</span> (잘못 반려했으면 <span class="q">반려 취소</span>, 여러 회원 사진을 한꺼번에 체크해서 처리할 수도 있어요)<br>확인이 끝난 회원을 체크해 심사상태를 <span class="q">최종완료</span>로 변경 → 결과가 자동으로 정해짐 (회원 발표는 검수기간이 끝난 다음 날 모든 회원 한 번에)</td></tr>
   </table>
   <p class="tip">※ '최종완료'와 '횟수 부족 일괄 탈락'은 진행기간이 끝나야 누를 수 있어요. 최종완료된 회원의 사진은 반려할 수 없어요(심사중으로 되돌린 뒤 처리).</p>
 
