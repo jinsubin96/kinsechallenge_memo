@@ -56,6 +56,7 @@
   .lb button{position:fixed;top:10px;border:0;border-radius:999px;background:#fff;color:#222;font-size:15px;padding:6px 14px;cursor:pointer}
   .lb .x{right:14px} .lb .pv{left:14px} .lb .nx{left:74px}
   @media print{body{background:#fff} .box{break-inside:avoid} .shots{display:none}}
+  .url-path{display:block;font:12px/1.4 Consolas,"Courier New",monospace;color:#2563eb;word-break:break-all;margin-top:2px}
 </style>
 </head>
 <body>
@@ -99,19 +100,19 @@
     </ul></div>
   </div>
   <div class="shots">
-    <figure data-src="img/srv/home.jpg"><figcaption>Home<small>비로그인 · 10/19</small></figcaption></figure>
-    <figure data-src="img/srv/signal.jpg"><figcaption>체크리스트 시작<small>비로그인 · 10/19</small></figcaption></figure>
-    <figure data-src="img/srv/login.jpg"><figcaption>로그인<small>10/19</small></figcaption></figure>
-    <figure data-src="img/srv/join.jpg"><figcaption>회원가입 1단계 동의<small>10/19</small></figcaption></figure>
-    <figure data-src="img/srv/u_home.jpg"><figcaption>Home<small>로그인 · 최근 접속 오늘 · 10/19</small></figcaption></figure>
-    <figure data-src="img/srv/u_signal.jpg"><figcaption>체크리스트 시작<small>로그인 · 10/19</small></figcaption></figure>
-    <figure data-src="img/srv/u_signal_index.jpg"><figcaption>영역 선택<small>고르기 전 · 10/19</small></figcaption></figure>
-    <figure data-src="img/srv/u_signal_index_pick.jpg"><figcaption>영역 선택<small>피부 고름 · 10/19</small></figcaption></figure>
-    <figure data-src="img/srv/u_signal_q1.jpg"><figcaption>문항 Q1<small>피부 · 10/19</small></figcaption></figure>
-    <figure data-src="img/srv/u_signal_result.jpg"><figcaption>결과<small>근감소진행형 · 10/19</small></figcaption></figure>
-    <figure data-src="img/srv/u_signal_share.jpg"><figcaption>결과 · 공유 링크로 열기<small>나도 체크하기 · 10/19</small></figcaption></figure>
-    <figure data-src="img/srv/u_my_checklist.jpg"><figcaption>체크리스트 히스토리<small>전체 목록 · 10/19</small></figcaption></figure>
-    <figure data-src="img/srv/u_my_checklist_filter.jpg"><figcaption>체크리스트 히스토리<small>필터 펼침 · 10/19</small></figcaption></figure>
+    <figure data-src="img/srv/home.jpg"><figcaption>Home<small>비로그인 · 10/19</small><code class="url-path">/</code></figcaption></figure>
+    <figure data-src="img/srv/signal.jpg"><figcaption>체크리스트 시작<small>비로그인 · 10/19</small><code class="url-path">/dh/signal</code></figcaption></figure>
+    <figure data-src="img/srv/login.jpg"><figcaption>로그인<small>10/19</small><code class="url-path">/dh_member/login</code></figcaption></figure>
+    <figure data-src="img/srv/join.jpg"><figcaption>회원가입 1단계 동의<small>10/19</small><code class="url-path">/dh_member/join</code></figcaption></figure>
+    <figure data-src="img/srv/u_home.jpg"><figcaption>Home<small>로그인 · 최근 접속 오늘 · 10/19</small><code class="url-path">/</code></figcaption></figure>
+    <figure data-src="img/srv/u_signal.jpg"><figcaption>체크리스트 시작<small>로그인 · 10/19</small><code class="url-path">/dh/signal</code></figcaption></figure>
+    <figure data-src="img/srv/u_signal_index.jpg"><figcaption>영역 선택<small>고르기 전 · 10/19</small><code class="url-path">/dh/signal_index</code></figcaption></figure>
+    <figure data-src="img/srv/u_signal_index_pick.jpg"><figcaption>영역 선택<small>피부 고름 · 10/19</small><code class="url-path">/dh/signal_index</code></figcaption></figure>
+    <figure data-src="img/srv/u_signal_q1.jpg"><figcaption>문항 Q1<small>피부 · 10/19</small><code class="url-path">/dh/signal_checklist?code=</code></figcaption></figure>
+    <figure data-src="img/srv/u_signal_result.jpg"><figcaption>결과<small>근감소진행형 · 10/19</small><code class="url-path">/dh/signal_result?idx=</code></figcaption></figure>
+    <figure data-src="img/srv/u_signal_share.jpg"><figcaption>결과 · 공유 링크로 열기<small>나도 체크하기 · 10/19</small><code class="url-path">/dh/signal_result?idx=&amp;share=1</code></figcaption></figure>
+    <figure data-src="img/srv/u_my_checklist.jpg"><figcaption>체크리스트 히스토리<small>전체 목록 · 10/19</small><code class="url-path">/dh/my_checklist</code></figcaption></figure>
+    <figure data-src="img/srv/u_my_checklist_filter.jpg"><figcaption>체크리스트 히스토리<small>필터 펼침 · 10/19</small><code class="url-path">/dh/my_checklist</code></figcaption></figure>
   </div>
   <p class="noshot">결과 로딩(5초) 화면은 답변을 저장해야 나와서 찍지 않았어요.</p>
 
@@ -139,14 +140,14 @@
     </ul></div>
   </div>
   <div class="shots">
-    <figure data-src="img/srv/list.jpg"><figcaption>챌린지 목록<small>비로그인 · 10/19</small></figcaption></figure>
-    <figure data-src="img/srv/u_list.jpg"><figcaption>챌린지 목록<small>로그인 (띠 없음) · 10/19</small></figcaption></figure>
-    <figure data-src="img/srv/u_menu.jpg"><figcaption>햄버거 메뉴<small>로그인 · 10/19</small></figcaption></figure>
-    <figure data-src="img/v_apply.jpg"><figcaption>상세 · 신청 가능<small>챌린지 신청하기 · 10/19</small></figcaption></figure>
-    <figure data-src="img/v_apply_out.jpg"><figcaption>상세 · 비로그인<small>로그인 후 신청하기 · 10/19</small></figcaption></figure>
-    <figure data-src="img/v_missed.jpg"><figcaption>상세 · 신청 못 함<small>신청 기간이 종료됐어요 · 10/19</small></figcaption></figure>
-    <figure data-src="img/apply_form.jpg"><figcaption>챌린지 신청하기<small>10/19</small></figcaption></figure>
-    <figure data-src="img/apply_done.jpg"><figcaption>신청 완료<small>10/19</small></figcaption></figure>
+    <figure data-src="img/srv/list.jpg"><figcaption>챌린지 목록<small>비로그인 · 10/19</small><code class="url-path">/dh/challenge_list</code></figcaption></figure>
+    <figure data-src="img/srv/u_list.jpg"><figcaption>챌린지 목록<small>로그인 (띠 없음) · 10/19</small><code class="url-path">/dh/challenge_list</code></figcaption></figure>
+    <figure data-src="img/srv/u_menu.jpg"><figcaption>햄버거 메뉴<small>로그인 · 10/19</small><code class="url-path">/ (햄버거 메뉴)</code></figcaption></figure>
+    <figure data-src="img/v_apply.jpg"><figcaption>상세 · 신청 가능<small>챌린지 신청하기 · 10/19</small><code class="url-path">/dh/challenge_view?idx=</code></figcaption></figure>
+    <figure data-src="img/v_apply_out.jpg"><figcaption>상세 · 비로그인<small>로그인 후 신청하기 · 10/19</small><code class="url-path">/dh/challenge_view?idx=</code></figcaption></figure>
+    <figure data-src="img/v_missed.jpg"><figcaption>상세 · 신청 못 함<small>신청 기간이 종료됐어요 · 10/19</small><code class="url-path">/dh/challenge_view?idx=</code></figcaption></figure>
+    <figure data-src="img/apply_form.jpg"><figcaption>챌린지 신청하기<small>10/19</small><code class="url-path">/dh/challenge_apply?idx=</code></figcaption></figure>
+    <figure data-src="img/apply_done.jpg"><figcaption>신청 완료<small>10/19</small><code class="url-path">/dh/challenge_apply_done?idx=</code></figcaption></figure>
   </div>
 
   <h2 id="s3"><span class="no">3</span>챌린지 신청 후, 시작 전</h2>
@@ -163,8 +164,8 @@
     </ul></div>
   </div>
   <div class="shots">
-    <figure data-src="img/v_applied.jpg"><figcaption>상세 · 신청 후 시작 전<small>D-8 · 10/19</small></figcaption></figure>
-    <figure data-src="img/my_challenge.jpg"><figcaption>나의 챌린지<small>배지 진행예정 · 진행중 · 결과대기중 · 결과발표 · 10/19</small></figcaption></figure>
+    <figure data-src="img/v_applied.jpg"><figcaption>상세 · 신청 후 시작 전<small>D-8 · 10/19</small><code class="url-path">/dh/challenge_view?idx=</code></figcaption></figure>
+    <figure data-src="img/my_challenge.jpg"><figcaption>나의 챌린지<small>배지 진행예정 · 진행중 · 결과대기중 · 결과발표 · 10/19</small><code class="url-path">/dh/my_challenge</code></figcaption></figure>
   </div>
 
   <h2 id="s4"><span class="no">4</span>챌린지 진행</h2>
@@ -192,16 +193,16 @@
     </ul></div>
   </div>
   <div class="shots">
-    <figure data-src="img/srv/u_view_2.jpg"><figcaption>상세 · 진행중<small>오늘 인증 완료 · 10/19</small></figcaption></figure>
-    <figure data-src="img/srv/u_mypage.jpg"><figcaption>마이페이지<small>진행중 카드 · 10/19</small></figcaption></figure>
-    <figure data-src="img/srv/u_my_challenge.jpg"><figcaption>나의 챌린지<small>진행중 · 종료 · 10/19</small></figcaption></figure>
-    <figure data-src="img/srv/u_verify_2.jpg"><figcaption>인증하기<small>오늘 이미 올림 · 사진 변경 가능 · 10/19 저녁</small></figcaption></figure>
-    <figure data-src="img/srv/u_verify_2_stamp.jpg"><figcaption>인증하기 · 도장 누름<small>그날 사진 · 날짜 · 10/19</small></figcaption></figure>
-    <figure data-src="img/v_ing.jpg"><figcaption>상세 · 진행중<small>오늘 인증 전 · 10/19</small></figcaption></figure>
-    <figure data-src="img/v_ing_done.jpg"><figcaption>상세 · 진행중<small>오늘의 루틴 완료 · 10/19</small></figcaption></figure>
-    <figure data-src="img/verify_ing.jpg"><figcaption>인증하기<small>사진 올리기 전 · 10/19</small></figcaption></figure>
-    <figure data-src="img/verify_done.jpg"><figcaption>인증 완료<small>10/19</small></figcaption></figure>
-    <figure data-src="img/verify_today.jpg"><figcaption>인증하기<small>오늘 이미 올림 · 사진 변경 가능 · 10/19 저녁</small></figcaption></figure>
+    <figure data-src="img/srv/u_view_2.jpg"><figcaption>상세 · 진행중<small>오늘 인증 완료 · 10/19</small><code class="url-path">/dh/challenge_view?idx=</code></figcaption></figure>
+    <figure data-src="img/srv/u_mypage.jpg"><figcaption>마이페이지<small>진행중 카드 · 10/19</small><code class="url-path">/dh_member/mypage</code></figcaption></figure>
+    <figure data-src="img/srv/u_my_challenge.jpg"><figcaption>나의 챌린지<small>진행중 · 종료 · 10/19</small><code class="url-path">/dh/my_challenge</code></figcaption></figure>
+    <figure data-src="img/srv/u_verify_2.jpg"><figcaption>인증하기<small>오늘 이미 올림 · 사진 변경 가능 · 10/19 저녁</small><code class="url-path">/dh/challenge_verify?idx=</code></figcaption></figure>
+    <figure data-src="img/srv/u_verify_2_stamp.jpg"><figcaption>인증하기 · 도장 누름<small>그날 사진 · 날짜 · 10/19</small><code class="url-path">/dh/challenge_verify?idx=</code></figcaption></figure>
+    <figure data-src="img/v_ing.jpg"><figcaption>상세 · 진행중<small>오늘 인증 전 · 10/19</small><code class="url-path">/dh/challenge_view?idx=</code></figcaption></figure>
+    <figure data-src="img/v_ing_done.jpg"><figcaption>상세 · 진행중<small>오늘의 루틴 완료 · 10/19</small><code class="url-path">/dh/challenge_view?idx=</code></figcaption></figure>
+    <figure data-src="img/verify_ing.jpg"><figcaption>인증하기<small>사진 올리기 전 · 10/19</small><code class="url-path">/dh/challenge_verify?idx=</code></figcaption></figure>
+    <figure data-src="img/verify_done.jpg"><figcaption>인증 완료<small>10/19</small><code class="url-path">/dh/challenge_verify_done?idx=</code></figcaption></figure>
+    <figure data-src="img/verify_today.jpg"><figcaption>인증하기<small>오늘 이미 올림 · 사진 변경 가능 · 10/19 저녁</small><code class="url-path">/dh/challenge_verify?idx=</code></figcaption></figure>
   </div>
 
   <h2 id="s5"><span class="no">5</span>챌린지 진행 – 결과 확인중 (검수중)</h2>
@@ -217,8 +218,8 @@
     <div class="diff"><b>피그마와 다른 점</b><ul><li>인증하기 버튼 <q>인증 확인중이에요</q> ↔ <q>결과 대기중이에요</q> (퍼블대로)</li></ul></div>
   </div>
   <div class="shots">
-    <figure data-src="img/v_review.jpg"><figcaption>상세 · 검수중<small>10/19</small></figcaption></figure>
-    <figure data-src="img/verify_review.jpg"><figcaption>인증하기 · 검수중<small>결과 대기중이에요 · 10/19</small></figcaption></figure>
+    <figure data-src="img/v_review.jpg"><figcaption>상세 · 검수중<small>10/19</small><code class="url-path">/dh/challenge_view?idx=</code></figcaption></figure>
+    <figure data-src="img/verify_review.jpg"><figcaption>인증하기 · 검수중<small>결과 대기중이에요 · 10/19</small><code class="url-path">/dh/challenge_verify?idx=</code></figcaption></figure>
   </div>
 
   <h2 id="s6"><span class="no">6</span>챌린지 진행 – 결과 발표</h2>
@@ -243,9 +244,9 @@
     </ul></div>
   </div>
   <div class="shots">
-    <figure data-src="img/result_ok.jpg"><figcaption>성공<small>10/19</small></figcaption></figure>
-    <figure data-src="img/result_fail.jpg"><figcaption>실패<small>10/19</small></figcaption></figure>
-    <figure data-src="img/record.jpg"><figcaption>내 기록 보기<small>10/19</small></figcaption></figure>
+    <figure data-src="img/result_ok.jpg"><figcaption>성공<small>10/19</small><code class="url-path">/dh/challenge_result?idx=</code></figcaption></figure>
+    <figure data-src="img/result_fail.jpg"><figcaption>실패<small>10/19</small><code class="url-path">/dh/challenge_result_fail?idx=</code></figcaption></figure>
+    <figure data-src="img/record.jpg"><figcaption>내 기록 보기<small>10/19</small><code class="url-path">/dh/challenge_record?idx=</code></figcaption></figure>
   </div>
 
   <h2 id="s7"><span class="no">7</span>챌린지 진행 – 결과 확인 이후 (종료)</h2>
@@ -261,9 +262,9 @@
     <div class="diff"><b>피그마와 다른 점</b><ul><li>마이페이지: 피그마 <q>참여중인 챌린지가 없어요</q> ↔ 서버 종료 카드 표시</li></ul></div>
   </div>
   <div class="shots">
-    <figure data-src="img/srv/view_end.jpg"><figcaption>상세 · 종료<small>비로그인 · 로그인 후 신청하기 · 10/19</small></figcaption></figure>
-    <figure data-src="img/srv/u_view_1.jpg"><figcaption>상세 · 종료<small>참여했던 회원 · 10/19</small></figcaption></figure>
-    <figure data-src="img/v_end.jpg"><figcaption>상세 · 종료<small>10/19</small></figcaption></figure>
+    <figure data-src="img/srv/view_end.jpg"><figcaption>상세 · 종료<small>비로그인 · 로그인 후 신청하기 · 10/19</small><code class="url-path">/dh/challenge_view?idx=</code></figcaption></figure>
+    <figure data-src="img/srv/u_view_1.jpg"><figcaption>상세 · 종료<small>참여했던 회원 · 10/19</small><code class="url-path">/dh/challenge_view?idx=</code></figcaption></figure>
+    <figure data-src="img/v_end.jpg"><figcaption>상세 · 종료<small>10/19</small><code class="url-path">/dh/challenge_view?idx=</code></figcaption></figure>
   </div>
 
   <h2 id="state">상태 규칙 한눈에</h2>

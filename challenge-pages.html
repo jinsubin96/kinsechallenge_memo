@@ -35,6 +35,7 @@
   .shots figure{margin:0;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px;font-size:12px;color:var(--muted)}
   .shots img{width:100%;height:220px;object-fit:cover;object-position:top;border-radius:6px;display:block;margin-bottom:6px}
   .shots b{display:block;color:var(--ink);font-size:13px}
+  .url-path{display:block;font:12px/1.4 Consolas,"Courier New",monospace;color:#2563eb;word-break:break-all;margin-top:2px}
 </style>
 </head>
 <body>
@@ -111,16 +112,16 @@
 
   <h2>화면 캡처 (서버, 10/19)</h2>
   <div class="shots">
-    <figure><a href="img/srv/list.jpg" target="_blank"><img src="img/srv/list.jpg" alt="" loading="lazy"></a><b>1 목록</b></figure>
-    <figure><a href="img/v_apply.jpg" target="_blank"><img src="img/v_apply.jpg" alt="" loading="lazy"></a><b>2 상세</b>신청기간</figure>
-    <figure><a href="img/apply_form.jpg" target="_blank"><img src="img/apply_form.jpg" alt="" loading="lazy"></a><b>3 신청</b></figure>
-    <figure><a href="img/apply_done.jpg" target="_blank"><img src="img/apply_done.jpg" alt="" loading="lazy"></a><b>4 신청 완료</b></figure>
-    <figure><a href="img/verify_today.jpg" target="_blank"><img src="img/verify_today.jpg" alt="" loading="lazy"></a><b>5 사진 인증</b>오늘 올린 뒤</figure>
-    <figure><a href="img/verify_done.jpg" target="_blank"><img src="img/verify_done.jpg" alt="" loading="lazy"></a><b>6 인증 완료</b></figure>
-    <figure><a href="img/result_ok.jpg" target="_blank"><img src="img/result_ok.jpg" alt="" loading="lazy"></a><b>7 결과 성공</b></figure>
-    <figure><a href="img/result_fail.jpg" target="_blank"><img src="img/result_fail.jpg" alt="" loading="lazy"></a><b>8 결과 실패</b></figure>
-    <figure><a href="img/record.jpg" target="_blank"><img src="img/record.jpg" alt="" loading="lazy"></a><b>9 내 기록</b>왼쪽 위 승인 도장</figure>
-    <figure><a href="img/my_challenge.jpg" target="_blank"><img src="img/my_challenge.jpg" alt="" loading="lazy"></a><b>10 나의 챌린지</b></figure>
+    <figure><a href="img/srv/list.jpg" target="_blank"><img src="img/srv/list.jpg" alt="" loading="lazy"></a><b>1 목록</b><code class="url-path">/dh/challenge_list</code></figure>
+    <figure><a href="img/v_apply.jpg" target="_blank"><img src="img/v_apply.jpg" alt="" loading="lazy"></a><b>2 상세</b>신청기간<code class="url-path">/dh/challenge_view?idx=</code></figure>
+    <figure><a href="img/apply_form.jpg" target="_blank"><img src="img/apply_form.jpg" alt="" loading="lazy"></a><b>3 신청</b><code class="url-path">/dh/challenge_apply?idx=</code></figure>
+    <figure><a href="img/apply_done.jpg" target="_blank"><img src="img/apply_done.jpg" alt="" loading="lazy"></a><b>4 신청 완료</b><code class="url-path">/dh/challenge_apply_done?idx=</code></figure>
+    <figure><a href="img/verify_today.jpg" target="_blank"><img src="img/verify_today.jpg" alt="" loading="lazy"></a><b>5 사진 인증</b>오늘 올린 뒤<code class="url-path">/dh/challenge_verify?idx=</code></figure>
+    <figure><a href="img/verify_done.jpg" target="_blank"><img src="img/verify_done.jpg" alt="" loading="lazy"></a><b>6 인증 완료</b><code class="url-path">/dh/challenge_verify_done?idx=</code></figure>
+    <figure><a href="img/result_ok.jpg" target="_blank"><img src="img/result_ok.jpg" alt="" loading="lazy"></a><b>7 결과 성공</b><code class="url-path">/dh/challenge_result?idx=</code></figure>
+    <figure><a href="img/result_fail.jpg" target="_blank"><img src="img/result_fail.jpg" alt="" loading="lazy"></a><b>8 결과 실패</b><code class="url-path">/dh/challenge_result_fail?idx=</code></figure>
+    <figure><a href="img/record.jpg" target="_blank"><img src="img/record.jpg" alt="" loading="lazy"></a><b>9 내 기록</b>왼쪽 위 승인 도장<code class="url-path">/dh/challenge_record?idx=</code></figure>
+    <figure><a href="img/my_challenge.jpg" target="_blank"><img src="img/my_challenge.jpg" alt="" loading="lazy"></a><b>10 나의 챌린지</b><code class="url-path">/dh/my_challenge</code></figure>
   </div>
 </div>
 </body>

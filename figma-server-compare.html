@@ -40,6 +40,7 @@
   .tip{font-size:14px;color:var(--muted)}
   @media (max-width:760px){.sum{grid-template-columns:1fr 1fr}}
   @media print{body{background:#fff} table{break-inside:auto}}
+  .url-path{display:block;font:12px/1.4 Consolas,"Courier New",monospace;color:#2563eb;word-break:break-all;margin-top:2px}
 </style>
 </head>
 <body>
@@ -96,7 +97,7 @@
       <td>공지사항 최신 제목 3개가 흐름</td><td class="who"><span class="pill p-srv">서버만 다름</span></td></tr>
     <tr><td class="no">5</td><td class="where">챌린지 목록<br>진행 중인 챌린지</td>
       <td>목록 기간 문구가 상태별로 바뀜 (신청 기간 / 진행중 기간 / 종료)</td>
-      <td>탭 · 카드 상태가 <b>신청 기간</b> 기준이라, 신청이 끝나고 진행 중인 챌린지가 <q>종료</q>로 보이고 종료 탭에 들어감 (10/19: 10월 챌린지 진행 중인데 <q>종료 · 26/10/1 ~ 26/10/31</q>)<br><a class="shot" href="img/srv/u_list.jpg" target="_blank">서버 화면 ↗</a></td><td class="who"><span class="pill p-srv">서버만 다름</span></td></tr>
+      <td>탭 · 카드 상태가 <b>신청 기간</b> 기준이라, 신청이 끝나고 진행 중인 챌린지가 <q>종료</q>로 보이고 종료 탭에 들어감 (10/19: 10월 챌린지 진행 중인데 <q>종료 · 26/10/1 ~ 26/10/31</q>)<br><a class="shot" href="img/srv/u_list.jpg" target="_blank">서버 화면 ↗</a> <code class="url-path">/dh/challenge_list</code></td><td class="who"><span class="pill p-srv">서버만 다름</span></td></tr>
     <tr><td class="no">6</td><td class="where">비로그인<br>마이페이지</td>
       <td>로그아웃 상태 마이페이지 — <q>로그인하고 더 많은 기능을 이용해요 :-)</q> + 나의 챌린지 · 체크리스트 히스토리 제목<br><a class="shot" href="img/flow/s2_my_logout.png" target="_blank">피그마 화면 ↗</a></td>
       <td>마이페이지를 열면 바로 <b>로그인 화면으로 이동</b> (화면 코드에는 비로그인 모양이 있지만 컨트롤러가 먼저 보냄)</td><td class="who"><span class="pill p-srv">서버만 다름</span></td></tr>
@@ -107,16 +108,16 @@
   <div class="tbl"><table>
     <tr><th></th><th>상태 · 언제</th><th>서버 화면</th><th>어디서 왔나</th></tr>
     <tr><td class="no">1</td><td class="where">신청 안 한 회원<br>신청 마감 ~ 진행 기간</td>
-      <td>카드 <q>진행중인 챌린지 · 신청 기간이 종료됐어요.</q> + 회색 진행바(지난 날 수만큼) + 버튼 <q>지금은 신청할 수 없어요</q><br><a class="shot" href="img/v_missed.jpg" target="_blank">서버 화면 ↗</a></td>
+      <td>카드 <q>진행중인 챌린지 · 신청 기간이 종료됐어요.</q> + 회색 진행바(지난 날 수만큼) + 버튼 <q>지금은 신청할 수 없어요</q><br><a class="shot" href="img/v_missed.jpg" target="_blank">서버 화면 ↗</a> <code class="url-path">/dh/challenge_view?idx=</code></td>
       <td class="who"><span class="pill p-publ">퍼블에 있음</span></td></tr>
     <tr><td class="no">2</td><td class="where">신청 안 한 회원<br>검수 기간</td>
       <td>진행이 끝나면 바로 <q>종료된 챌린지 · 다음에 다시 돌아올게요 :-)</q> (참여 회원은 이때 <q>인증 확인중</q>)</td>
       <td class="who"><span class="pill p-publ">퍼블에 있음</span></td></tr>
     <tr><td class="no">3</td><td class="where">비로그인<br>챌린지 상세</td>
-      <td>기간과 상관없이 버튼 <q>로그인 후 신청하기</q> → 로그인 뒤 그 상세로 돌아옴<br><a class="shot" href="img/v_apply_out.jpg" target="_blank">서버 화면 ↗</a></td>
+      <td>기간과 상관없이 버튼 <q>로그인 후 신청하기</q> → 로그인 뒤 그 상세로 돌아옴<br><a class="shot" href="img/v_apply_out.jpg" target="_blank">서버 화면 ↗</a> <code class="url-path">/dh/challenge_view?idx=</code></td>
       <td class="who"><span class="pill p-publ">퍼블에 있음</span></td></tr>
     <tr><td class="no">4</td><td class="where">오늘 인증을 이미 함<br>인증하기 다시 열기</td>
-      <td>업로드 칸에 오늘 사진 + <q>클릭해서 사진 변경하기</q> · 버튼 <q>인증하기</q> (그날에만 변경, 10/19 저녁) · 도장 눌러 사진 보기<br><span class="tip">피그마는 인증 직후 완료 화면만 있고, 같은 날 다시 들어온 화면은 없음</span><br><a class="shot" href="img/srv/u_verify_2.jpg" target="_blank">서버 화면 ↗</a></td>
+      <td>업로드 칸에 오늘 사진 + <q>클릭해서 사진 변경하기</q> · 버튼 <q>인증하기</q> (그날에만 변경, 10/19 저녁) · 도장 눌러 사진 보기<br><span class="tip">피그마는 인증 직후 완료 화면만 있고, 같은 날 다시 들어온 화면은 없음</span><br><a class="shot" href="img/srv/u_verify_2.jpg" target="_blank">서버 화면 ↗</a> <code class="url-path">/dh/challenge_verify?idx=</code></td>
       <td class="who"><span class="pill p-publ">칸은 퍼블 · 엑셀</span> <span class="pill p-srv">버튼 문구는 서버</span></td></tr>
     <tr><td class="no">5</td><td class="where">관리자가 인증을 반려</td>
       <td>반려는 검수기간이 끝난 뒤에만 회원에게 보임 (그 전에는 올린 사진 그대로) · 내 기록에서 반려된 날은 올렸던 사진 + 사진 왼쪽 위 실패 도장 (10/19 저녁 변경)</td>
