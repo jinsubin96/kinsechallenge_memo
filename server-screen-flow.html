@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>서버 화면 흐름</title>
+<style>
+  :root{--ink:#1f2a37;--muted:#6b7686;--line:#e3e8ef;--bg:#f6f8fb;--card:#fff;--blue:#3b82f6;--teal:#0d9488}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.7 "Malgun Gothic","Apple SD Gothic Neo",sans-serif}
+  .wrap{max-width:1000px;margin:0 auto;padding:30px 16px 60px}
+  h1{font-size:26px;margin:0 0 4px}
+  .sub{color:var(--muted);margin:0 0 18px;font-size:14px}
+  .info{background:#e6f6f4;border:1px solid #9fdcd4;border-radius:12px;padding:12px 16px;font-size:14px;margin-bottom:22px}
+  .toc{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+  .toc a{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:14px;color:inherit;text-decoration:none}
+  .toc a:hover{border-color:var(--blue)}
+  h2{font-size:21px;margin:38px 0 14px;padding-left:12px;border-left:5px solid var(--teal)}
+  h2 .no{display:inline-block;min-width:26px;color:var(--teal)}
+  .box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 22px;margin-bottom:14px}
+  .box h3{font-size:15px;margin:0 0 6px;color:#445}
+  .box h3:not(:first-child){margin-top:16px}
+  .box ul{margin:0;padding-left:22px} .box li{margin:4px 0}
+  .path{display:flex;flex-wrap:wrap;gap:6px;margin:0;padding:0;list-style:none}
+  .path li{background:#eef2f7;border-radius:8px;padding:2px 10px;font-size:14px;margin:0}
+  .flow{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:14px}
+  .flow span{background:#dff3f0;color:#0b6b62;border-radius:8px;padding:3px 10px}
+  .flow i{font-style:normal;color:var(--muted)}
+  .tbl{overflow-x:auto;margin-top:6px}
+  table{width:100%;border-collapse:collapse;font-size:14px;min-width:560px}
+  th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+  th{background:#eef2f7;font-size:13px;color:#445;white-space:nowrap}
+  tr:last-child td{border-bottom:0}
+  td.k{white-space:nowrap;font-weight:700;width:24%}
+  q{quotes:none;background:#f4f1ff;border-radius:5px;padding:0 5px}
+  code{font-size:13px;background:#eef2f7;border-radius:5px;padding:0 5px}
+  .memo{background:#f1fbe6;border-left:4px solid #84cc16;border-radius:8px;padding:10px 14px;margin-top:12px;font-size:14px}
+  .memo ul{padding-left:18px}
+  .diff{background:#fff1f1;border-left:4px solid #f87171;border-radius:8px;padding:10px 14px;margin-top:12px;font-size:14px}
+  .diff ul{padding-left:18px}
+  .diff a{color:#c0262d}
+  .pill{display:inline-block;padding:1px 10px;border-radius:999px;font-size:13px;font-weight:700;margin-right:4px}
+  .b-ing{background:#ffd6f0;color:#a3156f} .b-soon{background:#fff59a;color:#6b5b00} .b-wait{background:#e6ff9c;color:#4d6b00} .b-res{background:#c8f1ff;color:#0b5f7a} .b-end{background:#e9edf2;color:#55606e}
+  .tip{font-size:14px;color:var(--muted)}
+  .shots{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin:0 0 14px}
+  .shots figure{margin:0;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:7px;cursor:zoom-in}
+  .shots figure:hover{border-color:var(--blue)}
+  .shots img{display:block;width:100%;aspect-ratio:9/16;object-fit:cover;object-position:top;border-radius:7px;background:#f2f2f2}
+  .shots figcaption{font-size:13px;line-height:1.4;margin-top:6px}
+  .shots figcaption small{display:block;color:var(--muted)}
+  .noshot{font-size:13px;color:var(--muted);margin:-4px 0 14px}
+  .lb{position:fixed;inset:0;background:rgba(15,20,30,.88);display:none;z-index:10;overflow:auto;padding:46px 16px 30px;text-align:center}
+  .lb.on{display:block}
+  .lb img{max-width:min(100%,600px);height:auto;border-radius:10px;background:#fff}
+  .lb p{color:#fff;margin:0 0 12px;font-size:15px}
+  .lb button{position:fixed;top:10px;border:0;border-radius:999px;background:#fff;color:#222;font-size:15px;padding:6px 14px;cursor:pointer}
+  .lb .x{right:14px} .lb .pv{left:14px} .lb .nx{left:74px}
+  @media print{body{background:#fff} .box{break-inside:avoid} .shots{display:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>메인 태스크별 화면 흐름 (서버)</h1>
+  <p class="sub">지금 서버(FTP)에 작업된 사용자 화면을 <a href="figma-screen-flow.html">피그마 화면 흐름</a>과 같은 7단계로 정리 · 2026-10-19 서버 코드 기준</p>
+  <div class="info">글은 <b>10/19 서버 코드</b> 기준입니다. 화면 이미지는 로그인 없이 볼 수 있는 화면은 10/19 새로 캡처, 로그인 · 테스트 데이터가 필요한 화면은 <b>10/16 캡처</b>라 그 뒤 바뀐 문구는 글 쪽이 맞아요. 피그마와 다른 점은 각 단계의 빨간 상자에 모았고, 자세한 표는 <a href="figma-server-compare.html">피그마 ↔ 서버 비교</a>에 있어요.</div>
+
+  <nav class="toc">
+    <a href="#s1">1. 체크리스트</a><a href="#s2">2. 참여 전</a><a href="#s3">3. 신청 후·시작 전</a><a href="#s4">4. 진행</a><a href="#s5">5. 검수중</a><a href="#s6">6. 결과 발표</a><a href="#s7">7. 종료</a><a href="#state">상태 규칙</a>
+  </nav>
+
+  <h2 id="s1"><span class="no">1</span>체크리스트 참여 플로우</h2>
+  <div class="box">
+    <h3>진입</h3>
+    <ul class="path"><li>Home 배너 <q>나의 웰니스 상태 체크하기</q></li><li>햄버거 › 체크리스트</li><li>마이페이지 › 체크리스트 히스토리</li></ul>
+    <h3>화면 순서</h3>
+    <div class="flow"><span>시작 <code>signal</code></span><i>→</i><span>영역 선택 <code>signal_index</code></span><i>→</i><span>문항 <code>signal_checklist</code></span><i>→</i><span>결과 로딩 5초</span><i>→</i><span>결과 <code>signal_result</code></span></div>
+    <div class="tbl"><table>
+      <tr><th>화면</th><th>지금 서버</th></tr>
+      <tr><td class="k">시작</td><td>제목 <q>나의 웰니스 상태 체크하기</q> · <q>1분동안 나의 몸 상태를 체크하는 Self Checklist</q><br>로그인 <q>셀프 체크 시작!</q> / 비로그인 <q>로그인 후 셀프 체크 시작!</q> + 말풍선 <q>로그인 하면 결과가 저장돼요 :-)</q> → 로그인 후 영역 선택으로</td></tr>
+      <tr><td class="k">영역 선택</td><td><q>킨스와 체크해보고 싶은 영역을 선택해주세요</q> · 버튼은 관리자 <b>검사지 관리</b>에 등록된 검사지(노출 순서) · 하나 고르기 전 <q>다음으로</q> 회색</td></tr>
+      <tr><td class="k">문항</td><td>상단 진행바 · Q번호 · 문항 이미지(없으면 기본 그림) · 답변 고르면 그 답변의 안내 문구(말풍선) · 답변마다 바로 저장 · 이전/다음 문항, 마지막에 <q>결과보기</q></td></tr>
+      <tr><td class="k">결과 로딩</td><td><q>(이름)님의 몸이 보내는 시그널 확인중...</q> 5초 뒤 결과로</td></tr>
+      <tr><td class="k">결과</td><td><q>(이름)님의 시그널은 ○○에 가까워요.</q> + 리드 · 본문 → 배너 → <b>몸이 보내는 시그널</b> 카드(결과 텍스트가 있는 답변만, 부위 태그) → 추천 루틴(결과 유형에 연결한 루틴) → <q>갤러리에 저장</q>(간단히 / 전체 팝업) · <q>결과 공유하기</q>(링크 복사 알림) · 맨 아래 의료 진단 아님 안내<br>공유 링크로 들어온 사람은 저장/공유 대신 <q>나도 체크하기</q>만</td></tr>
+      <tr><td class="k">히스토리</td><td>마이페이지 최근 4건(5문항 다 답한 응답) · 전체 목록은 검사지 필터(전체 / 검사지별) · 없으면 <q>체크리스트 히스토리가 없어요.</q></td></tr>
+      <tr><td class="k">홈 배너</td><td>로그인 + 응답한 적 있으면 <q>최근 접속 : n일 전 / 오늘</q></td></tr>
+    </table></div>
+    <h3>로그인 · 회원가입</h3>
+    <ul>
+      <li>로그인: 아이디 · 비밀번호 · 아이디 저장, <q>SNS로 회원가입 또는 로그인</q>(네이버 · 카카오), 위쪽에 <q>로그인하고 킨스 챌린지 참여해요!</q> 띠</li>
+      <li>가입 1단계(동의): 만 14세 · 이용약관 · 개인정보 처리방침 · 광고성 정보(마케팅) · 꼼꼼히 읽었어요 → 다음으로</li>
+      <li>가입 2단계(정보): 이름 · 휴대전화(코드 전송 · 인증번호 칸 — <b>문자 인증 연동 전</b>, 비워도 가입) · 아이디 · 비밀번호 · 비밀번호 확인 · <b>알림톡 발송 동의(선택)</b> · 휴대전화 번호당 1번 가입</li>
+      <li>SNS 첫 로그인은 동의 화면 없이 2단계로(이름 · 번호는 SNS 값, 아이디 · 비밀번호 칸 없음) → 가입 완료 <q>회원가입이 완료되었어요!</q></li>
+    </ul>
+    <div class="diff"><b>피그마와 다른 점</b><ul>
+      <li>제목 · 설명 문구: 피그마 <q>웰니스 시그널 발견하기 / 5분동안 10가지</q> ↔ 서버 <q>웰니스 상태 체크하기 / 1분동안</q> (홈 배너도)</li>
+      <li>영역 선택 제목과 항목(피그마 10개 고정 ↔ 서버 관리자 검사지), 로딩 문구 <q>신호</q> ↔ <q>시그널</q></li>
+      <li><b>시작 화면 제목에 "나의"가 두 번</b> 나옴 — <q>나의 / 나의 웰니스 상태 / 체크하기</q> (10/19 화면 확인)</li>
+    </ul></div>
+  </div>
+  <div class="shots">
+    <figure data-src="img/srv/home.jpg"><figcaption>Home<small>비로그인 · 10/19</small></figcaption></figure>
+    <figure data-src="img/srv/signal.jpg"><figcaption>체크리스트 시작<small>비로그인 · 10/19</small></figcaption></figure>
+    <figure data-src="img/srv/login.jpg"><figcaption>로그인<small>10/19</small></figcaption></figure>
+    <figure data-src="img/srv/join.jpg"><figcaption>회원가입 1단계 동의<small>10/19</small></figcaption></figure>
+  </div>
+  <p class="noshot">영역 선택 · 문항 · 결과 · 히스토리 화면은 로그인 회원 응답이 있어야 보여서 캡처하지 않았어요.</p>
+
+  <h2 id="s2"><span class="no">2</span>챌린지 참여 전</h2>
+  <div class="box">
+    <h3>진입 경로</h3>
+    <ul class="path"><li>홈 챌린지 카드</li><li>햄버거 › 챌린지 목록</li><li>마이페이지 › 나의 챌린지(없을 때 <q>여기를 눌러 챌린지 목록을 확인하세요!</q>)</li></ul>
+    <h3>화면</h3>
+    <div class="tbl"><table>
+      <tr><th>화면</th><th>지금 서버</th></tr>
+      <tr><td class="k">홈 카드</td><td>① 신청한 챌린지 중 끝나지 않은 것 → ② 없으면 지금 신청 기간인 챌린지(비로그인 포함) → ③ 둘 다 없으면 <q>챌린지 참여하기</q> (누르면 목록)<br>신청 기간 카드: <q>신청 진행중인 챌린지 · 지금 신청할 수 있어요!</q></td></tr>
+      <tr><td class="k">챌린지 목록</td><td>비로그인 띠 = <b>공지사항 최신 제목 3개</b>가 흐름 · 탭 전체 / 진행중 / 종료(신청 기간 기준)<br>신청중 카드 <q>신청 기간 · 시작~마감 · n일</q> · 신청 전 <q>What is next? / Comming soon</q>(클릭 안 됨) · 종료 <q>종료 · 진행 기간 · n일</q> · 오른쪽 위 월</td></tr>
+      <tr><td class="k">챌린지 상세</td><td>대표 이미지 + 카드 → 신청 기간 띠 → 상세 이미지 → <b>햅삐들의 챌린지 인증</b>(반려 제외 최신 6장, 없으면 영역 숨김) → 아래 버튼</td></tr>
+      <tr><td class="k">상세 버튼</td><td>비로그인 <q>로그인 후 신청하기</q> · 신청 가능 <q>챌린지 신청하기</q> · 신청 전/마감 후 미신청 <q>지금은 신청할 수 없어요</q>(회색)</td></tr>
+      <tr><td class="k">신청하기</td><td>본인 인증(<q>회원 정보와 동일해요</q> → 이름 · 전화 채움, 전화번호 - 자동) · 제품 수령 주소(우편번호 찾기) · 동의 3개(카톡 수신 · 제3자 제공 · 꼼꼼히 읽었어요) 다 체크해야 <q>신청 완료하기</q> 켜짐 · <q>* 제품 수령은 선착순으로 진행돼요.</q></td></tr>
+      <tr><td class="k">신청 완료</td><td><q>챌린지 신청이 완료되었어요!</q> · 챌린지 기간 · <q>챌린지가 시작되면 카카오 알림톡으로 알려드려요.</q> · <q>챌린지 설명으로 돌아가기</q></td></tr>
+      <tr><td class="k">마이페이지</td><td>로그인 프로필 <q>○○님 오늘도 작은 습관 실천해요!</q> + 정보 수정 / 비로그인은 로그인 화면으로 · 나의 챌린지(없으면 <q>참여중인 챌린지가 없어요</q>) · 체크리스트 히스토리 · 공지사항 · 약관확인 · 고객센터</td></tr>
+      <tr><td class="k">햄버거 메뉴</td><td>마이페이지 · 챌린지 목록 · 체크리스트 · 킨스 공식몰 / 공지사항 · 약관확인 · 고객센터 · <b>로그인 / 로그아웃</b></td></tr>
+    </table></div>
+    <div class="diff"><b>피그마와 다른 점</b><ul>
+      <li>목록 비로그인 띠: 피그마 로그인 유도 문구 ↔ 서버 공지사항 제목</li>
+      <li>햄버거 메뉴에 로그인 / 로그아웃 추가 · 신청 · 시작 알림톡(CRM)은 발송 기능 없음</li>
+      <li>마이페이지 하단 <q>약관확인</q> 링크가 비어 있음(메뉴 쪽은 연결됨)</li>
+    </ul></div>
+  </div>
+  <div class="shots">
+    <figure data-src="img/srv/list.jpg"><figcaption>챌린지 목록<small>비로그인 · 10/19</small></figcaption></figure>
+    <figure data-src="img/v_wait.jpg"><figcaption>상세 · 신청 시작 전<small>진행 예정 챌린지 · 10/16</small></figcaption></figure>
+    <figure data-src="img/v_apply.jpg"><figcaption>상세 · 신청 가능<small>챌린지 신청하기 · 10/16</small></figcaption></figure>
+    <figure data-src="img/v_apply_out.jpg"><figcaption>상세 · 비로그인<small>로그인 후 신청하기 · 10/16</small></figcaption></figure>
+    <figure data-src="img/v_missed.jpg"><figcaption>상세 · 신청 못 함<small>신청 기간이 종료됐어요 · 10/16</small></figcaption></figure>
+    <figure data-src="img/apply_form.jpg"><figcaption>챌린지 신청하기<small>10/16</small></figcaption></figure>
+    <figure data-src="img/apply_done.jpg"><figcaption>신청 완료<small>10/16</small></figcaption></figure>
+  </div>
+
+  <h2 id="s3"><span class="no">3</span>챌린지 신청 후, 시작 전</h2>
+  <div class="box">
+    <div class="tbl"><table>
+      <tr><th>화면</th><th>지금 서버</th></tr>
+      <tr><td class="k">홈 · 상세 카드</td><td><q>신청 완료한 챌린지</q> · <q>곧 시작돼요 :-)</q> · 오른쪽 <b>D-n</b>(시작까지 남은 날) · 진행바 없음</td></tr>
+      <tr><td class="k">상세 버튼</td><td><q>신청 완료</q> (누르면 나의 챌린지)</td></tr>
+      <tr><td class="k">마이페이지</td><td>나의 챌린지에 <span class="pill b-soon">진행예정</span> 카드 (누르면 챌린지 상세)</td></tr>
+    </table></div>
+    <div class="diff"><b>피그마와 다른 점</b><ul>
+      <li>카드 이름 <q>신청한 챌린지</q> + 빈 진행바 ↔ 서버 <q>신청 완료한 챌린지</q>, 진행바 없음 (퍼블대로)</li>
+      <li>버튼 <q>이미 신청했어요</q> ↔ <q>신청 완료</q> · 마이페이지 피그마는 변화 없음 ↔ 서버 진행예정 카드</li>
+    </ul></div>
+  </div>
+  <div class="shots">
+    <figure data-src="img/v_applied.jpg"><figcaption>상세 · 신청 후 시작 전<small>D-3 · 10/16</small></figcaption></figure>
+    <figure data-src="img/my_challenge.jpg"><figcaption>나의 챌린지<small>배지 진행예정 · 진행중 · 결과발표 · 10/16</small></figcaption></figure>
+  </div>
+
+  <h2 id="s4"><span class="no">4</span>챌린지 진행</h2>
+  <div class="box">
+    <h3>진입 경로</h3>
+    <ul class="path"><li>홈 카드</li><li>챌린지 목록 › 상세</li><li>마이페이지 <span class="pill b-ing">진행중</span> 카드 → 바로 인증하기</li></ul>
+    <h3>화면 순서</h3>
+    <div class="flow"><span>상세 <q>사진 등록하고 인증하기</q></span><i>→</i><span>인증하기 (사진 업로드 · 도장판)</span><i>→</i><span>인증 완료 (오늘 사진 · 도장판 · 갤러리에 저장)</span></div>
+    <div class="tbl"><table>
+      <tr><th>화면</th><th>지금 서버</th></tr>
+      <tr><td class="k">홈 · 상세 카드</td><td><q>참여중인 챌린지</q> + 달력 아이콘 + 진행바(인증 수만큼 칠함) + 오늘 인증 전 <q>오늘의 챌린지 시작!</q> / 후 <q>오늘의 루틴 완료 :-)</q> + <b>n/총</b></td></tr>
+      <tr><td class="k">상세 버튼</td><td>오늘 인증 전: 말풍선 <q>잘 하고 있어요 ! 오늘의 인증을 해보세요 :-)</q> + <q>사진 등록하고 인증하기</q></td></tr>
+      <tr><td class="k">인증하기</td><td><q>인증 사진 업로드</q> → 고르면 미리보기 + <q>클릭해서 사진 변경하기</q> → <q>인증하기</q>(사진 골라야 켜짐) · 도장 누르면 그날 사진 · 날짜 · 하단 <q>사진이 안 올라가요!</q>(링크 비어 있음)</td></tr>
+      <tr><td class="k">인증 완료</td><td><q>사진 인증 완료했어요! / 이대로만 계속, 꾸준히 해봐요:-)</q> + 오늘 사진 + 도장판 + <q>갤러리에 저장</q></td></tr>
+      <tr><td class="k">오늘 이미 올림</td><td>인증하기 화면 <q>지금은 인증할 수 없어요</q> + 버튼 <q>오늘의 루틴 완료 :-)</q></td></tr>
+    </table></div>
+    <div class="memo"><ul>
+      <li>하루 1장 · 올리면 승인 여부와 상관없이 그날 완료. 관리자가 반려하면 그날 다시 올릴 수 있고, 도장에서 <q>반려됐어요</q>로 보임</li>
+      <li>도장 한 칸 = 하루: 인증한 날 / 놓친 날 / 오늘</li>
+    </ul></div>
+    <div class="diff"><b>피그마와 다른 점</b><ul>
+      <li>카드 이름 · 문구 <q>진행중인 챌린지 · 작은 습관을 실천해요!</q> ↔ <q>참여중인 챌린지 · 오늘의 챌린지 시작!</q></li>
+      <li><b>인스타 인증 데이</b>(스토리 + URL 공유)와 3일차 리마인드 알림톡 없음 — 사진 업로드만</li>
+    </ul></div>
+  </div>
+  <div class="shots">
+    <figure data-src="img/v_ing.jpg"><figcaption>상세 · 진행중<small>오늘 인증 전 · 10/16</small></figcaption></figure>
+    <figure data-src="img/v_ing_done.jpg"><figcaption>상세 · 진행중<small>오늘의 루틴 완료 · 10/16</small></figcaption></figure>
+    <figure data-src="img/verify_ing.jpg"><figcaption>인증하기<small>사진 올리기 전 · 10/16</small></figcaption></figure>
+    <figure data-src="img/verify_done.jpg"><figcaption>인증 완료<small>10/16</small></figcaption></figure>
+    <figure data-src="img/verify_today.jpg"><figcaption>인증하기<small>오늘 이미 올림 · 10/16</small></figcaption></figure>
+  </div>
+
+  <h2 id="s5"><span class="no">5</span>챌린지 진행 – 결과 확인중 (검수중)</h2>
+  <div class="box">
+    <p class="tip" style="margin:0 0 8px">진행 마지막 날이 지나고 검수 종료일까지, 관리자가 결과를 정하기 전</p>
+    <div class="tbl"><table>
+      <tr><th>화면</th><th>지금 서버</th></tr>
+      <tr><td class="k">홈 · 상세 카드</td><td><q>참여 완료한 챌린지</q> + 체크 아이콘 · <q>인증 확인중이에요.</q> · 진행바 없음</td></tr>
+      <tr><td class="k">상세 버튼</td><td><q>인증 확인중이에요</q> (회색)</td></tr>
+      <tr><td class="k">인증하기</td><td><q>지금은 인증할 수 없어요</q> + 버튼 <q>결과 대기중이에요</q> · 도장은 눌러서 볼 수 있음</td></tr>
+      <tr><td class="k">마이페이지</td><td><span class="pill b-wait">결과대기중</span> 카드 → 인증하기(도장판)</td></tr>
+    </table></div>
+    <div class="diff"><b>피그마와 다른 점</b><ul><li>인증하기 버튼 <q>인증 확인중이에요</q> ↔ <q>결과 대기중이에요</q> (퍼블대로)</li></ul></div>
+  </div>
+  <div class="shots">
+    <figure data-src="img/v_review.jpg"><figcaption>상세 · 검수중<small>10/16</small></figcaption></figure>
+    <figure data-src="img/verify_review.jpg"><figcaption>인증하기 · 검수중<small>결과 대기중이에요 · 10/16</small></figcaption></figure>
+  </div>
+
+  <h2 id="s6"><span class="no">6</span>챌린지 진행 – 결과 발표</h2>
+  <div class="box">
+    <h3>언제 발표되나</h3>
+    <ul>
+      <li>관리자 인증현황의 <b>챌린지 결과</b> 값이 정해지면 바로 발표 (진행기간 뒤 횟수 부족 일괄 탈락 · 검수 후 최종완료)</li>
+      <li>마이페이지 <span class="pill b-res">결과발표</span> 카드 → 성공 또는 실패 화면 (발표 전에는 인증하기 화면)</li>
+    </ul>
+    <div class="tbl"><table>
+      <tr><th>화면</th><th>지금 서버</th></tr>
+      <tr><td class="k">성공</td><td><q>챌린지 성공했어요! / 이번 챌린지로 한 걸음 더 나아갔어요.</q> + 선물 그림 + <q>킨스 챌린지 성공 혜택을 알림톡으로 발송드려요</q> + <q>알림톡을 못 받았어요</q>(링크 비어 있음) + <q>새 챌린지가 시작되면 카카오 알림톡을 보내드려요.</q> · 버튼 <q>내 기록 보기</q> / <q>챌린지 홈으로 가기</q></td></tr>
+      <tr><td class="k">실패</td><td><q>완주하지 못했어요 / 다음 챌린지 성공을 응원해요!</q> + <q>대신 관련 루틴을 추천드려요 :-)</q> 루틴 1개(챌린지 일정에서 고른 루틴, 없으면 최신) · 같은 버튼 2개</td></tr>
+      <tr><td class="k">내 기록 보기</td><td><q>기록을 확인해보세요 / 도장을 눌러 나의 챌린지 기록을 돌아보세요.</q> · 도장 누르면 그날 사진 · 날짜 · 안 올린 날 <q>업로드하지 않았어요</q> · 반려된 날 <q>반려됐어요</q> · <q>갤러리에 저장</q></td></tr>
+      <tr><td class="k">홈 · 상세</td><td>검수 종료일까지는 계속 <q>참여 완료한 챌린지 · 인증 확인중이에요.</q></td></tr>
+    </table></div>
+    <div class="diff"><b>피그마와 다른 점</b><ul>
+      <li>결과 발표 · 종료 알림톡, 성공 시 적립금 코드 발송 없음</li>
+      <li>결과가 나왔는데도 홈 · 상세가 <q>인증 확인중이에요</q> (피그마는 홈이 미참여 상태로)</li>
+      <li>결과를 봐도 <span class="pill b-res">결과발표</span>가 <span class="pill b-end">종료</span>로 바뀌지 않음</li>
+      <li>성공 문구 <q>완주 리워드</q> ↔ <q>성공 혜택</q> · 버튼 <q>홈으로 돌아가기</q> ↔ <q>챌린지 홈으로 가기</q></li>
+    </ul></div>
+  </div>
+  <div class="shots">
+    <figure data-src="img/result_ok.jpg"><figcaption>성공<small>10/16 (문구는 10/19에 바뀜)</small></figcaption></figure>
+    <figure data-src="img/result_fail.jpg"><figcaption>실패<small>10/16</small></figcaption></figure>
+    <figure data-src="img/record.jpg"><figcaption>내 기록 보기<small>10/16</small></figcaption></figure>
+  </div>
+
+  <h2 id="s7"><span class="no">7</span>챌린지 진행 – 결과 확인 이후 (종료)</h2>
+  <div class="box">
+    <p class="tip" style="margin:0 0 8px">검수 종료일이 지난 뒤</p>
+    <div class="tbl"><table>
+      <tr><th>화면</th><th>지금 서버</th></tr>
+      <tr><td class="k">홈 카드</td><td>신청한 끝나지 않은 챌린지가 없으니 다른 신청 기간 챌린지 카드, 없으면 <q>챌린지 참여하기</q></td></tr>
+      <tr><td class="k">상세</td><td>카드 <q>종료된 챌린지 · 다음에 다시 돌아올게요 :-)</q>(회색) · 버튼 같은 문구(회색)</td></tr>
+      <tr><td class="k">마이페이지</td><td>나의 챌린지에 <span class="pill b-end">종료</span> 카드가 남음 (끝나지 않은 것 먼저, 1개) → 성공 / 실패 화면</td></tr>
+      <tr><td class="k">챌린지 목록</td><td>종료 탭 · <q>종료 · 진행 기간 · n일</q></td></tr>
+    </table></div>
+    <div class="diff"><b>피그마와 다른 점</b><ul><li>마이페이지: 피그마 <q>참여중인 챌린지가 없어요</q> ↔ 서버 종료 카드 표시</li></ul></div>
+  </div>
+  <div class="shots">
+    <figure data-src="img/srv/view_end.jpg"><figcaption>상세 · 종료<small>10/19</small></figcaption></figure>
+    <figure data-src="img/v_end.jpg"><figcaption>상세 · 종료<small>10/16</small></figcaption></figure>
+  </div>
+
+  <h2 id="state">상태 규칙 한눈에</h2>
+  <div class="box">
+    <div class="tbl"><table>
+      <tr><th>기간</th><th>신청한 회원</th><th>신청 안 한 회원</th><th>마이페이지 배지</th></tr>
+      <tr><td class="k">신청 시작 전</td><td colspan="2">진행 예정 챌린지 · <q>곧 신청할 수 있어요 :-)</q> · 버튼 <q>지금은 신청할 수 없어요</q></td><td>—</td></tr>
+      <tr><td class="k">신청 기간</td><td>신청 완료한 챌린지 · D-n</td><td>신청 진행중인 챌린지 · 신청하기</td><td><span class="pill b-soon">진행예정</span></td></tr>
+      <tr><td class="k">신청 마감 ~ 시작 전</td><td>신청 완료한 챌린지 · D-n</td><td>진행중인 챌린지 · 신청 기간이 종료됐어요</td><td><span class="pill b-soon">진행예정</span></td></tr>
+      <tr><td class="k">진행 기간</td><td>참여중인 챌린지 · n/총</td><td>진행중인 챌린지(회색 진행바) · 신청 기간이 종료됐어요</td><td><span class="pill b-ing">진행중</span></td></tr>
+      <tr><td class="k">검수 기간</td><td>참여 완료한 챌린지 · 인증 확인중</td><td>종료된 챌린지</td><td>결과 전 <span class="pill b-wait">결과대기중</span> / 후 <span class="pill b-res">결과발표</span></td></tr>
+      <tr><td class="k">검수 종료 후</td><td colspan="2">종료된 챌린지 · 다음에 다시 돌아올게요 :-)</td><td><span class="pill b-end">종료</span></td></tr>
+    </table></div>
+  </div>
+
+  <p class="tip" style="margin-top:28px">썸네일을 누르면 크게 보이고, ← → 키로 넘길 수 있어요.</p>
+</div>
+
+<div class="lb" id="lb"><button class="pv" type="button">←</button><button class="nx" type="button">→</button><button class="x" type="button">닫기 ✕</button><p></p><img alt=""></div>
+<script>
+(function(){
+  var figs=[].slice.call(document.querySelectorAll('.shots figure'));
+  figs.forEach(function(f){
+    var img=document.createElement('img');
+    img.src=f.getAttribute('data-src'); img.loading='lazy'; img.alt=f.textContent.trim();
+    f.insertBefore(img,f.firstChild);
+  });
+  var lb=document.getElementById('lb'), big=lb.querySelector('img'), cap=lb.querySelector('p'), cur=0;
+  function show(i){
+    cur=(i+figs.length)%figs.length; var f=figs[cur];
+    big.src=f.querySelector('img').src; cap.textContent=f.querySelector('figcaption').textContent;
+    lb.classList.add('on'); lb.scrollTop=0; document.body.style.overflow='hidden';
+  }
+  function hide(){ lb.classList.remove('on'); document.body.style.overflow=''; }
+  figs.forEach(function(f,i){ f.addEventListener('click',function(){ show(i); }); });
+  lb.querySelector('.x').onclick=hide;
+  lb.querySelector('.pv').onclick=function(e){ e.stopPropagation(); show(cur-1); };
+  lb.querySelector('.nx').onclick=function(e){ e.stopPropagation(); show(cur+1); };
+  lb.addEventListener('click',function(e){ if(e.target===lb) hide(); });
+  document.addEventListener('keydown',function(e){
+    if(!lb.classList.contains('on')) return;
+    if(e.key==='Escape') hide(); else if(e.key==='ArrowLeft') show(cur-1); else if(e.key==='ArrowRight') show(cur+1);
+  });
+})();
+</script>
+</body>
+</html>
