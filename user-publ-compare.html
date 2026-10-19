@@ -48,7 +48,7 @@
     <div class="box">
       <h2><span class="tag warn">확인 필요</span> 결정할 것 5가지</h2>
       <ol>
-        <li>결과 발표 뒤에도 카드 · 상세 버튼이 "인증 확인중이에요" (퍼블에 '결과 발표' 상태 없음)</li>
+        <li>(10/19 저녁 해결) 결과는 검수기간이 끝난 뒤 발표라 검수기간 카드 · 상세 버튼 "인증 확인중이에요"와 어긋나지 않음</li>
         <li>결과 화면 '완주' 문구 그대로 / 성공 기준(N회 이상) 안내 없음</li>
         <li>신청서 전화번호 인증 미연동</li>
         <li>메인 카드 : 엑셀은 신청한 챌린지 0개면 바로 "챌린지 참여하기" ↔ 지금은 신청기간 챌린지를 먼저 보여 줌</li>
@@ -58,10 +58,10 @@
     <div class="box">
       <h2>관리자 변경을 사용자에 적용</h2>
       <ul>
-        <li>결과 = 관리자 '챌린지 결과' 그대로, 정해지면 바로 발표</li>
+        <li>결과 = 관리자 '챌린지 결과' 그대로, 검수기간이 끝난 다음 날 모든 회원에게 한 번에 발표 (10/19 저녁 변경)</li>
         <li>오늘 인증 = 승인이 아니라 <b>사진 업로드</b> 기준</li>
-        <li>→ 카드 · 인증 화면 버튼 모두 올리면 바로 "오늘의 루틴 완료 :-)"</li>
-        <li>→ 인증 화면 "결과 대기중이에요"는 진행기간이 끝나고 발표 전에만</li>
+        <li>→ 카드는 올리면 바로 "오늘의 루틴 완료 :-)", 인증 화면 버튼은 항상 "인증하기"(그날 사진 변경 가능, 10/19 저녁)</li>
+        <li>→ 인증 화면 "결과 대기중이에요"는 검수기간에만</li>
       </ul>
     </div>
   </div>
@@ -84,10 +84,10 @@
       <tr><td class="k"><span class="tag same">같음</span></td><td class="item">신청기간 전</td><td class="p">카드 마크업에는 없음<br>엑셀 : 시작 전 + 미신청 → upcoming, 상태문구 "진행 예정"</td><td>카드 없음 · 하단 버튼 없음</td></tr>
       <tr><td class="k"><span class="tag same">같음</span></td><td class="item">시작 전 + 신청함</td><td class="p">"곧 시작돼요 :-) D-n"</td><td>같음</td></tr>
       <tr><td class="k"><span class="tag chg">변경</span></td><td class="item">진행중 + 오늘 인증 전</td><td class="p">"오늘의 수분 충전 시작!"</td><td>"오늘의 챌린지 시작!" ('수분' 빼고 공통 문구)</td></tr>
-      <tr><td class="k"><span class="tag chg">변경</span></td><td class="item">진행중 + 오늘 인증 완료</td><td class="p">"오늘의 수분 루틴 완료 :-)"</td><td>"오늘의 루틴 완료 :-)" — 사진 올리면 바로 (반려되면 다시 '시작!')</td></tr>
+      <tr><td class="k"><span class="tag chg">변경</span></td><td class="item">진행중 + 오늘 인증 완료</td><td class="p">"오늘의 수분 루틴 완료 :-)"</td><td>"오늘의 루틴 완료 :-)" — 사진 올리면 바로</td></tr>
       <tr><td class="k"><span class="tag chg">변경</span></td><td class="item">진행중 + 오늘 인증 확인중</td><td class="p">"인증 확인중이에요."</td><td>안 씀 (승인 작업이 없어짐)</td></tr>
       <tr><td class="k"><span class="tag same">같음</span></td><td class="item">신청기간 지나서 미신청</td><td class="p">"신청 기간이 종료됐어요."</td><td>같음</td></tr>
-      <tr><td class="k"><span class="tag warn">확인 필요</span></td><td class="item">마지막 날 지나고 결과 확인중</td><td class="p">"인증 확인중이에요."</td><td>같음 (검수기간 + 신청함)<span class="note">결과가 발표된 회원도 검수기간 동안 이 문구</span></td></tr>
+      <tr><td class="k"><span class="tag warn">확인 필요</span></td><td class="item">마지막 날 지나고 결과 확인중</td><td class="p">"인증 확인중이에요."</td><td>같음 (검수기간 + 신청함)<span class="note">결과 발표는 검수기간이 끝난 뒤라 문제 없음 (10/19 저녁)</span></td></tr>
       <tr><td class="k"><span class="tag same">같음</span></td><td class="item">완전 종료</td><td class="p">회색 "다음에 다시 돌아올게요 :-)"</td><td>같음 (메인에는 안 나옴)</td></tr>
       <tr><td class="k"><span class="tag add">추가</span></td><td class="item">메인 카드 고르는 순서</td><td class="p">없음</td><td>① 신청한 챌린지 중 끝나지 않은 것 → ② 없으면 "챌린지 참여하기"</td></tr>
     </table>
@@ -116,7 +116,7 @@
       <tr><td class="k"><span class="tag same">같음</span></td><td class="item">버튼 · 신청 가능</td><td class="p" colspan="2">"챌린지 신청하기"</td></tr>
       <tr><td class="k"><span class="tag same">같음</span></td><td class="item">버튼 · 신청함 + 진행 전</td><td class="p" colspan="2">"신청 완료"</td></tr>
       <tr><td class="k"><span class="tag same">같음</span></td><td class="item">버튼 · 진행중 + 신청함</td><td class="p" colspan="2">"사진 등록하고 인증하기" (+ 오늘 인증 전이면 "잘 하고 있어요 !" 안내)</td></tr>
-      <tr><td class="k"><span class="tag warn">확인 필요</span></td><td class="item">버튼 · 검수기간 + 신청함</td><td class="p">"인증 확인중이에요"</td><td>같음<span class="note">결과 발표 뒤에도 이 문구</span></td></tr>
+      <tr><td class="k"><span class="tag warn">확인 필요</span></td><td class="item">버튼 · 검수기간 + 신청함</td><td class="p">"인증 확인중이에요"</td><td>같음<span class="note">결과 발표는 검수기간이 끝난 뒤 (10/19 저녁)</span></td></tr>
       <tr><td class="k"><span class="tag same">같음</span></td><td class="item">버튼 · 그 외 미신청</td><td class="p" colspan="2">"지금은 신청할 수 없어요"</td></tr>
       <tr><td class="k"><span class="tag same">같음</span></td><td class="item">버튼 · 종료</td><td class="p" colspan="2">"다음에 다시 돌아올게요 :-)"</td></tr>
     </table>
@@ -138,12 +138,12 @@
     <table>
       <tr><th>구분</th><th>항목</th><th>퍼블</th><th>지금</th></tr>
       <tr><td class="k"><span class="tag same">같음</span></td><td class="item">사진 칸 "인증 사진 업로드"</td><td class="p" colspan="2">진행기간 + 오늘 사진 없음(또는 반려)</td></tr>
-      <tr><td class="k"><span class="tag add">추가</span></td><td class="item">사진 칸 "지금은 인증할 수 없어요"</td><td class="p">인증 확인중일 때</td><td>오늘 이미 올렸을 때 + 진행기간이 끝났을 때 둘 다</td></tr>
+      <tr><td class="k"><span class="tag add">추가</span></td><td class="item">사진 칸 "지금은 인증할 수 없어요"</td><td class="p">인증 확인중일 때</td><td>진행기간이 끝났을 때 (오늘 올린 뒤에는 사진 칸이 열려 있고 그날 사진 변경 가능, 10/19 저녁)</td></tr>
       <tr><td class="k"><span class="tag same">같음</span></td><td class="item">버튼 "인증하기"</td><td class="p" colspan="2">사진을 골라야 눌림</td></tr>
-      <tr><td class="k"><span class="tag same">같음</span></td><td class="item">버튼 "결과 대기중이에요"</td><td class="p">인증 확인중일 때</td><td>진행기간이 끝나고 결과 발표 전</td></tr>
-      <tr><td class="k"><span class="tag add">추가</span></td><td class="item">버튼 "오늘의 루틴 완료 :-)"</td><td class="p">없음</td><td>진행중 + 오늘 사진 올림 (카드와 같은 문구, 반려되면 다시 "인증하기")</td></tr>
-      <tr><td class="k"><span class="tag add">추가</span></td><td class="item">도장판</td><td class="p">인증한 날 on / 놓친 날 fail / 오늘 today</td><td>같음 + 반려된 날은 올렸던 사진 표시</td></tr>
-      <tr><td class="k"><span class="tag add">추가</span></td><td class="item">진입 조건</td><td class="p">없음</td><td>신청한 회원만 / 하루 1장 (반려되면 다시) / 결과 발표 뒤에는 결과 화면으로</td></tr>
+      <tr><td class="k"><span class="tag same">같음</span></td><td class="item">버튼 "결과 대기중이에요"</td><td class="p">인증 확인중일 때</td><td>검수기간에만</td></tr>
+      <tr><td class="k"><span class="tag same">같음</span></td><td class="item">버튼 "오늘의 루틴 완료 :-)"</td><td class="p">없음</td><td>없음 — 10/19 저녁 주석 처리, 진행중에는 항상 "인증하기"</td></tr>
+      <tr><td class="k"><span class="tag add">추가</span></td><td class="item">도장판</td><td class="p">인증한 날 on / 놓친 날 fail / 오늘 today</td><td>같음 + 반려된 날은 올렸던 사진 표시 (검수기간이 끝난 뒤에만)</td></tr>
+      <tr><td class="k"><span class="tag add">추가</span></td><td class="item">진입 조건</td><td class="p">없음</td><td>신청한 회원만 / 하루 1장 (그날에만 사진 변경) / 결과 발표(검수기간 끝) 뒤에는 결과 화면으로</td></tr>
     </table>
   </section>
 
@@ -153,7 +153,7 @@
       <tr><th>구분</th><th>항목</th><th>퍼블</th><th>지금</th></tr>
       <tr><td class="k"><span class="tag same">같음</span></td><td class="item">인증 완료</td><td class="p" colspan="2">"사진 인증 완료했어요!" + 오늘 사진 + 도장판</td></tr>
       <tr><td class="k"><span class="tag same">같음</span></td><td class="item">내 기록</td><td class="p" colspan="2">누른 날 사진 · 날짜, 사진 없는 날 "업로드하지 않았어요"</td></tr>
-      <tr><td class="k"><span class="tag add">추가</span></td><td class="item">반려 표시</td><td class="p">없음</td><td>반려된 날 올렸던 사진 + 실패 도장</td></tr>
+      <tr><td class="k"><span class="tag add">추가</span></td><td class="item">반려 표시</td><td class="p">없음</td><td>반려된 날 올렸던 사진 + 사진 왼쪽 위 실패 도장 (퍼블 .mark, 승인은 웃는 도장)</td></tr>
       <tr><td class="k"><span class="tag add">추가</span></td><td class="item">내 기록 진입</td><td class="p">없음</td><td>결과 발표 뒤에만 (결과 화면 "내 기록 보기")</td></tr>
     </table>
   </section>
@@ -165,7 +165,7 @@
       <tr><td class="k"><span class="tag warn">확인 필요</span></td><td class="item">성공</td><td class="p">"챌린지 성공했어요!" + "완주 리워드"</td><td>관리자 챌린지 결과 = 성공<span class="note">'완주' 문구 그대로 (성공 기준이 N회 이상)</span></td></tr>
       <tr><td class="k"><span class="tag warn">확인 필요</span></td><td class="item">실패</td><td class="p">"완주하지 못했어요"</td><td>관리자 챌린지 결과 = 탈락(횟수 부족 · 반려)<span class="note">'완주' 문구 그대로</span></td></tr>
       <tr><td class="k"><span class="tag chg">변경</span></td><td class="item">실패 · 추천 루틴</td><td class="p">카드 여러 개 (최소 1개)</td><td>1개 (일정에서 고른 루틴, 없으면 최신)</td></tr>
-      <tr><td class="k"><span class="tag add">추가</span></td><td class="item">결과 발표 시점</td><td class="p">없음</td><td>관리자 챌린지 결과가 정해지는 순간 (진행기간 뒤 횟수 부족 일괄 탈락 / 검수기간 최종완료 자동 판정)</td></tr>
+      <tr><td class="k"><span class="tag add">추가</span></td><td class="item">결과 발표 시점</td><td class="p">없음</td><td>검수기간이 끝난 다음 날 모든 회원에게 한 번에 (결과는 진행기간 뒤 횟수 부족 일괄 탈락 / 검수기간 최종완료 자동 판정, 10/19 저녁 변경)</td></tr>
       <tr><td class="k"><span class="tag warn">확인 필요</span></td><td class="item">성공 기준 안내</td><td class="p">없음</td><td>회원 화면에 "N회 이상 인증하면 성공" 안내 없음</td></tr>
     </table>
   </section>
@@ -176,7 +176,7 @@
       <tr><th>구분</th><th>항목</th><th>퍼블</th><th>지금</th></tr>
       <tr><td class="k"><span class="tag same">같음</span></td><td class="item">프로필</td><td class="p" colspan="2">로그인 / 비로그인 (누르면 로그인 화면)</td></tr>
       <tr><td class="k"><span class="tag same">같음</span></td><td class="item">없을 때</td><td class="p" colspan="2">"참여중인 챌린지가 없어요"</td></tr>
-      <tr><td class="k"><span class="tag same">같음</span></td><td class="item">배지 (하나만)</td><td class="p" colspan="2">진행중(분홍) 진행기간 · 진행예정(노랑) 신청함+진행 전 · 결과대기중(연두) 검수기간+발표 전 · 결과발표(하늘) 검수기간+발표됨 · 종료(회색)</td></tr>
+      <tr><td class="k"><span class="tag same">같음</span></td><td class="item">배지 (하나만)</td><td class="p" colspan="2">진행중(분홍) 진행기간 · 진행예정(노랑) 신청함+진행 전 · 결과대기중(연두) 검수기간 · 결과발표(하늘) 검수기간 끝+결과 있음 · 종료(회색) 결과 없음</td></tr>
       <tr><td class="k"><span class="tag same">같음</span></td><td class="item">체크리스트 히스토리</td><td class="p" colspan="2">로그인만</td></tr>
       <tr><td class="k"><span class="tag add">추가</span></td><td class="item">카드 누르면</td><td class="p">없음</td><td>진행예정 → 상세 / 성공 → 성공 화면 / 실패 → 실패 화면 / 그 외 → 인증 화면</td></tr>
     </table>
