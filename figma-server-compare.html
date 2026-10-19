@@ -51,7 +51,7 @@
   <div class="sum">
     <a href="#a"><b>5</b><span>서버에 아직 없는 기능</span></a>
     <a href="#b"><b>6</b><span>흐름(보이는 상태)이 다른 곳</span></a>
-    <a href="#e"><b>6</b><span>피그마에 없는데 서버에 있는 상태</span></a>
+    <a href="#e"><b>5</b><span>피그마에 없는데 서버에 있는 상태</span></a>
     <a href="#c"><b>13</b><span>문구 · 모양이 다른 곳</span></a>
     <a href="#d"><b>3</b><span>비어 있는 링크</span></a>
   </div>
@@ -75,7 +75,7 @@
       <td>칸과 버튼은 있지만 문자 인증 연동 전. 인증번호를 비워도 가입됨 (챌린지 신청 화면은 피그마도 인증 칸 없음 — 같음)</td><td class="who"><span class="pill p-none">미구현</span></td></tr>
     <tr><td class="no">5</td><td class="where">결과 확인 시 [종료]</td>
       <td>CRM 링크가 아닌 직접 접속 시 마이페이지 썸네일에 [결과발표] → 사용자가 결과를 보면 [종료]로 변경</td>
-      <td>결과를 봐도 바뀌지 않음. 검수 종료일이 지나야 [종료]. <span class="tip">(예전에 이미지 기준으로 넣었다가 요청으로 되돌린 부분)</span></td><td class="who"><span class="pill p-none">미구현</span></td></tr>
+      <td>결과를 봐도 바뀌지 않음. 검수 종료일이 지나야 [종료].</td><td class="who"><span class="pill p-none">미구현</span></td></tr>
   </table></div>
 
   <h2 id="b" class="amber">2. 흐름(보이는 상태)이 다른 곳</h2>
@@ -103,26 +103,23 @@
   </table></div>
 
   <h2 id="e" class="teal">3. 피그마에 없는데 서버에 있는 상태</h2>
-  <p class="lead">피그마 화면에는 없는 카드 · 버튼 상태입니다. 대부분 퍼블 원본에 있던 것이고, 1번과 6번은 퍼블에도 없이 서버에서 더한 것이에요. 1번은 10/19 삭제했어요.</p>
+  <p class="lead">피그마 화면에는 없는 카드 · 버튼 상태입니다. 대부분 퍼블 원본 · 엑셀에 있던 것이고, 5번은 퍼블에도 없이 서버에서 더한 것이에요.</p>
   <div class="tbl"><table>
     <tr><th></th><th>상태 · 언제</th><th>서버 화면</th><th>어디서 왔나</th></tr>
-    <tr><td class="no">1</td><td class="where">신청 시작 전<br>챌린지 상세</td>
-      <td><s>카드 <q>진행 예정 챌린지 · 곧 신청할 수 있어요 :-)</q> + 버튼 <q>지금은 신청할 수 없어요</q>(회색)</s><br><b>10/19 삭제</b> — 이제 신청 시작 전 상세는 카드 · 하단 버튼 없이 이미지 · 신청 기간 띠 · 상세 이미지만 보임<br><a class="shot" href="img/v_wait.jpg" target="_blank">삭제 전 화면 ↗</a></td>
-      <td class="who"><span class="pill p-srv">서버에서 더함 → 삭제</span></td></tr>
-    <tr><td class="no">2</td><td class="where">신청 안 한 회원<br>신청 마감 ~ 진행 기간</td>
+    <tr><td class="no">1</td><td class="where">신청 안 한 회원<br>신청 마감 ~ 진행 기간</td>
       <td>카드 <q>진행중인 챌린지 · 신청 기간이 종료됐어요.</q> + 회색 진행바(지난 날 수만큼) + 버튼 <q>지금은 신청할 수 없어요</q><br><a class="shot" href="img/v_missed.jpg" target="_blank">서버 화면 ↗</a></td>
       <td class="who"><span class="pill p-publ">퍼블에 있음</span></td></tr>
-    <tr><td class="no">3</td><td class="where">신청 안 한 회원<br>검수 기간</td>
+    <tr><td class="no">2</td><td class="where">신청 안 한 회원<br>검수 기간</td>
       <td>진행이 끝나면 바로 <q>종료된 챌린지 · 다음에 다시 돌아올게요 :-)</q> (참여 회원은 이때 <q>인증 확인중</q>)</td>
       <td class="who"><span class="pill p-publ">퍼블에 있음</span></td></tr>
-    <tr><td class="no">4</td><td class="where">비로그인<br>챌린지 상세</td>
-      <td>버튼 <q>로그인 후 신청하기</q> → 로그인 뒤 그 상세로 돌아옴<br><a class="shot" href="img/v_apply_out.jpg" target="_blank">서버 화면 ↗</a></td>
+    <tr><td class="no">3</td><td class="where">비로그인<br>챌린지 상세</td>
+      <td>기간과 상관없이 버튼 <q>로그인 후 신청하기</q> → 로그인 뒤 그 상세로 돌아옴<br><a class="shot" href="img/v_apply_out.jpg" target="_blank">서버 화면 ↗</a></td>
       <td class="who"><span class="pill p-publ">퍼블에 있음</span></td></tr>
-    <tr><td class="no">5</td><td class="where">오늘 인증을 이미 함<br>인증하기 다시 열기</td>
+    <tr><td class="no">4</td><td class="where">오늘 인증을 이미 함<br>인증하기 다시 열기</td>
       <td>업로드 칸 <q>지금은 인증할 수 없어요</q> + 버튼 <q>오늘의 루틴 완료 :-)</q>(회색) · 도장 눌러 사진 보기<br><span class="tip">피그마는 인증 직후 완료 화면만 있고, 같은 날 다시 들어온 화면은 없음</span><br><a class="shot" href="img/srv/u_verify_2.jpg" target="_blank">서버 화면 ↗</a></td>
-      <td class="who"><span class="pill p-publ">칸은 퍼블</span> <span class="pill p-srv">버튼 문구는 서버</span></td></tr>
-    <tr><td class="no">6</td><td class="where">관리자가 인증을 반려</td>
-      <td>도장 누르면 올렸던 사진 + 날짜 (<s>반려됐어요</s> 글자는 10/19 삭제) · 그날은 다시 올릴 수 있음 · 내 기록 보기에서는 실패 도장으로 표시</td>
+      <td class="who"><span class="pill p-publ">칸은 퍼블 · 엑셀</span> <span class="pill p-srv">버튼 문구는 서버</span></td></tr>
+    <tr><td class="no">5</td><td class="where">관리자가 인증을 반려</td>
+      <td>도장 누르면 올렸던 사진 + 날짜 · 그날은 다시 올릴 수 있음 · 내 기록 보기에서는 실패 도장으로 표시</td>
       <td class="who"><span class="pill p-srv">서버에서 더함</span></td></tr>
   </table></div>
   <p class="tip">그 밖에 서버에만 있는 것: 햄버거 메뉴 로그인 / 로그아웃 버튼, 회원가입 알림톡 발송 동의(선택) — 4번 표 11 · 12</p>
