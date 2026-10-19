@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>피그마 ↔ 서버 비교</title>
+<style>
+  :root{--ink:#1f2a37;--muted:#6b7686;--line:#e3e8ef;--bg:#f6f8fb;--card:#fff;--blue:#3b82f6;--red:#e5484d;--amber:#d97706;--violet:#8b5cf6}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.7 "Malgun Gothic","Apple SD Gothic Neo",sans-serif}
+  .wrap{max-width:1000px;margin:0 auto;padding:30px 16px 60px}
+  h1{font-size:26px;margin:0 0 4px}
+  .sub{color:var(--muted);margin:0 0 18px;font-size:14px}
+  .warn{background:#fff6d6;border:1px solid #f3dd8a;border-radius:12px;padding:12px 16px;font-size:14px;margin-bottom:22px}
+  .sum{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:8px}
+  .sum a{display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;color:inherit;text-decoration:none}
+  .sum a:hover{border-color:var(--blue)}
+  .sum b{display:block;font-size:24px;line-height:1.2}
+  .sum span{font-size:13px;color:var(--muted)}
+  h2{font-size:21px;margin:38px 0 6px;padding-left:12px;border-left:5px solid var(--red)}
+  h2.amber{border-color:var(--amber)} h2.violet{border-color:var(--violet)} h2.blue{border-color:var(--blue)} h2.green{border-color:#22c55e}
+  p.lead{margin:0 0 14px;color:var(--muted);font-size:14px}
+  .tbl{overflow-x:auto}
+  table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;min-width:720px}
+  th,td{padding:11px 13px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;font-size:14.5px}
+  th{background:#eef2f7;font-size:13px;color:#445;white-space:nowrap}
+  tr:last-child td{border-bottom:0}
+  td.no{width:34px;color:var(--muted);font-weight:700}
+  td.where{width:16%;font-weight:700}
+  td.who{width:13%}
+  .pill{display:inline-block;padding:1px 9px;border-radius:999px;font-size:12px;font-weight:700;white-space:nowrap}
+  .p-publ{background:#e9edf2;color:#55606e}
+  .p-srv{background:#ffe3e3;color:#c0262d}
+  .p-none{background:#fde8c8;color:#9a5300}
+  q{quotes:none;background:#f4f1ff;border-radius:5px;padding:0 5px}
+  .shot{display:inline-block;font-size:13px;margin-top:4px;color:var(--blue);text-decoration:none}
+  .box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 22px}
+  .box ul{margin:0;padding-left:20px} .box li{margin:4px 0}
+  .tip{font-size:14px;color:var(--muted)}
+  @media (max-width:760px){.sum{grid-template-columns:1fr 1fr}}
+  @media print{body{background:#fff} table{break-inside:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>피그마 화면 흐름 ↔ 서버 작업 비교</h1>
+  <p class="sub">피그마 "메인 태스크에 따른 화면 나열" vs 서버 사용자 화면 코드(views/html, include, 모델) · 2026-10-19 확인 · <a href="figma-screen-flow.html">피그마 화면 흐름 문서</a></p>
+  <div class="warn">피그마는 <b>2026-10-07 확정본</b>입니다. 서버는 대부분 <b>퍼블 원본</b>(views/html/___bakup)을 따르고 있어서, 표의 "어디서 갈렸나"에 퍼블과 같은지 함께 적었어요. 어느 쪽을 기준으로 맞출지는 확인이 필요합니다.</div>
+
+  <div class="sum">
+    <a href="#a"><b>5</b><span>서버에 아직 없는 기능</span></a>
+    <a href="#b"><b>4</b><span>흐름(보이는 상태)이 다른 곳</span></a>
+    <a href="#c"><b>12</b><span>문구 · 모양이 다른 곳</span></a>
+    <a href="#d"><b>3</b><span>비어 있는 링크</span></a>
+  </div>
+  <p class="tip"><span class="pill p-publ">퍼블과 같음</span> 서버가 퍼블대로 만들었고 피그마만 다름 · <span class="pill p-srv">서버만 다름</span> 피그마·퍼블은 같은데 서버가 바꿈 · <span class="pill p-none">미구현</span> 서버에 없음</p>
+
+  <h2 id="a">1. 서버에 아직 없는 기능</h2>
+  <p class="lead">피그마 메모에는 있는데 서버 코드에는 처리하는 부분이 없습니다.</p>
+  <div class="tbl"><table>
+    <tr><th></th><th>항목</th><th>피그마</th><th>서버</th><th>구분</th></tr>
+    <tr><td class="no">1</td><td class="where">카카오 알림톡(CRM)</td>
+      <td>6종 발송: 새 챌린지 신청 열림(참여 이력·광고 동의 회원) · 신청 완료 · 챌린지 시작 · 진행 3일차 인스타 공유 데이 리마인드 · 결과 발표 · 성공 화면 접속 시 적립금 쿠폰코드</td>
+      <td>발송 코드 없음. 화면에 "알림톡으로 알려드려요" 문구만 있음</td><td class="who"><span class="pill p-none">미구현</span></td></tr>
+    <tr><td class="no">2</td><td class="where">인스타 인증 데이</td>
+      <td>진행 기간 중 하루, ① 인스타 스토리(@kinse_official 태그 + #챌린지명) ② 킨스 사이트에 게시물 URL 공유(비공개·스토리는 캡처) 두 단계를 다 해야 인정</td>
+      <td>인증하기는 사진 1장 업로드만 있음. URL 입력 · 인스타 인증 구분 없음</td><td class="who"><span class="pill p-none">미구현</span></td></tr>
+    <tr><td class="no">3</td><td class="where">성공 시 적립금 코드</td>
+      <td>성공 화면에 들어오면 적립금 코드 알림톡 발송</td>
+      <td>성공 화면만 있고 코드 발송 없음 (1번 알림톡과 같이 필요)</td><td class="who"><span class="pill p-none">미구현</span></td></tr>
+    <tr><td class="no">4</td><td class="where">휴대전화 인증</td>
+      <td>회원가입 정보 입력에서 코드 전송 → 인증번호 → "인증되었어요"</td>
+      <td>칸과 버튼은 있지만 문자 인증 연동 전. 인증번호를 비워도 가입됨 (챌린지 신청 화면은 피그마도 인증 칸 없음 — 같음)</td><td class="who"><span class="pill p-none">미구현</span></td></tr>
+    <tr><td class="no">5</td><td class="where">결과 확인 시 [종료]</td>
+      <td>CRM 링크가 아닌 직접 접속 시 마이페이지 썸네일에 [결과발표] → 사용자가 결과를 보면 [종료]로 변경</td>
+      <td>결과를 봐도 바뀌지 않음. 검수 종료일이 지나야 [종료]. <span class="tip">(예전에 이미지 기준으로 넣었다가 요청으로 되돌린 부분)</span></td><td class="who"><span class="pill p-none">미구현</span></td></tr>
+  </table></div>
+
+  <h2 id="b" class="amber">2. 흐름(보이는 상태)이 다른 곳</h2>
+  <p class="lead">같은 시점에 화면에 보이는 카드 · 상태가 다릅니다.</p>
+  <div class="tbl"><table>
+    <tr><th></th><th>시점 · 화면</th><th>피그마</th><th>서버</th><th>구분</th></tr>
+    <tr><td class="no">1</td><td class="where">신청 후 · 시작 전<br>마이페이지</td>
+      <td>변화 없음 — "참여중인 챌린지가 없어요"<br><a class="shot" href="img/flow/s3_my.png" target="_blank">피그마 화면 ↗</a></td>
+      <td>나의 챌린지에 <b>진행예정</b> 배지 카드가 보임 (퍼블 정리 엑셀 기준)</td><td class="who"><span class="pill p-publ">퍼블과 같음</span></td></tr>
+    <tr><td class="no">2</td><td class="where">결과 발표 후<br>홈 카드</td>
+      <td>"챌린지 참여하기"(미참여 상태)로 돌아감<br><a class="shot" href="img/flow/s6_home.png" target="_blank">피그마 화면 ↗</a></td>
+      <td>검수 종료일까지 <q>참여 완료한 챌린지 · 인증 확인중이에요.</q> 카드가 그대로. 결과가 이미 발표됐는데도 "인증 확인중" 문구가 나옴 (상세 화면 버튼도 <q>인증 확인중이에요</q>)</td><td class="who"><span class="pill p-srv">서버만 다름</span></td></tr>
+    <tr><td class="no">3</td><td class="where">종료 후<br>마이페이지</td>
+      <td>"참여중인 챌린지가 없어요" (참여 전과 같음), 히스토리 목록에서만 [종료]<br><a class="shot" href="img/flow/s7_my.png" target="_blank">피그마 화면 ↗</a></td>
+      <td>마지막에 참여한 챌린지가 <b>종료</b> 배지 카드로 계속 보임</td><td class="who"><span class="pill p-srv">서버만 다름</span></td></tr>
+    <tr><td class="no">4</td><td class="where">챌린지 목록<br>비로그인 띠</td>
+      <td>"로그인하고 킨스 챌린지 참여해요!" 같은 로그인 유도 문구가 흐름<br><a class="shot" href="img/flow/s2_list.png" target="_blank">피그마 화면 ↗</a></td>
+      <td>공지사항 최신 제목 3개가 흐름</td><td class="who"><span class="pill p-srv">서버만 다름</span></td></tr>
+  </table></div>
+
+  <h2 id="c" class="violet">3. 문구 · 모양이 다른 곳</h2>
+  <div class="tbl"><table>
+    <tr><th></th><th>화면</th><th>피그마</th><th>서버</th><th>구분</th></tr>
+    <tr><td class="no">1</td><td class="where">체크리스트 시작</td>
+      <td><q>나의 웰니스 시그널 발견하기</q> / <q>5분동안 10가지 몸 상태를 체크하는 Self Checklist</q></td>
+      <td><q>나의 웰니스 상태 체크하기</q> / <q>1분동안 나의 몸 상태를 체크하는 Self Checklist</q></td><td class="who"><span class="pill p-srv">서버만 다름</span></td></tr>
+    <tr><td class="no">2</td><td class="where">홈 체크리스트 배너</td>
+      <td><q>웰니스 시그널 발견하기</q></td><td><q>나의 웰니스 상태 체크하기</q></td><td class="who"><span class="pill p-srv">서버만 다름</span></td></tr>
+    <tr><td class="no">3</td><td class="where">고민 선택</td>
+      <td><q>관심있는 몸의 신호를 한 가지 선택하세요</q> · 10개 고정(피부 · 수면 · 근감소 · 부종 · 피로 · 탈모 · 혈당 · 감정 · 소화 · 복부지방)</td>
+      <td><q>킨스와 체크해보고 싶은 영역을 선택해주세요</q> · 항목은 관리자 검사지 관리에서 등록한 것</td><td class="who"><span class="pill p-srv">서버만 다름</span></td></tr>
+    <tr><td class="no">4</td><td class="where">결과 로딩</td>
+      <td><q>햅삐님의 몸이 보내는 신호 확인중…</q></td><td><q>(회원 이름)님의 몸이 보내는 시그널 확인중…</q></td><td class="who"><span class="pill p-srv">서버만 다름</span></td></tr>
+    <tr><td class="no">5</td><td class="where">신청 후 카드<br>(홈 · 상세)</td>
+      <td><q>신청한 챌린지</q> + 빈 진행바 + <q>곧 시작돼요 :-) D-3</q></td>
+      <td><q>신청 완료한 챌린지</q>, 진행바 없음, <q>곧 시작돼요 :-) D-n</q></td><td class="who"><span class="pill p-publ">퍼블과 같음</span></td></tr>
+    <tr><td class="no">6</td><td class="where">신청 후 상세 버튼</td>
+      <td><q>이미 신청했어요</q> (회색, 눌리지 않음)</td><td><q>신청 완료</q> (누르면 나의 챌린지로)</td><td class="who"><span class="pill p-publ">퍼블과 같음</span></td></tr>
+    <tr><td class="no">7</td><td class="where">진행중 카드<br>(홈 · 상세)</td>
+      <td><q>진행중인 챌린지</q> · <q>작은 습관을 실천해요!</q> 3/10</td>
+      <td><q>참여중인 챌린지</q> · 오늘 인증 전 <q>오늘의 챌린지 시작!</q> / 후 <q>오늘의 루틴 완료 :-)</q> n/총</td><td class="who"><span class="pill p-publ">퍼블과 같음</span></td></tr>
+    <tr><td class="no">8</td><td class="where">검수중 인증하기 버튼</td>
+      <td><q>인증 확인중이에요</q></td><td><q>결과 대기중이에요</q></td><td class="who"><span class="pill p-publ">퍼블과 같음</span></td></tr>
+    <tr><td class="no">9</td><td class="where">성공 화면</td>
+      <td><q>킨스 챌린지 완주 리워드를 알림톡으로 발송드려요</q> · 버튼 <q>홈으로 돌아가기</q></td>
+      <td><q>킨스 챌린지 성공 혜택을 …</q> · 버튼 <q>챌린지 홈으로 가기</q></td><td class="who"><span class="pill p-srv">문구</span> <span class="pill p-publ">버튼</span></td></tr>
+    <tr><td class="no">10</td><td class="where">실패 화면 버튼</td>
+      <td><q>홈으로 돌아가기</q></td><td><q>챌린지 홈으로 가기</q></td><td class="who"><span class="pill p-publ">퍼블과 같음</span></td></tr>
+    <tr><td class="no">11</td><td class="where">햄버거 메뉴</td>
+      <td>마이페이지 · 챌린지 목록 · 체크리스트 · 킨스 공식몰 / 공지사항 · 약관확인 · 고객센터</td>
+      <td>같고, 아래에 <b>로그인 / 로그아웃</b> 버튼이 더 있음</td><td class="who"><span class="pill p-srv">서버만 다름</span></td></tr>
+    <tr><td class="no">12</td><td class="where">회원가입 정보 입력</td>
+      <td>이름 · 휴대전화 · 아이디 · 비밀번호 → 가입</td>
+      <td>같고, 아래에 <b>알림톡 발송 동의(선택)</b> 체크가 더 있음. SNS 첫 가입은 아이디 · 비밀번호 칸 없음</td><td class="who"><span class="pill p-srv">서버만 다름</span></td></tr>
+  </table></div>
+
+  <h2 id="d" class="blue">4. 비어 있는 링크</h2>
+  <p class="lead">피그마와 차이는 아니지만 확인하다 보인 것 — 눌러도 이동하지 않습니다(href 비어 있음, 퍼블 원본도 비어 있음).</p>
+  <div class="box"><ul>
+    <li><b>마이페이지 하단 '약관확인'</b> — 햄버거 메뉴의 약관확인은 연결돼 있는데 마이페이지 쪽만 비어 있음</li>
+    <li><b>인증하기 '사진이 안 올라가요!'</b> — 연결할 안내 페이지 필요</li>
+    <li><b>성공 화면 '알림톡을 못 받았어요'</b> — 연결할 안내(또는 고객센터) 필요</li>
+  </ul></div>
+
+  <h2 class="green">5. 피그마와 같은 곳</h2>
+  <div class="box"><ul>
+    <li>챌린지 목록 탭(전체 · 진행중 · 종료), 카드의 신청 기간 · 일수 · 월 표시, 진행 예정 "What is next? / Comming soon"</li>
+    <li>챌린지 상세: 신청 기간 띠, 상세 이미지, 햅삐들의 챌린지 인증(사진 6장), 상태별 버튼(신청하기 · 사진 등록하고 인증하기 + "잘 하고 있어요!" 말풍선 · 인증 확인중 · 종료 "다음에 다시 돌아올게요 :-)")</li>
+    <li>챌린지 신청하기: 본인 인증("회원 정보와 동일해요"), 제품 수령 주소, 동의 3개, 선착순 안내, 신청 완료 화면 문구 · "챌린지 설명으로 돌아가기"</li>
+    <li>인증하기: 사진 업로드 → 사진 변경 → 인증하기, 도장판, 인증 완료 "사진 인증 완료했어요!" + 갤러리에 저장, 검수중 "지금은 인증할 수 없어요"</li>
+    <li>결과: 성공 · 실패(추천 루틴) 화면, 내 기록 보기 — 도장을 누르면 그날 사진, 안 올린 날 "업로드하지 않았어요"</li>
+    <li>마이페이지: 로그인/비로그인 프로필, 나의 챌린지 · 체크리스트 히스토리(최신 4개, 비로그인은 제목만), 빈 상태 문구, 배지 5종(진행중 · 진행예정 · 결과대기중 · 결과발표 · 종료)</li>
+    <li>체크리스트: 문항 진행바, 부정 답변 시 인사이트, 결과 페이지, 갤러리에 저장(간단히 · 전체), 링크 공유 · 복사 알림, 마이페이지 히스토리 필터</li>
+    <li>로그인 · 회원가입: SNS 로그인, 약관 동의 4개 + 꼼꼼히 읽었어요, 가입 완료 문구</li>
+  </ul></div>
+
+  <p class="tip" style="margin-top:28px">확인 방법: 서버 FTP 의 사용자 화면 코드와 퍼블 원본(___bakup)을 받아 피그마 화면과 하나씩 대조. 실제 회원 데이터로 화면을 띄워 본 것은 아니라서, 관리자 설정(검사지 · 루틴 · 배너)에 따라 보이는 내용은 달라질 수 있어요.</p>
+</div>
+</body>
+</html>
