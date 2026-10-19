@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>퍼블 밖 작업 점검</title>
+<style>
+  :root{--ink:#1f2a37;--muted:#6b7686;--line:#e3e8ef;--bg:#f6f8fb;--card:#fff;--blue:#3b82f6}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.7 "Malgun Gothic","Apple SD Gothic Neo",sans-serif}
+  .wrap{max-width:1000px;margin:0 auto;padding:30px 16px 60px}
+  h1{font-size:26px;margin:0 0 4px}
+  .sub{color:var(--muted);margin:0 0 18px;font-size:14px}
+  .info{background:#fff6d6;border:1px solid #f3dd8a;border-radius:12px;padding:12px 16px;font-size:14px;margin-bottom:18px}
+  .toc{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+  .toc a{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:14px;color:inherit;text-decoration:none}
+  h2{font-size:20px;margin:34px 0 10px;padding-left:12px;border-left:5px solid #e5484d}
+  h3{font-size:15px;margin:14px 0 6px;color:#445}
+  .box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 20px;margin-bottom:12px}
+  .box ul{margin:0;padding-left:20px} .box li{margin:4px 0;font-size:14.5px}
+  .tbl{overflow-x:auto}
+  table{width:100%;border-collapse:collapse;background:var(--card);font-size:14px;min-width:640px}
+  th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+  th{background:#eef2f7;font-size:13px;color:#445;white-space:nowrap}
+  td.it{font-weight:700;width:22%}
+  td.kind{white-space:nowrap;width:10%}
+  .pill{display:inline-block;padding:1px 9px;border-radius:999px;font-size:12px;font-weight:700;white-space:nowrap}
+  .own{background:#ffe3e3;color:#c0262d} .req{background:#dcfce7;color:#166534} .none{background:#e9edf2;color:#55606e} .xl{background:#e2f0ff;color:#1658b8} .del{background:#f1e6ff;color:#6b2fb3}
+  q{quotes:none;background:#f4f1ff;border-radius:5px;padding:0 5px}
+  .top li{margin:6px 0}
+  .tip{font-size:14px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>퍼블에 없는데 들어간 것 — 사용자 화면 전체 점검</h1>
+  <p class="sub">2026-10-19 · 서버 사용자 화면(views/html, include, 컨트롤러 · 모델 · js) ↔ 퍼블 원본(___bakup, include/___bak) · 근거는 서버 작업일지 번호 · <a href="index.html">목차</a></p>
+  <div class="info">
+    <b>읽기 전용 점검</b>이라 서버는 바꾸지 않았어요. 단순 데이터 연결(샘플 → DB 값, 반복, 링크 주소)은 뺐습니다.<br>
+    <span class="pill own">임의</span> 작업일지에 지시 없이 내가 정함 · <span class="pill req">요청</span> 사용자 지시 · <span class="pill xl">엑셀/퍼블 주석</span> 퍼블 정리 엑셀 · 퍼블 주석대로 · <span class="pill none">일지에 없음</span> 작업일지에 기록 없음(다른 작업자 수정 가능성) · <span class="pill del">삭제됨</span> 10/19 삭제
+  </div>
+
+  <h2 style="border-color:#f59e0b">먼저 봐 주셨으면 하는 것</h2>
+  <div class="box"><ol class="top">
+    <li><b>메인 카드 순서</b> — 신청한 게 없으면 신청 기간 챌린지를 먼저 보여 줌. 엑셀은 0개면 바로 "챌린지 참여하기" <span class="pill own">임의</span></li>
+    <li><b>상세 비로그인 "로그인 후 신청하기"</b> — 신청 기간에만. 엑셀은 기간 구분 없음 <span class="pill own">임의</span></li>
+    <li><b>체크리스트 결과 상단 두 줄</b>(한 줄 설명 · 상세 내용) — 퍼블에 없는 요소 추가 <span class="pill own">임의</span></li>
+    <li><b>인증 화면</b> — 오늘 올린 뒤 사진 칸을 "지금은 인증할 수 없어요"로 (퍼블은 "확인중" 상태용 마크업) <span class="pill own">임의</span></li>
+    <li><b>마이페이지 체크리스트 히스토리 빈 상자</b> — 퍼블 마이페이지엔 없음(히스토리 화면 문구를 가져옴) <span class="pill own">임의</span></li>
+    <li><b>목록 진행 예정 카드</b> — 퍼블 고정 "진행 예정 챌린지" 대신 실제 제목 <span class="pill own">임의</span></li>
+    <li><b>정보수정 새 비밀번호 안내 · 알림 문구</b> 변경 <span class="pill own">임의</span></li>
+    <li><b>알림창 문구 전반</b> — 진입 제한 · 입력 검사 안내문은 거의 다 내가 지음 (아래 화면별)</li>
+    <li><b>출처 확인 필요</b> — 신청 화면 "코드 전송 · 인증코드" 칸 숨김(일지에 없음), 회원가입 "알림톡 발송 동의"(퍼블 새 버전인지 불명), 오늘 오전 바뀐 문구들(시그널 · 성공 혜택 · 푸터 회사정보 · 게시판 상세 등)</li>
+  </ol></div>
+
+  <nav class="toc">
+    <a href="#m">메인</a><a href="#h">헤더·푸터</a><a href="#l">목록</a><a href="#v">상세</a><a href="#a">신청</a><a href="#c">인증</a><a href="#r">내 기록</a><a href="#res">결과</a><a href="#my">마이페이지</a><a href="#s">체크리스트</a><a href="#mem">회원</a><a href="#b">게시판</a>
+  </nav>
+
+  <h2 id="m">메인</h2>
+  <div class="tbl"><table>
+    <tr><th>항목</th><th>퍼블</th><th>지금 서버</th><th>분류</th></tr>
+    <tr><td class="it">메인 카드 고르는 순서</td><td>신청한 챌린지 없으면 "챌린지 참여하기" (엑셀 동일)</td><td>① 신청한 것 중 안 끝난 것 ② 신청 기간 챌린지(비로그인 포함) ③ 챌린지 참여하기</td><td><span class="pill own">임의</span> 36번</td></tr>
+    <tr><td class="it">최근 접속</td><td>"4일 전" 형식, 조건 없음</td><td>응답 기록 없으면 숨김 · 같은 날 <q>오늘</q></td><td><span class="pill own">임의</span> 33번 (로그인일 때만 · 기준일은 <span class="pill req">요청</span>)</td></tr>
+    <tr><td class="it">일상 루틴 가이드 · 배너</td><td>항상 있음</td><td>고른 글이 없으면 섹션 숨김 · 링크 없으면 이동 안 함 + 화살표 숨김</td><td><span class="pill own">임의</span> 7 · 19번</td></tr>
+    <tr><td class="it">메인 카드 클릭</td><td><code>href=""</code></td><td>상세로 이동 (종료 카드 제외)</td><td><span class="pill own">임의</span> 25번</td></tr>
+    <tr><td class="it">카드 문구 "오늘의 챌린지 시작!" / "오늘의 루틴 완료 :-)"</td><td>"오늘의 수분 …"</td><td>공통 문구</td><td><span class="pill req">유지 허용</span></td></tr>
+    <tr><td class="it">"곧 신청할 수 있어요" 카드</td><td>없음</td><td>—</td><td><span class="pill del">삭제됨</span> 158번</td></tr>
+    <tr><td class="it">배너 제목 · 참여하기 카드 화살표</td><td>"웰니스 시그널 발견하기"</td><td>"나의 웰니스 상태 체크하기" · 보라 화살표 추가</td><td><span class="pill none">일지에 없음</span></td></tr>
+  </table></div>
+
+  <h2 id="h">헤더 · 메뉴 · 푸터</h2>
+  <div class="box"><ul>
+    <li>내가 정한 화면 요소 없음. 공지사항 · 고객센터 주소는 <span class="pill req">요청</span> 99번</li>
+    <li><span class="pill none">일지에 없음</span> 푸터 회사명 · 전화 · 개인정보관리책임자 · "개인정보처리방침" 표기 변경, 메뉴 "킨스 공식몰" 새 창, member.css 추가</li>
+  </ul></div>
+
+  <h2 id="l">챌린지 목록</h2>
+  <div class="tbl"><table>
+    <tr><th>항목</th><th>퍼블</th><th>지금 서버</th><th>분류</th></tr>
+    <tr><td class="it">진행 예정 카드 제목</td><td>"진행 예정 챌린지" 고정</td><td>실제 챌린지 제목</td><td><span class="pill own">임의</span> 22번</td></tr>
+    <tr><td class="it">전체 탭 순서</td><td>기준 없음</td><td>신청중 → 신청전 → 종료, 같은 묶음은 신청 시작 최근 순</td><td><span class="pill own">임의</span> 31번 (분류 기준은 <span class="pill req">요청</span>)</td></tr>
+    <tr><td class="it">탭 3개 · 신청 기간 기준 · 종료 카드 진행 기간 · 월</td><td></td><td></td><td><span class="pill req">요청</span> 29 · 31 · 61 · 157번</td></tr>
+    <tr><td class="it">비로그인 롤링 띠</td><td>고정 문구 3개</td><td>공지사항 최신 제목 3개 (비로그인만은 퍼블 주석대로)</td><td><span class="pill none">일지에 없음</span></td></tr>
+  </table></div>
+
+  <h2 id="v">챌린지 상세</h2>
+  <div class="tbl"><table>
+    <tr><th>항목</th><th>퍼블</th><th>지금 서버</th><th>분류</th></tr>
+    <tr><td class="it">비로그인 버튼</td><td>엑셀: 비로그인이면 "로그인 후 신청하기"</td><td>신청 기간에만, 그 외는 로그인 회원과 같은 버튼</td><td><span class="pill own">임의</span> 25번</td></tr>
+    <tr><td class="it">비주얼 · 상세 이미지</td><td>항상</td><td>없으면 출력 안 함</td><td><span class="pill own">임의</span> 25번</td></tr>
+    <tr><td class="it">햅삐들의 챌린지 인증</td><td>항상 6장</td><td>반려 제외, 사진 없으면 섹션 숨김 (최신 6장은 <span class="pill req">요청</span> 35번)</td><td><span class="pill own">임의</span></td></tr>
+    <tr><td class="it">미신청 회원 · 검수 기간</td><td>상태표에 없음</td><td>종료 카드 + "다음에 다시 돌아올게요 :-)"</td><td><span class="pill own">임의</span> 25번</td></tr>
+    <tr><td class="it">알림창</td><td>없음</td><td><q>챌린지를 찾을 수 없습니다.</q> → 목록</td><td><span class="pill own">임의</span></td></tr>
+    <tr><td class="it">신청 전 카드 · 버튼, "진행 기간" 띠</td><td>없음</td><td>—</td><td><span class="pill del">삭제됨</span> 158 · 159번</td></tr>
+  </table></div>
+
+  <h2 id="a">신청 · 신청 완료</h2>
+  <div class="tbl"><table>
+    <tr><th>항목</th><th>퍼블</th><th>지금 서버</th><th>분류</th></tr>
+    <tr><td class="it">진입 제한 알림창</td><td>없음</td><td><q>로그인 후 신청할 수 있어요.</q> · <q>신청 기간이 아닙니다.</q> · <q>이미 신청한 챌린지입니다.</q></td><td><span class="pill own">임의</span> 37번</td></tr>
+    <tr><td class="it">저장 검사 알림창</td><td>없음</td><td><q>이름과 전화번호를 입력해 주세요.</q> · <q>제품 수령 주소와 우편번호를 입력해 주세요.</q> · <q>개인정보 수집 동의 항목을 모두 체크해 주세요.</q></td><td><span class="pill own">임의</span></td></tr>
+    <tr><td class="it">신청 완료 화면 진입</td><td>없음</td><td><q>로그인 후 이용할 수 있어요.</q> · <q>신청한 챌린지가 아닙니다.</q></td><td><span class="pill own">임의</span> 49번</td></tr>
+    <tr><td class="it">전화번호 칸</td><td>일반 입력</td><td>숫자만 + "-" 자동</td><td><span class="pill own">임의</span> 101 · 103번</td></tr>
+    <tr><td class="it">주소 · 우편번호 우편번호 찾기</td><td></td><td>readonly + 클릭</td><td><span class="pill req">요청</span> 38번</td></tr>
+    <tr><td class="it">"코드 전송" · "인증코드" 칸</td><td>있음</td><td>주석 처리로 숨김</td><td><span class="pill none">일지에 없음</span> (37번은 "미연동"만)</td></tr>
+  </table></div>
+
+  <h2 id="c">인증</h2>
+  <div class="tbl"><table>
+    <tr><th>항목</th><th>퍼블</th><th>지금 서버</th><th>분류</th></tr>
+    <tr><td class="it">오늘 올린 뒤 사진 칸</td><td>"확인중" 상태용 off 마크업</td><td>오늘 이미 올렸을 때도 <q>지금은 인증할 수 없어요</q></td><td><span class="pill own">임의</span> 47번</td></tr>
+    <tr><td class="it">하루 1장 · 다시 보내면</td><td>없음</td><td><q>오늘은 이미 인증했어요.</q></td><td><span class="pill own">임의</span> 47번</td></tr>
+    <tr><td class="it">진입 · 업로드 알림창</td><td>없음</td><td><q>로그인 후 인증할 수 있어요.</q> · <q>챌린지를 신청한 분만 진행 기간에 인증할 수 있어요.</q> · <q>인증 사진을 선택해 주세요.</q> · <q>사진을 올리지 못했어요. jpg, png, gif 사진(10MB 이하)만…</q> · 사진 500px 축소</td><td><span class="pill own">임의</span> 37 · 47번</td></tr>
+    <tr><td class="it">반려된 날 사진 · 발표 전 보기 전용 · 발표 후 결과로</td><td></td><td></td><td><span class="pill req">요청</span> 53 · 56 · 57번</td></tr>
+    <tr><td class="it">버튼 "오늘의 루틴 완료 :-)"</td><td>없음</td><td>오늘 올린 뒤</td><td><span class="pill req">유지 허용</span></td></tr>
+    <tr><td class="it">" · 반려됐어요"</td><td>없음</td><td>—</td><td><span class="pill del">삭제됨</span> 159번</td></tr>
+  </table></div>
+
+  <h2 id="r">인증 완료 · 내 기록</h2>
+  <div class="tbl"><table>
+    <tr><th>항목</th><th>퍼블</th><th>지금 서버</th><th>분류</th></tr>
+    <tr><td class="it">인증 완료 화면 진입</td><td>없음</td><td>오늘 인증이 없거나 진행 기간이 아니면 인증 화면으로</td><td><span class="pill own">임의</span> 47번</td></tr>
+    <tr><td class="it">내 기록 = 결과 발표 뒤에만</td><td></td><td>발표 전 <q>아직 결과가 발표되지 않았어요.</q> (문구는 임의)</td><td><span class="pill req">요청</span> 57번</td></tr>
+  </table></div>
+
+  <h2 id="res">결과</h2>
+  <div class="tbl"><table>
+    <tr><th>항목</th><th>퍼블</th><th>지금 서버</th><th>분류</th></tr>
+    <tr><td class="it">실패 추천 루틴 대체</td><td>"최소 1개"</td><td>일정에서 고른 루틴이 없으면 최신 노출 글 1개</td><td><span class="pill own">임의</span> 59번 (1개 · 챌린지마다 선택은 <span class="pill req">요청</span>)</td></tr>
+    <tr><td class="it">성공 / 실패 주소 자동 맞춤</td><td>없음</td><td>결과와 다른 주소면 맞는 화면으로</td><td><span class="pill own">임의</span> 50번</td></tr>
+    <tr><td class="it">알림창</td><td>없음</td><td><q>신청한 챌린지가 아닙니다.</q> · <q>아직 결과가 발표되지 않았어요.</q> · <q>챌린지를 찾을 수 없습니다.</q></td><td><span class="pill own">임의</span></td></tr>
+    <tr><td class="it">"완주 리워드" → "성공 혜택"</td><td>완주 리워드</td><td>성공 혜택</td><td><span class="pill none">일지에 없음</span></td></tr>
+  </table></div>
+
+  <h2 id="my">마이페이지 · 나의 챌린지 · 히스토리</h2>
+  <div class="tbl"><table>
+    <tr><th>항목</th><th>퍼블</th><th>지금 서버</th><th>분류</th></tr>
+    <tr><td class="it">마이페이지 히스토리 빈 상자</td><td>없음</td><td><q>체크리스트 히스토리가 없어요. / 여기를 눌러 내 몸의 신호를 체크해보세요!</q></td><td><span class="pill own">임의</span> 5번</td></tr>
+    <tr><td class="it">나의 챌린지 순서</td><td>기준 없음</td><td>안 끝난 것 먼저 → 진행 시작 최근 순, 마이페이지는 1개</td><td><span class="pill own">임의</span> 39번</td></tr>
+    <tr><td class="it">나의 챌린지 · 히스토리 비로그인</td><td>없음</td><td><q>로그인 후 이용할 수 있어요.</q> → 로그인</td><td><span class="pill own">임의</span> 39번</td></tr>
+    <tr><td class="it">마이페이지 로그인 필수</td><td>비로그인 프로필 있음</td><td>로그인 화면으로 (비로그인 프로필 안 보임)</td><td><span class="pill req">요청</span> 84번 (사용자가 직접 주석 해제)</td></tr>
+    <tr><td class="it">히스토리 5문항 완료 · 4건, 카드 링크</td><td></td><td></td><td><span class="pill req">요청</span> 34 · 57번</td></tr>
+  </table></div>
+
+  <h2 id="s">체크리스트</h2>
+  <div class="tbl"><table>
+    <tr><th>항목</th><th>퍼블</th><th>지금 서버</th><th>분류</th></tr>
+    <tr><td class="it">결과 상단 두 줄</td><td>없음</td><td>한 줄 설명(.hero-lead) · 상세 내용(.hero-desc) + 화면 안 스타일</td><td><span class="pill own">임의</span> 5번</td></tr>
+    <tr><td class="it">답 안 고르면 다음 못 감</td><td>js 에 없음</td><td><q>답변을 선택해 주세요.</q></td><td><span class="pill own">임의</span> 20번</td></tr>
+    <tr><td class="it">결과보기 빈 문항</td><td>없음</td><td><q>모든 문항에 답해 주세요.</q> + 그 문항으로</td><td><span class="pill own">임의</span> 5번</td></tr>
+    <tr><td class="it">시그널 카드 · 배너 · 루틴 숨김</td><td>항상</td><td>텍스트 · 글이 없으면 생략, 링크 없으면 화살표 숨김</td><td><span class="pill own">임의</span></td></tr>
+    <tr><td class="it">이름 없을 때</td><td>"햅삐님의"</td><td>"회원님의" (로딩 문구도)</td><td><span class="pill own">임의</span> 12번</td></tr>
+    <tr><td class="it">이미지 없을 때</td><td></td><td>결과 · 문항 이미지 없으면 퍼블 기본 그림</td><td><span class="pill own">임의</span></td></tr>
+    <tr><td class="it">알림창</td><td>없음</td><td><q>검사지를 선택해 주세요.</q> · <q>결과를 찾을 수 없습니다.</q></td><td><span class="pill own">임의</span></td></tr>
+    <tr><td class="it">배너 위치 · 인트로 로그인 버튼</td><td>퍼블 주석</td><td></td><td><span class="pill xl">퍼블 주석</span></td></tr>
+    <tr><td class="it">시그널 · 영역 선택 · 로딩 · 결과 문구, 리드 숨김, 로딩 3초, 문항 바뀌면 맨 위로</td><td>"웰니스 시그널 발견하기 / 5분동안 10가지" 등</td><td>"나의 웰니스 상태 체크하기 / 1분동안" 등</td><td><span class="pill none">일지에 없음</span></td></tr>
+  </table></div>
+
+  <h2 id="mem">로그인 · 회원가입 · 찾기 · 정보수정 · 탈퇴</h2>
+  <div class="tbl"><table>
+    <tr><th>항목</th><th>퍼블</th><th>지금 서버</th><th>분류</th></tr>
+    <tr><td class="it">정보수정 새 비밀번호</td><td>"새 비밀번호 입력" · "영문+숫자 조합 6자리 이상"</td><td>"(영문, 숫자, 특수문자 포함 8~16자)" · 같은 기준 알림</td><td><span class="pill own">임의</span> 101번 (기준은 가입 화면 퍼블 안내문)</td></tr>
+    <tr><td class="it">가입 휴대전화 확인 문구</td><td>"인증해주세요."</td><td>"휴대전화 번호를 정확하게 입력해주세요."</td><td><span class="pill own">임의</span> (인증 미연동이라)</td></tr>
+    <tr><td class="it">카카오 · 네이버 회원 화면</td><td>없음</td><td>아이디 찾기 "○○ 로그인으로 가입하셨습니다", 정보수정 · 탈퇴 "○○ 로그인 회원" + 비밀번호 칸 숨김</td><td><span class="pill own">임의</span> 105번</td></tr>
+    <tr><td class="it">SNS · 비밀번호 찾기 알림창</td><td>없음</td><td>로그인 취소 · 실패 · 탈퇴 회원 · 만료 · "회원 확인 후 이용해 주세요." · "비밀번호가 변경되었습니다…"</td><td><span class="pill own">임의</span> 83 · 100 · 105번</td></tr>
+    <tr><td class="it">로그인 상태로 로그인 · 가입 주소</td><td>없음</td><td>마이페이지로</td><td><span class="pill own">임의</span> 39 · 84 · 100번</td></tr>
+    <tr><td class="it">번호당 1번 가입 · 인증 보류 · SNS 가입 간소화</td><td></td><td>(안내 문구는 임의)</td><td><span class="pill req">요청</span> 100 · 107~109번</td></tr>
+    <tr><td class="it">"알림톡 발송 동의해요" + 약관 팝업</td><td>보관본(10/8)엔 없음</td><td>있음 (팝업 내용 비어 있음)</td><td><span class="pill none">출처 불명</span> 105번 "새 항목"</td></tr>
+  </table></div>
+
+  <h2 id="b">게시판 · 약관</h2>
+  <div class="tbl"><table>
+    <tr><th>항목</th><th>퍼블</th><th>지금 서버</th><th>분류</th></tr>
+    <tr><td class="it">없는 · 미노출 글</td><td>없음</td><td><q>글을 찾을 수 없습니다.</q> → 목록</td><td><span class="pill own">임의</span> 99번</td></tr>
+    <tr><td class="it">약관 내용 없을 때</td><td>원본 미보관</td><td><q>등록된 내용이 없습니다.</q></td><td><span class="pill own">임의</span> 106번</td></tr>
+    <tr><td class="it">공지 맨 위 · 빈 목록 문구 · 페이지 번호</td><td></td><td>CMS 기본 소스</td><td><span class="pill req">요청</span> 106 · 116번 (gutmtest 참고)</td></tr>
+    <tr><td class="it">상세 조회수 · 이전/다음글 숨김, "작성일 :" 라벨, 번호 01</td><td></td><td></td><td><span class="pill none">일지에 없음</span></td></tr>
+  </table></div>
+
+  <p class="tip" style="margin-top:26px">"임의" 약 45건 — 대부분 알림창 문구, 비어 있을 때 영역 숨김, 정렬 · 선택 규칙, js 동작(답해야 다음 문항 · 전화번호 자동 -), SNS 회원 화면 변형입니다. 어떤 것을 퍼블대로 되돌릴지 정해 주시면 반영할게요.</p>
+</div>
+</body>
+</html>
