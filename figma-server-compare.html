@@ -84,22 +84,22 @@
   <div class="tbl"><table>
     <tr><th></th><th>시점 · 화면</th><th>피그마</th><th>서버</th><th>구분</th></tr>
     <tr><td class="no">1</td><td class="where">신청 후 · 시작 전<br>마이페이지</td>
-      <td>변화 없음 — "참여중인 챌린지가 없어요"<br><a class="shot" href="img/flow/s3_my.png" target="_blank">피그마 화면 ↗</a></td>
+      <td>변화 없음 — "참여중인 챌린지가 없어요"<br><a class="shot" href="img/flow/s3_my.png" target="_blank">피그마 화면 ↗</a> <code class="url-path">/dh_member/mypage</code></td>
       <td>나의 챌린지에 <b>진행예정</b> 배지 카드가 보임 (퍼블 정리 엑셀 기준)</td><td class="who"><span class="pill p-publ">퍼블과 같음</span></td></tr>
     <tr><td class="no">2</td><td class="where">결과 발표 후<br>홈 카드</td>
-      <td>"챌린지 참여하기"(미참여 상태)로 돌아감<br><a class="shot" href="img/flow/s6_home.png" target="_blank">피그마 화면 ↗</a></td>
+      <td>"챌린지 참여하기"(미참여 상태)로 돌아감<br><a class="shot" href="img/flow/s6_home.png" target="_blank">피그마 화면 ↗</a> <code class="url-path">/</code></td>
       <td>결과는 검수기간이 끝난 다음 날 발표되고, 그때 홈 카드도 빠져 <q>챌린지 참여하기</q>로 돌아감 (검수기간에는 <q>참여 완료한 챌린지 · 인증 확인중이에요.</q>) — 10/19 저녁 변경으로 피그마와 같아짐</td><td class="who"><span class="pill p-publ">피그마와 같음</span></td></tr>
     <tr><td class="no">3</td><td class="where">종료 후<br>마이페이지</td>
-      <td>"참여중인 챌린지가 없어요" (참여 전과 같음), 히스토리 목록에서만 [종료]<br><a class="shot" href="img/flow/s7_my.png" target="_blank">피그마 화면 ↗</a></td>
+      <td>"참여중인 챌린지가 없어요" (참여 전과 같음), 히스토리 목록에서만 [종료]<br><a class="shot" href="img/flow/s7_my.png" target="_blank">피그마 화면 ↗</a> <code class="url-path">/dh_member/mypage</code></td>
       <td>마지막에 참여한 챌린지가 카드로 계속 보임 — 결과가 있으면 <b>결과발표</b>, 없으면 <b>종료</b> 배지 (10/19 저녁 변경)</td><td class="who"><span class="pill p-srv">서버만 다름</span></td></tr>
     <tr><td class="no">4</td><td class="where">챌린지 목록<br>비로그인 띠</td>
-      <td>"로그인하고 킨스 챌린지 참여해요!" 같은 로그인 유도 문구가 흐름<br><a class="shot" href="img/flow/s2_list.png" target="_blank">피그마 화면 ↗</a></td>
+      <td>"로그인하고 킨스 챌린지 참여해요!" 같은 로그인 유도 문구가 흐름<br><a class="shot" href="img/flow/s2_list.png" target="_blank">피그마 화면 ↗</a> <code class="url-path">/dh/challenge_list</code></td>
       <td>공지사항 최신 제목 3개가 흐름</td><td class="who"><span class="pill p-srv">서버만 다름</span></td></tr>
     <tr><td class="no">5</td><td class="where">챌린지 목록<br>진행 중인 챌린지</td>
       <td>목록 기간 문구가 상태별로 바뀜 (신청 기간 / 진행중 기간 / 종료)</td>
       <td>탭 · 카드 상태가 <b>신청 기간</b> 기준이라, 신청이 끝나고 진행 중인 챌린지가 <q>종료</q>로 보이고 종료 탭에 들어감 (10/19: 10월 챌린지 진행 중인데 <q>종료 · 26/10/1 ~ 26/10/31</q>)<br><a class="shot" href="img/srv/u_list.jpg" target="_blank">서버 화면 ↗</a> <code class="url-path">/dh/challenge_list</code></td><td class="who"><span class="pill p-srv">서버만 다름</span></td></tr>
     <tr><td class="no">6</td><td class="where">비로그인<br>마이페이지</td>
-      <td>로그아웃 상태 마이페이지 — <q>로그인하고 더 많은 기능을 이용해요 :-)</q> + 나의 챌린지 · 체크리스트 히스토리 제목<br><a class="shot" href="img/flow/s2_my_logout.png" target="_blank">피그마 화면 ↗</a></td>
+      <td>로그아웃 상태 마이페이지 — <q>로그인하고 더 많은 기능을 이용해요 :-)</q> + 나의 챌린지 · 체크리스트 히스토리 제목<br><a class="shot" href="img/flow/s2_my_logout.png" target="_blank">피그마 화면 ↗</a> <code class="url-path">/dh_member/mypage</code></td>
       <td>마이페이지를 열면 바로 <b>로그인 화면으로 이동</b> (화면 코드에는 비로그인 모양이 있지만 컨트롤러가 먼저 보냄)</td><td class="who"><span class="pill p-srv">서버만 다름</span></td></tr>
   </table></div>
 

@@ -48,6 +48,7 @@
   .lb button{position:fixed;top:10px;border:0;border-radius:999px;background:#fff;color:#222;font-size:15px;padding:6px 14px;cursor:pointer}
   .lb .x{right:14px} .lb .pv{left:14px} .lb .nx{left:74px}
   @media print{body{background:#fff} .box{break-inside:avoid} .shots{display:none}}
+  .url-path{display:block;font:12px/1.4 Consolas,"Courier New",monospace;color:#2563eb;word-break:break-all;margin-top:2px}
 </style>
 </head>
 <body>
@@ -90,29 +91,29 @@
   </div>
 
   <div class="shots">
-    <figure data-src="s1_home"><figcaption>Home – 챌린지 미참여</figcaption></figure>
-    <figure data-src="s1_ck_main"><figcaption>체크리스트 main<small>비로그인</small></figcaption></figure>
-    <figure data-src="s1_ck_main_login"><figcaption>체크리스트 main<small>로그인했을 경우</small></figcaption></figure>
-    <figure data-src="s1_ck_pick"><figcaption>고민 선택 전</figcaption></figure>
-    <figure data-src="s1_qna1"><figcaption>QnA 1<small>인사이트 나오는 경우</small></figcaption></figure>
-    <figure data-src="s1_qna2"><figcaption>QnA 2</figcaption></figure>
-    <figure data-src="s1_qna3"><figcaption>QnA 3</figcaption></figure>
-    <figure data-src="s1_qna4"><figcaption>QnA 4</figcaption></figure>
-    <figure data-src="s1_qna5"><figcaption>QnA 5</figcaption></figure>
-    <figure data-src="s1_loading"><figcaption>결과 로딩중</figcaption></figure>
-    <figure data-src="s1_result_max"><figcaption>결과 페이지<small>최대치 (부정 답변 많음)</small></figcaption></figure>
-    <figure data-src="s1_result_stable"><figcaption>결과 페이지<small>안정형 (전부 긍정)</small></figcaption></figure>
-    <figure data-src="s1_save_type"><figcaption>저장 타입 선택</figcaption></figure>
-    <figure data-src="s1_share_simple"><figcaption>사진으로 공유<small>간단히</small></figcaption></figure>
-    <figure data-src="s1_share_full"><figcaption>사진으로 공유<small>전체</small></figcaption></figure>
-    <figure data-src="s1_copy_toast" class="small"><figcaption>링크 복사 알림</figcaption></figure>
-    <figure data-src="s1_share_link"><figcaption>웹링크로 공유한 결과 페이지</figcaption></figure>
-    <figure data-src="s1_my"><figcaption>마이페이지 – 로그인 상태</figcaption></figure>
-    <figure data-src="s1_ckhist_list"><figcaption>체크리스트 히스토리<small>전체 목록</small></figcaption></figure>
-    <figure data-src="s1_ckhist_filter"><figcaption>체크리스트 히스토리<small>필터</small></figcaption></figure>
-    <figure data-src="s1_ckhist_result"><figcaption>체크리스트 히스토리<small>결과</small></figcaption></figure>
-    <figure data-src="s1_ckhist_none"><figcaption>체크리스트 히스토리<small>없음</small></figcaption></figure>
-    <figure data-src="s1_login_join" class="wide"><figcaption>회원가입 프로세스 (챌린지 사이트 로그인 수정) — 로그인 · 정보 입력 · 약관 · 가입 완료</figcaption></figure>
+    <figure data-src="s1_home"><figcaption>Home – 챌린지 미참여<code class="url-path">/</code></figcaption></figure>
+    <figure data-src="s1_ck_main"><figcaption>체크리스트 main<small>비로그인</small><code class="url-path">/dh/signal</code></figcaption></figure>
+    <figure data-src="s1_ck_main_login"><figcaption>체크리스트 main<small>로그인했을 경우</small><code class="url-path">/dh/signal</code></figcaption></figure>
+    <figure data-src="s1_ck_pick"><figcaption>고민 선택 전<code class="url-path">/dh/signal_index</code></figcaption></figure>
+    <figure data-src="s1_qna1"><figcaption>QnA 1<small>인사이트 나오는 경우</small><code class="url-path">/dh/signal_checklist?code=</code></figcaption></figure>
+    <figure data-src="s1_qna2"><figcaption>QnA 2<code class="url-path">/dh/signal_checklist?code=</code></figcaption></figure>
+    <figure data-src="s1_qna3"><figcaption>QnA 3<code class="url-path">/dh/signal_checklist?code=</code></figcaption></figure>
+    <figure data-src="s1_qna4"><figcaption>QnA 4<code class="url-path">/dh/signal_checklist?code=</code></figcaption></figure>
+    <figure data-src="s1_qna5"><figcaption>QnA 5<code class="url-path">/dh/signal_checklist?code=</code></figcaption></figure>
+    <figure data-src="s1_loading"><figcaption>결과 로딩중<code class="url-path">/dh/signal_checklist?code= (결과 보기 후 로딩)</code></figcaption></figure>
+    <figure data-src="s1_result_max"><figcaption>결과 페이지<small>최대치 (부정 답변 많음)</small><code class="url-path">/dh/signal_result?idx=</code></figcaption></figure>
+    <figure data-src="s1_result_stable"><figcaption>결과 페이지<small>안정형 (전부 긍정)</small><code class="url-path">/dh/signal_result?idx=</code></figcaption></figure>
+    <figure data-src="s1_save_type"><figcaption>저장 타입 선택<code class="url-path">/dh/signal_result?idx= (저장 팝업)</code></figcaption></figure>
+    <figure data-src="s1_share_simple"><figcaption>사진으로 공유<small>간단히</small><code class="url-path">/dh/signal_result?idx= (이미지 저장)</code></figcaption></figure>
+    <figure data-src="s1_share_full"><figcaption>사진으로 공유<small>전체</small><code class="url-path">/dh/signal_result?idx= (이미지 저장)</code></figcaption></figure>
+    <figure data-src="s1_copy_toast" class="small"><figcaption>링크 복사 알림<code class="url-path">/dh/signal_result?idx= (링크 복사)</code></figcaption></figure>
+    <figure data-src="s1_share_link"><figcaption>웹링크로 공유한 결과 페이지<code class="url-path">/dh/signal_result?idx=&amp;share=1</code></figcaption></figure>
+    <figure data-src="s1_my"><figcaption>마이페이지 – 로그인 상태<code class="url-path">/dh_member/mypage</code></figcaption></figure>
+    <figure data-src="s1_ckhist_list"><figcaption>체크리스트 히스토리<small>전체 목록</small><code class="url-path">/dh/my_checklist</code></figcaption></figure>
+    <figure data-src="s1_ckhist_filter"><figcaption>체크리스트 히스토리<small>필터</small><code class="url-path">/dh/my_checklist</code></figcaption></figure>
+    <figure data-src="s1_ckhist_result"><figcaption>체크리스트 히스토리<small>결과</small><code class="url-path">/dh/signal_result?idx=</code></figcaption></figure>
+    <figure data-src="s1_ckhist_none"><figcaption>체크리스트 히스토리<small>없음</small><code class="url-path">/dh/my_checklist</code></figcaption></figure>
+    <figure data-src="s1_login_join" class="wide"><figcaption>회원가입 프로세스 (챌린지 사이트 로그인 수정) — 로그인 · 정보 입력 · 약관 · 가입 완료<code class="url-path">/dh_member/login · /dh_member/join</code></figcaption></figure>
   </div>
 
   <h2 id="s2"><span class="no">2</span>챌린지 참여 전</h2>
@@ -142,18 +143,18 @@
   </div>
 
   <div class="shots">
-    <figure data-src="s2_crm_open"><figcaption>카카오톡 CRM<small>새 챌린지 신청이 열렸어요</small></figcaption></figure>
-    <figure data-src="s2_home"><figcaption>Home – 챌린지 미참여</figcaption></figure>
-    <figure data-src="s2_menu"><figcaption>햄버거메뉴</figcaption></figure>
-    <figure data-src="s2_my_logout"><figcaption>마이페이지<small>로그아웃 + 진행중 챌린지 없음</small></figcaption></figure>
-    <figure data-src="s2_my_before"><figcaption>마이페이지<small>로그인 · 참여 전</small></figcaption></figure>
-    <figure data-src="s2_hist_none"><figcaption>챌린지 히스토리<small>없을 때</small></figcaption></figure>
-    <figure data-src="s2_list"><figcaption>챌린지 목록<small>진행중 · 종료 없음</small></figcaption></figure>
-    <figure data-src="s2_view"><figcaption>챌린지 개별 화면<small>참여 전 · 로그인 후</small></figcaption></figure>
-    <figure data-src="s2_view_noshot" class="small"><figcaption>햅삐들의 챌린지 인증<small>아직 인증이 없을 때 (D'만)</small></figcaption></figure>
-    <figure data-src="s2_applied"><figcaption>챌린지가 신청되었어요<small>서비스 화면</small></figcaption></figure>
-    <figure data-src="s2_crm_applied"><figcaption>카카오톡 CRM<small>챌린지가 신청되었어요</small></figcaption></figure>
-    <figure data-src="s2_apply" class="wide"><figcaption>챌린지 신청하기 — 본인 인증 · 제품 수령 주소 · 동의</figcaption></figure>
+    <figure data-src="s2_crm_open"><figcaption>카카오톡 CRM<small>새 챌린지 신청이 열렸어요</small><code class="url-path">카카오톡 알림톡 (페이지 없음 · 미연동)</code></figcaption></figure>
+    <figure data-src="s2_home"><figcaption>Home – 챌린지 미참여<code class="url-path">/</code></figcaption></figure>
+    <figure data-src="s2_menu"><figcaption>햄버거메뉴<code class="url-path">/ (햄버거 메뉴)</code></figcaption></figure>
+    <figure data-src="s2_my_logout"><figcaption>마이페이지<small>로그아웃 + 진행중 챌린지 없음</small><code class="url-path">/dh_member/mypage</code></figcaption></figure>
+    <figure data-src="s2_my_before"><figcaption>마이페이지<small>로그인 · 참여 전</small><code class="url-path">/dh_member/mypage</code></figcaption></figure>
+    <figure data-src="s2_hist_none"><figcaption>챌린지 히스토리<small>없을 때</small><code class="url-path">/dh/my_challenge</code></figcaption></figure>
+    <figure data-src="s2_list"><figcaption>챌린지 목록<small>진행중 · 종료 없음</small><code class="url-path">/dh/challenge_list</code></figcaption></figure>
+    <figure data-src="s2_view"><figcaption>챌린지 개별 화면<small>참여 전 · 로그인 후</small><code class="url-path">/dh/challenge_view?idx=</code></figcaption></figure>
+    <figure data-src="s2_view_noshot" class="small"><figcaption>햅삐들의 챌린지 인증<small>아직 인증이 없을 때 (D'만)</small><code class="url-path">/dh/challenge_view?idx=</code></figcaption></figure>
+    <figure data-src="s2_applied"><figcaption>챌린지가 신청되었어요<small>서비스 화면</small><code class="url-path">/dh/challenge_apply_done?idx=</code></figcaption></figure>
+    <figure data-src="s2_crm_applied"><figcaption>카카오톡 CRM<small>챌린지가 신청되었어요</small><code class="url-path">카카오톡 알림톡 (페이지 없음 · 미연동)</code></figcaption></figure>
+    <figure data-src="s2_apply" class="wide"><figcaption>챌린지 신청하기 — 본인 인증 · 제품 수령 주소 · 동의<code class="url-path">/dh/challenge_apply?idx=</code></figcaption></figure>
   </div>
 
   <h2 id="s3"><span class="no">3</span>챌린지 신청 후, 시작 전</h2>
@@ -172,9 +173,9 @@
   </div>
 
   <div class="shots">
-    <figure data-src="s3_home"><figcaption>Home<small>신청 후, 시작 전</small></figcaption></figure>
-    <figure data-src="s3_view"><figcaption>챌린지 개별 화면<small>신청 후, 시작 전</small></figcaption></figure>
-    <figure data-src="s3_my"><figcaption>마이페이지<small>로그인 · 참여 전 (변화 없음)</small></figcaption></figure>
+    <figure data-src="s3_home"><figcaption>Home<small>신청 후, 시작 전</small><code class="url-path">/</code></figcaption></figure>
+    <figure data-src="s3_view"><figcaption>챌린지 개별 화면<small>신청 후, 시작 전</small><code class="url-path">/dh/challenge_view?idx=</code></figcaption></figure>
+    <figure data-src="s3_my"><figcaption>마이페이지<small>로그인 · 참여 전 (변화 없음)</small><code class="url-path">/dh_member/mypage</code></figcaption></figure>
   </div>
 
   <h2 id="s4"><span class="no">4</span>챌린지 진행</h2>
@@ -203,19 +204,19 @@
   </div>
 
   <div class="shots">
-    <figure data-src="s4_crm_start"><figcaption>카카오톡 CRM<small>챌린지가 시작되었어요</small></figcaption></figure>
-    <figure data-src="s4_home"><figcaption>Home – 참여중</figcaption></figure>
-    <figure data-src="s4_my_logout"><figcaption>마이페이지<small>로그아웃 상태</small></figcaption></figure>
-    <figure data-src="s4_my"><figcaption>마이페이지<small>로그인 · 진행중</small></figcaption></figure>
-    <figure data-src="s4_hist"><figcaption>챌린지 히스토리<small>진행중</small></figcaption></figure>
-    <figure data-src="s4_view"><figcaption>챌린지 개별 화면<small>참여중</small></figcaption></figure>
-    <figure data-src="s4_verify1_1"><figcaption>인증하기 1-1</figcaption></figure>
-    <figure data-src="s4_verify1_2"><figcaption>인증하기 1-2</figcaption></figure>
-    <figure data-src="s4_verify2_1"><figcaption>인증하기 2-1</figcaption></figure>
-    <figure data-src="s4_verify2_2"><figcaption>인증하기 2-2</figcaption></figure>
-    <figure data-src="s4_verify3"><figcaption>인증하기 3</figcaption></figure>
-    <figure data-src="s4_verify4"><figcaption>인증하기 4</figcaption></figure>
-    <figure data-src="s4_insta" class="wide"><figcaption>챌린지 기간 중 인스타 인증 데이 설명</figcaption></figure>
+    <figure data-src="s4_crm_start"><figcaption>카카오톡 CRM<small>챌린지가 시작되었어요</small><code class="url-path">카카오톡 알림톡 (페이지 없음 · 미연동)</code></figcaption></figure>
+    <figure data-src="s4_home"><figcaption>Home – 참여중<code class="url-path">/</code></figcaption></figure>
+    <figure data-src="s4_my_logout"><figcaption>마이페이지<small>로그아웃 상태</small><code class="url-path">/dh_member/mypage</code></figcaption></figure>
+    <figure data-src="s4_my"><figcaption>마이페이지<small>로그인 · 진행중</small><code class="url-path">/dh_member/mypage</code></figcaption></figure>
+    <figure data-src="s4_hist"><figcaption>챌린지 히스토리<small>진행중</small><code class="url-path">/dh/my_challenge</code></figcaption></figure>
+    <figure data-src="s4_view"><figcaption>챌린지 개별 화면<small>참여중</small><code class="url-path">/dh/challenge_view?idx=</code></figcaption></figure>
+    <figure data-src="s4_verify1_1"><figcaption>인증하기 1-1<code class="url-path">/dh/challenge_verify?idx=</code></figcaption></figure>
+    <figure data-src="s4_verify1_2"><figcaption>인증하기 1-2<code class="url-path">/dh/challenge_verify?idx=</code></figcaption></figure>
+    <figure data-src="s4_verify2_1"><figcaption>인증하기 2-1<code class="url-path">/dh/challenge_verify?idx=</code></figcaption></figure>
+    <figure data-src="s4_verify2_2"><figcaption>인증하기 2-2<code class="url-path">/dh/challenge_verify?idx=</code></figcaption></figure>
+    <figure data-src="s4_verify3"><figcaption>인증하기 3<code class="url-path">/dh/challenge_verify?idx=</code></figcaption></figure>
+    <figure data-src="s4_verify4"><figcaption>인증하기 4<code class="url-path">/dh/challenge_verify_done?idx=</code></figcaption></figure>
+    <figure data-src="s4_insta" class="wide"><figcaption>챌린지 기간 중 인스타 인증 데이 설명<code class="url-path">페이지 없음 (인스타 인증 데이 미구현)</code></figcaption></figure>
   </div>
 
   <h2 id="s5"><span class="no">5</span>챌린지 진행 – 결과 확인중 (검수중)</h2>
@@ -232,11 +233,11 @@
   </div>
 
   <div class="shots">
-    <figure data-src="s5_home"><figcaption>Home – 검수중</figcaption></figure>
-    <figure data-src="s5_my"><figcaption>마이페이지<small>결과대기중</small></figcaption></figure>
-    <figure data-src="s5_hist"><figcaption>챌린지 히스토리<small>결과대기중</small></figcaption></figure>
-    <figure data-src="s5_view"><figcaption>챌린지 개별 화면<small>검수중</small></figcaption></figure>
-    <figure data-src="s5_verify_off"><figcaption>인증하기<small>검수중이라 비활성화</small></figcaption></figure>
+    <figure data-src="s5_home"><figcaption>Home – 검수중<code class="url-path">/</code></figcaption></figure>
+    <figure data-src="s5_my"><figcaption>마이페이지<small>결과대기중</small><code class="url-path">/dh_member/mypage</code></figcaption></figure>
+    <figure data-src="s5_hist"><figcaption>챌린지 히스토리<small>결과대기중</small><code class="url-path">/dh/my_challenge</code></figcaption></figure>
+    <figure data-src="s5_view"><figcaption>챌린지 개별 화면<small>검수중</small><code class="url-path">/dh/challenge_view?idx=</code></figcaption></figure>
+    <figure data-src="s5_verify_off"><figcaption>인증하기<small>검수중이라 비활성화</small><code class="url-path">/dh/challenge_verify?idx=</code></figcaption></figure>
   </div>
 
   <h2 id="s6"><span class="no">6</span>챌린지 진행 – 결과 발표</h2>
@@ -259,19 +260,19 @@
   </div>
 
   <div class="shots">
-    <figure data-src="s6_crm_result"><figcaption>카카오톡 CRM<small>결과 발표되었어요</small></figcaption></figure>
-    <figure data-src="s6_success"><figcaption>성공<small>완주를 축하합니다</small></figcaption></figure>
-    <figure data-src="s6_fail"><figcaption>실패<small>실패했습니다</small></figcaption></figure>
-    <figure data-src="s6_record1"><figcaption>기록 확인하기 1</figcaption></figure>
-    <figure data-src="s6_record2"><figcaption>기록 확인하기 2</figcaption></figure>
-    <figure data-src="s6_record3"><figcaption>기록 확인하기 3</figcaption></figure>
-    <figure data-src="s6_stamp" class="small"><figcaption>기록 칸<small>업로드하지 않은 날</small></figcaption></figure>
-    <figure data-src="s6_crm_end"><figcaption>카카오톡 CRM<small>챌린지가 종료되었어요 (성공 시 코드)</small></figcaption></figure>
-    <figure data-src="s6_card" class="small"><figcaption>루틴 가이드 카드<small>default</small></figcaption></figure>
-    <figure data-src="s6_card_hover" class="small"><figcaption>루틴 가이드 카드<small>hover</small></figcaption></figure>
-    <figure data-src="s6_home"><figcaption>Home – 챌린지 미참여</figcaption></figure>
-    <figure data-src="s6_my"><figcaption>마이페이지<small>결과발표</small></figcaption></figure>
-    <figure data-src="s6_hist"><figcaption>챌린지 히스토리<small>결과발표</small></figcaption></figure>
+    <figure data-src="s6_crm_result"><figcaption>카카오톡 CRM<small>결과 발표되었어요</small><code class="url-path">카카오톡 알림톡 (페이지 없음 · 미연동)</code></figcaption></figure>
+    <figure data-src="s6_success"><figcaption>성공<small>완주를 축하합니다</small><code class="url-path">/dh/challenge_result?idx=</code></figcaption></figure>
+    <figure data-src="s6_fail"><figcaption>실패<small>실패했습니다</small><code class="url-path">/dh/challenge_result_fail?idx=</code></figcaption></figure>
+    <figure data-src="s6_record1"><figcaption>기록 확인하기 1<code class="url-path">/dh/challenge_record?idx=</code></figcaption></figure>
+    <figure data-src="s6_record2"><figcaption>기록 확인하기 2<code class="url-path">/dh/challenge_record?idx=</code></figcaption></figure>
+    <figure data-src="s6_record3"><figcaption>기록 확인하기 3<code class="url-path">/dh/challenge_record?idx=</code></figcaption></figure>
+    <figure data-src="s6_stamp" class="small"><figcaption>기록 칸<small>업로드하지 않은 날</small><code class="url-path">/dh/challenge_record?idx=</code></figcaption></figure>
+    <figure data-src="s6_crm_end"><figcaption>카카오톡 CRM<small>챌린지가 종료되었어요 (성공 시 코드)</small><code class="url-path">카카오톡 알림톡 (페이지 없음 · 미연동)</code></figcaption></figure>
+    <figure data-src="s6_card" class="small"><figcaption>루틴 가이드 카드<small>default</small><code class="url-path">/dh/challenge_result_fail?idx= (추천 루틴)</code></figcaption></figure>
+    <figure data-src="s6_card_hover" class="small"><figcaption>루틴 가이드 카드<small>hover</small><code class="url-path">/dh/challenge_result_fail?idx= (추천 루틴)</code></figcaption></figure>
+    <figure data-src="s6_home"><figcaption>Home – 챌린지 미참여<code class="url-path">/</code></figcaption></figure>
+    <figure data-src="s6_my"><figcaption>마이페이지<small>결과발표</small><code class="url-path">/dh_member/mypage</code></figcaption></figure>
+    <figure data-src="s6_hist"><figcaption>챌린지 히스토리<small>결과발표</small><code class="url-path">/dh/my_challenge</code></figcaption></figure>
   </div>
 
   <h2 id="s7"><span class="no">7</span>챌린지 진행 – 결과 확인 이후 (종료)</h2>
@@ -286,10 +287,10 @@
   </div>
 
   <div class="shots">
-    <figure data-src="s7_home"><figcaption>Home – 챌린지 미참여</figcaption></figure>
-    <figure data-src="s7_my"><figcaption>마이페이지<small>로그인 · 참여 전</small></figcaption></figure>
-    <figure data-src="s7_hist"><figcaption>챌린지 히스토리<small>종료</small></figcaption></figure>
-    <figure data-src="s7_view"><figcaption>챌린지 개별 화면<small>마감</small></figcaption></figure>
+    <figure data-src="s7_home"><figcaption>Home – 챌린지 미참여<code class="url-path">/</code></figcaption></figure>
+    <figure data-src="s7_my"><figcaption>마이페이지<small>로그인 · 참여 전</small><code class="url-path">/dh_member/mypage</code></figcaption></figure>
+    <figure data-src="s7_hist"><figcaption>챌린지 히스토리<small>종료</small><code class="url-path">/dh/my_challenge</code></figcaption></figure>
+    <figure data-src="s7_view"><figcaption>챌린지 개별 화면<small>마감</small><code class="url-path">/dh/challenge_view?idx=</code></figcaption></figure>
   </div>
 
   <p class="tip" style="margin-top:30px">CRM 발송 정리: 새 챌린지 신청 열림 · 신청 완료 · 챌린지 시작 · 진행 3일차 인스타 공유 데이 리마인드 · 결과 발표 · 종료(성공 시 적립금 코드)</p>
