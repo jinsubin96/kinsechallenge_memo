@@ -12,7 +12,8 @@
   h1{font-size:26px;margin:0 0 4px}
   .sub{color:var(--muted);margin:0 0 18px;font-size:14px}
   .warn{background:#fff6d6;border:1px solid #f3dd8a;border-radius:12px;padding:12px 16px;font-size:14px;margin-bottom:22px}
-  .sum{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:8px}
+  .sum{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:8px}
+  h2.teal{border-color:#0d9488}
   .sum a{display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;color:inherit;text-decoration:none}
   .sum a:hover{border-color:var(--blue)}
   .sum b{display:block;font-size:24px;line-height:1.2}
@@ -49,8 +50,9 @@
 
   <div class="sum">
     <a href="#a"><b>5</b><span>서버에 아직 없는 기능</span></a>
-    <a href="#b"><b>5</b><span>흐름(보이는 상태)이 다른 곳</span></a>
-    <a href="#c"><b>12</b><span>문구 · 모양이 다른 곳</span></a>
+    <a href="#b"><b>6</b><span>흐름(보이는 상태)이 다른 곳</span></a>
+    <a href="#e"><b>6</b><span>피그마에 없는데 서버에 있는 상태</span></a>
+    <a href="#c"><b>13</b><span>문구 · 모양이 다른 곳</span></a>
     <a href="#d"><b>3</b><span>비어 있는 링크</span></a>
   </div>
   <p class="tip"><span class="pill p-publ">퍼블과 같음</span> 서버가 퍼블대로 만들었고 피그마만 다름 · <span class="pill p-srv">서버만 다름</span> 피그마·퍼블은 같은데 서버가 바꿈 · <span class="pill p-none">미구현</span> 서버에 없음</p>
@@ -95,9 +97,37 @@
     <tr><td class="no">5</td><td class="where">챌린지 목록<br>진행 중인 챌린지</td>
       <td>목록 기간 문구가 상태별로 바뀜 (신청 기간 / 진행중 기간 / 종료)</td>
       <td>탭 · 카드 상태가 <b>신청 기간</b> 기준이라, 신청이 끝나고 진행 중인 챌린지가 <q>종료</q>로 보이고 종료 탭에 들어감 (10/19: 10월 챌린지 진행 중인데 <q>종료 · 26/10/1 ~ 26/10/31</q>)<br><a class="shot" href="img/srv/u_list.jpg" target="_blank">서버 화면 ↗</a></td><td class="who"><span class="pill p-srv">서버만 다름</span></td></tr>
+    <tr><td class="no">6</td><td class="where">비로그인<br>마이페이지</td>
+      <td>로그아웃 상태 마이페이지 — <q>로그인하고 더 많은 기능을 이용해요 :-)</q> + 나의 챌린지 · 체크리스트 히스토리 제목<br><a class="shot" href="img/flow/s2_my_logout.png" target="_blank">피그마 화면 ↗</a></td>
+      <td>마이페이지를 열면 바로 <b>로그인 화면으로 이동</b> (화면 코드에는 비로그인 모양이 있지만 컨트롤러가 먼저 보냄)</td><td class="who"><span class="pill p-srv">서버만 다름</span></td></tr>
   </table></div>
 
-  <h2 id="c" class="violet">3. 문구 · 모양이 다른 곳</h2>
+  <h2 id="e" class="teal">3. 피그마에 없는데 서버에 있는 상태</h2>
+  <p class="lead">피그마 화면에는 없는 카드 · 버튼 상태입니다. 대부분 퍼블 원본에 있던 것이고, 1번과 6번은 퍼블에도 없이 서버에서 더한 것이에요. 남길지 뺄지 정해 주세요.</p>
+  <div class="tbl"><table>
+    <tr><th></th><th>상태 · 언제</th><th>서버 화면</th><th>어디서 왔나</th></tr>
+    <tr><td class="no">1</td><td class="where">신청 시작 전<br>챌린지 상세</td>
+      <td>카드 <q>진행 예정 챌린지 · 곧 신청할 수 있어요 :-)</q> + 버튼 <q>지금은 신청할 수 없어요</q>(회색)<br><span class="tip">목록의 진행 예정 카드는 눌리지 않고 홈에도 안 나와서, 주소를 직접 열어야만 보임</span><br><a class="shot" href="img/v_wait.jpg" target="_blank">서버 화면 ↗</a></td>
+      <td class="who"><span class="pill p-srv">서버에서 더함</span></td></tr>
+    <tr><td class="no">2</td><td class="where">신청 안 한 회원<br>신청 마감 ~ 진행 기간</td>
+      <td>카드 <q>진행중인 챌린지 · 신청 기간이 종료됐어요.</q> + 회색 진행바(지난 날 수만큼) + 버튼 <q>지금은 신청할 수 없어요</q><br><a class="shot" href="img/v_missed.jpg" target="_blank">서버 화면 ↗</a></td>
+      <td class="who"><span class="pill p-publ">퍼블에 있음</span></td></tr>
+    <tr><td class="no">3</td><td class="where">신청 안 한 회원<br>검수 기간</td>
+      <td>진행이 끝나면 바로 <q>종료된 챌린지 · 다음에 다시 돌아올게요 :-)</q> (참여 회원은 이때 <q>인증 확인중</q>)</td>
+      <td class="who"><span class="pill p-publ">퍼블에 있음</span></td></tr>
+    <tr><td class="no">4</td><td class="where">비로그인<br>챌린지 상세</td>
+      <td>버튼 <q>로그인 후 신청하기</q> → 로그인 뒤 그 상세로 돌아옴<br><a class="shot" href="img/v_apply_out.jpg" target="_blank">서버 화면 ↗</a></td>
+      <td class="who"><span class="pill p-publ">퍼블에 있음</span></td></tr>
+    <tr><td class="no">5</td><td class="where">오늘 인증을 이미 함<br>인증하기 다시 열기</td>
+      <td>업로드 칸 <q>지금은 인증할 수 없어요</q> + 버튼 <q>오늘의 루틴 완료 :-)</q>(회색) · 도장 눌러 사진 보기<br><span class="tip">피그마는 인증 직후 완료 화면만 있고, 같은 날 다시 들어온 화면은 없음</span><br><a class="shot" href="img/srv/u_verify_2.jpg" target="_blank">서버 화면 ↗</a></td>
+      <td class="who"><span class="pill p-publ">칸은 퍼블</span> <span class="pill p-srv">버튼 문구는 서버</span></td></tr>
+    <tr><td class="no">6</td><td class="where">관리자가 인증을 반려</td>
+      <td>도장 누르면 올렸던 사진 + 날짜 옆 <q>반려됐어요</q> · 그날은 다시 올릴 수 있음 · 내 기록 보기에서는 실패 도장으로 표시</td>
+      <td class="who"><span class="pill p-srv">서버에서 더함</span></td></tr>
+  </table></div>
+  <p class="tip">그 밖에 서버에만 있는 것: 햄버거 메뉴 로그인 / 로그아웃 버튼, 회원가입 알림톡 발송 동의(선택) — 4번 표 11 · 12</p>
+
+  <h2 id="c" class="violet">4. 문구 · 모양이 다른 곳</h2>
   <div class="tbl"><table>
     <tr><th></th><th>화면</th><th>피그마</th><th>서버</th><th>구분</th></tr>
     <tr><td class="no">1</td><td class="where">체크리스트 시작</td>
@@ -131,9 +161,12 @@
     <tr><td class="no">12</td><td class="where">회원가입 정보 입력</td>
       <td>이름 · 휴대전화 · 아이디 · 비밀번호 → 가입</td>
       <td>같고, 아래에 <b>알림톡 발송 동의(선택)</b> 체크가 더 있음. SNS 첫 가입은 아이디 · 비밀번호 칸 없음</td><td class="who"><span class="pill p-srv">서버만 다름</span></td></tr>
+    <tr><td class="no">13</td><td class="where">체크리스트 시작 안내</td>
+      <td>버튼 위에 <q>내 몸이 보내는 신호를 발견할 수 있는 셀프 체크리스트를 시작해보세요!</q></td>
+      <td>이 문구를 숨겨 둠(주석 처리) — 버튼만 보임</td><td class="who"><span class="pill p-srv">서버만 다름</span></td></tr>
   </table></div>
 
-  <h2 id="d" class="blue">4. 비어 있는 링크</h2>
+  <h2 id="d" class="blue">5. 비어 있는 링크</h2>
   <p class="lead">피그마와 차이는 아니지만 확인하다 보인 것 — 눌러도 이동하지 않습니다(href 비어 있음, 퍼블 원본도 비어 있음).</p>
   <div class="box"><ul>
     <li><b>마이페이지 하단 '약관확인'</b> — 햄버거 메뉴의 약관확인은 연결돼 있는데 마이페이지 쪽만 비어 있음</li>
@@ -142,7 +175,7 @@
   </ul>
   <p class="tip" style="margin:10px 0 0">+ 체크리스트 시작 화면 제목에 "나의"가 두 번 나옴 (<q>나의 / 나의 웰니스 상태 / 체크하기</q>, 10/19 화면 확인)</p></div>
 
-  <h2 class="green">5. 피그마와 같은 곳</h2>
+  <h2 class="green">6. 피그마와 같은 곳</h2>
   <div class="box"><ul>
     <li>챌린지 목록 탭(전체 · 진행중 · 종료), 카드의 신청 기간 · 일수 · 월 표시, 진행 예정 "What is next? / Comming soon"</li>
     <li>챌린지 상세: 신청 기간 띠, 상세 이미지, 햅삐들의 챌린지 인증(사진 6장), 상태별 버튼(신청하기 · 사진 등록하고 인증하기 + "잘 하고 있어요!" 말풍선 · 인증 확인중 · 종료 "다음에 다시 돌아올게요 :-)")</li>
