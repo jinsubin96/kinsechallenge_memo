@@ -50,7 +50,7 @@
       <ul>
         <li>사용자 화면 조건문 기준 = <b>퍼블 엑셀 + 퍼블 원본</b></li>
         <li>엑셀 조건은 서버에 거의 그대로 들어가 있음</li>
-        <li>엑셀과 다른 2가지(메인 카드 · 상세 비로그인 버튼)는 <b>지금 방식이 맞아서 유지</b> (엑셀대로 바꿨다가 되돌림)</li>
+        <li>메인 카드 · 상세 비로그인 버튼은 <b>엑셀대로</b></li>
         <li>md 는 참고용 — 엑셀과 다른 내용은 반영하지 않음</li>
       </ul>
     </div>
@@ -104,8 +104,8 @@
     <h2>4. 엑셀 ↔ 지금 서버 <small>(엑셀 2.조건별 노출 기준)</small></h2>
     <table>
       <tr><th>구분</th><th>항목</th><th>엑셀</th><th>지금</th></tr>
-      <tr><td class="k"><span class="tag warn">지금 방식 유지</span></td><td class="item">메인 카드 · 신청한 챌린지 없음</td><td class="p">신청한 챌린지 0개 → none-challenge "챌린지 참여하기"</td><td>① 신청한 챌린지 → ② 신청기간인 챌린지 → ③ "챌린지 참여하기"<span class="note">엑셀대로 바꿨다가 되돌림 (2026-10-16)</span></td></tr>
-      <tr><td class="k"><span class="tag warn">지금 방식 유지</span></td><td class="item">상세 버튼 · 비로그인</td><td class="p">기간 구분 없이 "로그인 후 신청하기"</td><td>신청기간에만 "로그인 후 신청하기", 그 외 "지금은 신청할 수 없어요" / "다음에 다시 돌아올게요 :-)"<span class="note">엑셀대로 바꿨다가 되돌림 (2026-10-16)</span></td></tr>
+      <tr><td class="k"><span class="tag same">같음</span></td><td class="item">메인 카드 · 신청한 챌린지 없음</td><td class="p">신청한 챌린지 0개 → none-challenge "챌린지 참여하기"</td><td>같음</td></tr>
+      <tr><td class="k"><span class="tag same">같음</span></td><td class="item">상세 버튼 · 비로그인</td><td class="p">기간 구분 없이 "로그인 후 신청하기"</td><td>같음</td></tr>
       <tr><td class="k"><span class="tag same">같음</span></td><td class="item">카드 상태</td><td class="p">upcoming / missed / review / ended / none-challenge, 진행바 인증한 날 수만큼 on</td><td>같음 (진행중 + 신청함은 마크업대로 클래스 없음 — 엑셀 오기)</td></tr>
       <tr><td class="k"><span class="tag same">같음</span></td><td class="item">상세 버튼 (로그인)</td><td class="p">신청하기 / done 신청 완료 / verify 인증하기 / verify review 인증 확인중 / off</td><td>같음, .apply-tip 은 인증할 수 있을 때만</td></tr>
       <tr><td class="k"><span class="tag same">같음</span></td><td class="item">사진 인증</td><td class="p">.verify-upload 기본 / off + disabled, 도장 on · fail · today, 사진 골라야 인증 버튼</td><td>같음 + 오늘 올렸으면 "오늘의 루틴 완료 :-)"</td></tr>
