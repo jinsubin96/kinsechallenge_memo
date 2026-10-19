@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>챌린지 페이지 목록</title>
+<style>
+  :root{--ink:#1f2a37;--muted:#6b7686;--line:#e3e8ef;--bg:#f6f8fb;--card:#fff;--acc:#be185d}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 "Malgun Gothic","Apple SD Gothic Neo",sans-serif}
+  .wrap{max-width:1040px;margin:0 auto;padding:28px 16px 60px}
+  h1{font-size:24px;margin:0 0 4px}
+  h2{font-size:18px;margin:32px 0 10px}
+  .sub{color:var(--muted);margin:0 0 20px;font-size:13px}
+  a{color:#2563eb}
+  .tbl{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:12px}
+  table{border-collapse:collapse;width:100%;min-width:860px;font-size:14px}
+  th,td{border-bottom:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
+  th{background:#f1f4f8;font-size:13px;color:var(--muted);white-space:nowrap}
+  tr:last-child td{border-bottom:0}
+  td.no{color:var(--muted);white-space:nowrap}
+  td.url code{font-size:13px;white-space:nowrap}
+  td.url b{display:block;font-size:15px}
+  q{quotes:"“" "”"}
+  .tag{display:inline-block;font-size:12px;padding:1px 8px;border-radius:10px;background:#fde2ef;color:var(--acc);margin:2px 4px 0 0;white-space:nowrap}
+  .tag.g{background:#e6f7c8;color:#4d7c0f}
+  .tag.b{background:#dbeefe;color:#1d4ed8}
+  .tag.x{background:#e9edf2;color:#55606e}
+  .box{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 18px}
+  .box ul{margin:0;padding-left:20px}
+  .flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:14px}
+  .flow span{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:4px 10px}
+  .flow i{color:var(--muted);font-style:normal}
+  .shots{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin-top:12px}
+  .shots figure{margin:0;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px;font-size:12px;color:var(--muted)}
+  .shots img{width:100%;height:220px;object-fit:cover;object-position:top;border-radius:6px;display:block;margin-bottom:6px}
+  .shots b{display:block;color:var(--ink);font-size:13px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>챌린지 페이지 목록</h1>
+  <p class="sub">사용자 화면의 챌린지 관련 페이지 전체 · 2026-10-19 저녁 기준 (검수 결과 일괄 공개 · 당일 사진 변경 반영) · <a href="index.html">목차</a></p>
+
+  <h2>한눈에 보기</h2>
+  <div class="flow">
+    <span>목록</span><i>→</i><span>상세</span><i>→</i><span>신청</span><i>→</i><span>신청 완료</span><i>→</i><span>사진 인증</span><i>→</i><span>인증 완료</span><i>⋯ 검수기간 끝 →</i><span>결과 (성공 / 실패)</span><i>→</i><span>내 기록</span>
+  </div>
+  <p class="sub" style="margin-top:8px">마이페이지 '나의 챌린지'에서는 상태에 따라 사진 인증 · 결과 화면으로 바로 들어가요.</p>
+
+  <h2>페이지별 정리</h2>
+  <div class="tbl"><table>
+    <tr><th>#</th><th>주소 · 이름</th><th>언제 · 누가 볼 수 있나</th><th>화면 내용</th><th>들어오는 길 / 다음 화면</th></tr>
+    <tr><td class="no">1</td><td class="url"><b>챌린지 목록</b><code>/dh/challenge_list</code></td>
+      <td>누구나 · 탭 전체 / 진행중 / 종료</td>
+      <td>공지 롤링(비로그인만) · 신청중 카드 · 진행 예정 카드(<q>진행 예정 챌린지</q>, 클릭 안 됨) · 종료 카드, 카드 월은 진행 시작일의 달</td>
+      <td>헤더 메뉴 · 홈 → 카드 누르면 <b>상세</b></td></tr>
+    <tr><td class="no">2</td><td class="url"><b>챌린지 상세</b><code>/dh/challenge_view?idx=</code></td>
+      <td>누구나 · 상태 카드와 하단 버튼이 기간 · 신청 여부에 따라 바뀜</td>
+      <td>상단 카드(신청 진행중 / 신청 완료 D-n / 참여중 n/총 / 참여 완료 · 인증 확인중 / 종료) · 상세 이미지 · <q>햅삐들의 챌린지 인증</q> 최신 6장<br>버튼 : <q>로그인 후 신청하기</q> · <q>챌린지 신청하기</q> · <q>신청 완료</q> · <q>사진 등록하고 인증하기</q> · <q>인증 확인중이에요</q> · <q>지금은 신청할 수 없어요</q> · <q>다음에 다시 돌아올게요 :-)</q></td>
+      <td>목록 · 홈 카드 → 신청 / 사진 인증</td></tr>
+    <tr><td class="no">3</td><td class="url"><b>챌린지 신청</b><code>/dh/challenge_apply?idx=</code></td>
+      <td>로그인 회원 · 신청기간 · 아직 신청 안 한 챌린지</td>
+      <td>본인 인증(이름 · 전화번호, <q>회원 정보와 동일해요</q>) · 제품 수령 주소 · 동의 3개 → <q>신청 완료하기</q></td>
+      <td>상세 <q>챌린지 신청하기</q> → <b>신청 완료</b></td></tr>
+    <tr><td class="no">4</td><td class="url"><b>신청 완료</b><code>/dh/challenge_apply_done?idx=</code></td>
+      <td>신청한 회원</td>
+      <td><q>챌린지 신청이 완료되었어요! / 작은 습관을 기르는 첫 시작!</q> + 챌린지 진행 기간</td>
+      <td>신청 저장 직후 → 나의 챌린지 · 홈</td></tr>
+    <tr><td class="no">5</td><td class="url"><b>사진 인증</b><code>/dh/challenge_verify?idx=</code></td>
+      <td>신청한 회원 · 진행 시작부터 (시작 전 · 미신청은 상세로)<br>결과 공개 뒤(검수기간 끝 + 결과 있음)에는 결과 화면으로 이동</td>
+      <td>사진 칸 + 도장판(인증한 날 · 놓친 날 · 오늘, 도장 누르면 그날 사진 · 날짜) + <q>사진이 안 올라가요!</q><br><span class="tag">진행기간</span> 하루 1장, 오늘 올렸으면 그 사진을 보여 주고 <b>그날에만</b> 다시 골라 변경 · 버튼 항상 <q>인증하기</q><br><span class="tag g">검수기간</span> 사진 칸 <q>지금은 인증할 수 없어요</q> · 버튼 <q>결과 대기중이에요</q><br><span class="tag x">검수 끝 · 결과 없음</span> 사진 칸 닫힘 · 버튼 없음</td>
+      <td>상세 <q>사진 등록하고 인증하기</q> · 나의 챌린지(진행중 · 결과대기중) → 올리면 <b>인증 완료</b></td></tr>
+    <tr><td class="no">6</td><td class="url"><b>인증 완료</b><code>/dh/challenge_verify_done?idx=</code></td>
+      <td>진행기간 · 오늘 사진을 올린 회원만 (아니면 사진 인증으로)</td>
+      <td><q>사진 인증 완료했어요! / 이대로만 계속, 꾸준히 해봐요:-)</q> + 오늘 올린 사진 + 도장판(누를 수 없음) + <q>갤러리에 저장</q>(이미지로 저장)<br>승인 · 반려 도장 표시 <b>없음</b> (퍼블 · 피그마에도 없음)</td>
+      <td>사진 인증에서 올린 직후</td></tr>
+    <tr><td class="no">7</td><td class="url"><b>챌린지 결과 (성공)</b><code>/dh/challenge_result?idx=</code></td>
+      <td>신청한 회원 · 결과 공개 뒤 · 결과 성공</td>
+      <td><q>챌린지 성공했어요! / 이번 챌린지로 한 걸음 더 나아갔어요.</q> + 성공 혜택 알림톡 안내 · <q>내 기록 보기</q> / <q>챌린지 홈으로 가기</q></td>
+      <td>나의 챌린지 <span class="tag b">결과발표</span> · 사진 인증 주소 → <b>내 기록</b></td></tr>
+    <tr><td class="no">8</td><td class="url"><b>챌린지 결과 (실패)</b><code>/dh/challenge_result_fail?idx=</code></td>
+      <td>신청한 회원 · 결과 공개 뒤 · 탈락(횟수 부족 · 반려)</td>
+      <td><q>완주하지 못했어요 / 다음 챌린지 성공을 응원해요!</q> + 추천 루틴 1개 · 같은 버튼 2개</td>
+      <td>위와 같음 → <b>내 기록</b></td></tr>
+    <tr><td class="no">9</td><td class="url"><b>내 기록 (챌린지 히스토리)</b><code>/dh/challenge_record?idx=</code></td>
+      <td>신청한 회원 · 결과 공개 뒤 (전에는 <q>아직 결과가 발표되지 않았어요.</q>)</td>
+      <td><q>기록을 확인해보세요 / 도장을 눌러 나의 챌린지 기록을 돌아보세요.</q> + 사진(날짜) + 도장판 + <q>갤러리에 저장</q><br><b>사진 왼쪽 위 작은 도장 = 승인(웃는 얼굴) · 반려(우는 얼굴)</b>, 안 올린 날은 <q>업로드하지 않았어요</q></td>
+      <td>결과 화면 <q>내 기록 보기</q></td></tr>
+    <tr><td class="no">10</td><td class="url"><b>나의 챌린지</b><code>/dh/my_challenge</code></td>
+      <td>로그인 회원 (마이페이지에는 1개)</td>
+      <td>신청한 챌린지 카드 + 배지 하나 : <span class="tag">진행중</span><span class="tag" style="background:#fff3b0;color:#8a6d00">진행예정</span><span class="tag g">결과대기중</span>(검수기간)<span class="tag b">결과발표</span>(검수 끝 + 결과 있음)<span class="tag x">종료</span>(결과 없음)</td>
+      <td>카드 → 진행예정 : 상세 / 결과 있음 : 결과 화면 / 그 외 : 사진 인증</td></tr>
+  </table></div>
+
+  <h2>챌린지 카드가 나오는 곳 (페이지는 아님)</h2>
+  <div class="box"><ul>
+    <li><b>홈(메인)</b> — 신청한 챌린지 중 안 끝난 것 1개, 없으면 <q>챌린지 참여하기</q>. 진행중 카드 문구 : 오늘 인증 전 <q>오늘의 챌린지 시작!</q> / 후 <q>오늘의 루틴 완료 :-)</q> + n/총</li>
+    <li><b>챌린지 상세 상단</b> — 홈과 같은 카드 (include/challenge_card.php)</li>
+    <li><b>마이페이지</b> — 나의 챌린지 카드 1개 (include/my_challenge_card.php)</li>
+  </ul></div>
+
+  <h2>기간별로 열리는 페이지</h2>
+  <div class="tbl"><table>
+    <tr><th>기간</th><th>신청한 회원</th><th>신청 안 한 회원</th></tr>
+    <tr><td>신청기간</td><td>상세(신청 완료 D-n) · 신청 완료</td><td>상세 → 신청</td></tr>
+    <tr><td>진행기간</td><td>사진 인증 · 인증 완료 (하루 1장, 그날은 변경 가능)</td><td>상세(<q>지금은 신청할 수 없어요</q>)</td></tr>
+    <tr><td>검수기간</td><td>사진 인증(보기 전용, <q>결과 대기중이에요</q>) — 결과가 정해져도 공개 안 함</td><td>상세(종료)</td></tr>
+    <tr><td>검수기간 끝</td><td>결과 있음 : 결과(성공 / 실패) → 내 기록 / 없음 : 사진 인증 보기 전용(버튼 없음)</td><td>상세(종료)</td></tr>
+  </table></div>
+
+  <h2>화면 캡처 (서버, 10/19)</h2>
+  <div class="shots">
+    <figure><a href="img/srv/list.jpg" target="_blank"><img src="img/srv/list.jpg" alt="" loading="lazy"></a><b>1 목록</b></figure>
+    <figure><a href="img/v_apply.jpg" target="_blank"><img src="img/v_apply.jpg" alt="" loading="lazy"></a><b>2 상세</b>신청기간</figure>
+    <figure><a href="img/apply_form.jpg" target="_blank"><img src="img/apply_form.jpg" alt="" loading="lazy"></a><b>3 신청</b></figure>
+    <figure><a href="img/apply_done.jpg" target="_blank"><img src="img/apply_done.jpg" alt="" loading="lazy"></a><b>4 신청 완료</b></figure>
+    <figure><a href="img/verify_today.jpg" target="_blank"><img src="img/verify_today.jpg" alt="" loading="lazy"></a><b>5 사진 인증</b>오늘 올린 뒤</figure>
+    <figure><a href="img/verify_done.jpg" target="_blank"><img src="img/verify_done.jpg" alt="" loading="lazy"></a><b>6 인증 완료</b></figure>
+    <figure><a href="img/result_ok.jpg" target="_blank"><img src="img/result_ok.jpg" alt="" loading="lazy"></a><b>7 결과 성공</b></figure>
+    <figure><a href="img/result_fail.jpg" target="_blank"><img src="img/result_fail.jpg" alt="" loading="lazy"></a><b>8 결과 실패</b></figure>
+    <figure><a href="img/record.jpg" target="_blank"><img src="img/record.jpg" alt="" loading="lazy"></a><b>9 내 기록</b>왼쪽 위 승인 도장</figure>
+    <figure><a href="img/my_challenge.jpg" target="_blank"><img src="img/my_challenge.jpg" alt="" loading="lazy"></a><b>10 나의 챌린지</b></figure>
+  </div>
+</div>
+</body>
+</html>
