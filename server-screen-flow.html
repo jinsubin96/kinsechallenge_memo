@@ -62,7 +62,7 @@
 <div class="wrap">
   <h1>메인 태스크별 화면 흐름 (서버)</h1>
   <p class="sub">지금 서버(FTP)에 작업된 사용자 화면을 <a href="figma-screen-flow.html">피그마 화면 흐름</a>과 같은 7단계로 정리 · 2026-10-19 서버 코드 기준</p>
-  <div class="info">글은 <b>10/19 서버 코드</b> 기준입니다. 화면 이미지는 로그인 없이 볼 수 있는 화면은 10/19 새로 캡처, 로그인 · 테스트 데이터가 필요한 화면은 <b>10/16 캡처</b>라 그 뒤 바뀐 문구는 글 쪽이 맞아요. 피그마와 다른 점은 각 단계의 빨간 상자에 모았고, 자세한 표는 <a href="figma-server-compare.html">피그마 ↔ 서버 비교</a>에 있어요.</div>
+  <div class="info">글은 <b>10/19 서버 코드</b> 기준입니다. 화면 이미지는 <b>10/19 캡처</b>(비로그인 + 사용자 테스트 계정으로 로그인 — 10월 챌린지 참여중 · 오늘 인증 완료 상태)와, 그 계정으로 만들 수 없는 상태(신청 · 검수중 · 결과)는 <b>10/16 캡처</b>를 같이 썼어요. 10/16 캡처는 그 뒤 바뀐 문구가 있을 수 있어 글 쪽이 맞아요. 캡처는 화면을 열어 보기만 했고 신청 · 인증 · 답변 저장은 하지 않았어요. 피그마와 다른 점은 각 단계의 빨간 상자에 모았고, 자세한 표는 <a href="figma-server-compare.html">피그마 ↔ 서버 비교</a>에 있어요.</div>
 
   <nav class="toc">
     <a href="#s1">1. 체크리스트</a><a href="#s2">2. 참여 전</a><a href="#s3">3. 신청 후·시작 전</a><a href="#s4">4. 진행</a><a href="#s5">5. 검수중</a><a href="#s6">6. 결과 발표</a><a href="#s7">7. 종료</a><a href="#state">상태 규칙</a>
@@ -93,7 +93,7 @@
     </ul>
     <div class="diff"><b>피그마와 다른 점</b><ul>
       <li>제목 · 설명 문구: 피그마 <q>웰니스 시그널 발견하기 / 5분동안 10가지</q> ↔ 서버 <q>웰니스 상태 체크하기 / 1분동안</q> (홈 배너도)</li>
-      <li>영역 선택 제목과 항목(피그마 10개 고정 ↔ 서버 관리자 검사지), 로딩 문구 <q>신호</q> ↔ <q>시그널</q></li>
+      <li>영역 선택 제목 문구, 로딩 문구 <q>신호</q> ↔ <q>시그널</q> (영역 항목은 관리자 검사지인데 지금 등록된 10개는 피그마와 같음)</li>
       <li><b>시작 화면 제목에 "나의"가 두 번</b> 나옴 — <q>나의 / 나의 웰니스 상태 / 체크하기</q> (10/19 화면 확인)</li>
     </ul></div>
   </div>
@@ -102,8 +102,17 @@
     <figure data-src="img/srv/signal.jpg"><figcaption>체크리스트 시작<small>비로그인 · 10/19</small></figcaption></figure>
     <figure data-src="img/srv/login.jpg"><figcaption>로그인<small>10/19</small></figcaption></figure>
     <figure data-src="img/srv/join.jpg"><figcaption>회원가입 1단계 동의<small>10/19</small></figcaption></figure>
+    <figure data-src="img/srv/u_home.jpg"><figcaption>Home<small>로그인 · 최근 접속 오늘 · 10/19</small></figcaption></figure>
+    <figure data-src="img/srv/u_signal.jpg"><figcaption>체크리스트 시작<small>로그인 · 10/19</small></figcaption></figure>
+    <figure data-src="img/srv/u_signal_index.jpg"><figcaption>영역 선택<small>고르기 전 · 10/19</small></figcaption></figure>
+    <figure data-src="img/srv/u_signal_index_pick.jpg"><figcaption>영역 선택<small>피부 고름 · 10/19</small></figcaption></figure>
+    <figure data-src="img/srv/u_signal_q1.jpg"><figcaption>문항 Q1<small>피부 · 10/19</small></figcaption></figure>
+    <figure data-src="img/srv/u_signal_result.jpg"><figcaption>결과<small>근감소진행형 · 10/19</small></figcaption></figure>
+    <figure data-src="img/srv/u_signal_share.jpg"><figcaption>결과 · 공유 링크로 열기<small>나도 체크하기 · 10/19</small></figcaption></figure>
+    <figure data-src="img/srv/u_my_checklist.jpg"><figcaption>체크리스트 히스토리<small>전체 목록 · 10/19</small></figcaption></figure>
+    <figure data-src="img/srv/u_my_checklist_filter.jpg"><figcaption>체크리스트 히스토리<small>필터 펼침 · 10/19</small></figcaption></figure>
   </div>
-  <p class="noshot">영역 선택 · 문항 · 결과 · 히스토리 화면은 로그인 회원 응답이 있어야 보여서 캡처하지 않았어요.</p>
+  <p class="noshot">결과 로딩(5초) 화면은 답변을 저장해야 나와서 찍지 않았어요.</p>
 
   <h2 id="s2"><span class="no">2</span>챌린지 참여 전</h2>
   <div class="box">
@@ -123,12 +132,15 @@
     </table></div>
     <div class="diff"><b>피그마와 다른 점</b><ul>
       <li>목록 비로그인 띠: 피그마 로그인 유도 문구 ↔ 서버 공지사항 제목</li>
+      <li>목록 탭 · 카드 상태가 <b>신청 기간</b> 기준이라, 신청이 끝나고 <b>진행 중인 챌린지도 "종료"</b>로 보임 (10/19 목록: 10월 챌린지 진행 중인데 <q>종료 · 26/10/1 ~ 26/10/31</q>)</li>
       <li>햄버거 메뉴에 로그인 / 로그아웃 추가 · 신청 · 시작 알림톡(CRM)은 발송 기능 없음</li>
       <li>마이페이지 하단 <q>약관확인</q> 링크가 비어 있음(메뉴 쪽은 연결됨)</li>
     </ul></div>
   </div>
   <div class="shots">
     <figure data-src="img/srv/list.jpg"><figcaption>챌린지 목록<small>비로그인 · 10/19</small></figcaption></figure>
+    <figure data-src="img/srv/u_list.jpg"><figcaption>챌린지 목록<small>로그인 (띠 없음) · 10/19</small></figcaption></figure>
+    <figure data-src="img/srv/u_menu.jpg"><figcaption>햄버거 메뉴<small>로그인 · 10/19</small></figcaption></figure>
     <figure data-src="img/v_wait.jpg"><figcaption>상세 · 신청 시작 전<small>진행 예정 챌린지 · 10/16</small></figcaption></figure>
     <figure data-src="img/v_apply.jpg"><figcaption>상세 · 신청 가능<small>챌린지 신청하기 · 10/16</small></figcaption></figure>
     <figure data-src="img/v_apply_out.jpg"><figcaption>상세 · 비로그인<small>로그인 후 신청하기 · 10/16</small></figcaption></figure>
@@ -164,7 +176,7 @@
     <div class="tbl"><table>
       <tr><th>화면</th><th>지금 서버</th></tr>
       <tr><td class="k">홈 · 상세 카드</td><td><q>참여중인 챌린지</q> + 달력 아이콘 + 진행바(인증 수만큼 칠함) + 오늘 인증 전 <q>오늘의 챌린지 시작!</q> / 후 <q>오늘의 루틴 완료 :-)</q> + <b>n/총</b></td></tr>
-      <tr><td class="k">상세 버튼</td><td>오늘 인증 전: 말풍선 <q>잘 하고 있어요 ! 오늘의 인증을 해보세요 :-)</q> + <q>사진 등록하고 인증하기</q></td></tr>
+      <tr><td class="k">상세 버튼</td><td><q>사진 등록하고 인증하기</q> (진행 기간 내내) · 오늘 인증 전에만 말풍선 <q>잘 하고 있어요 ! 오늘의 인증을 해보세요 :-)</q></td></tr>
       <tr><td class="k">인증하기</td><td><q>인증 사진 업로드</q> → 고르면 미리보기 + <q>클릭해서 사진 변경하기</q> → <q>인증하기</q>(사진 골라야 켜짐) · 도장 누르면 그날 사진 · 날짜 · 하단 <q>사진이 안 올라가요!</q>(링크 비어 있음)</td></tr>
       <tr><td class="k">인증 완료</td><td><q>사진 인증 완료했어요! / 이대로만 계속, 꾸준히 해봐요:-)</q> + 오늘 사진 + 도장판 + <q>갤러리에 저장</q></td></tr>
       <tr><td class="k">오늘 이미 올림</td><td>인증하기 화면 <q>지금은 인증할 수 없어요</q> + 버튼 <q>오늘의 루틴 완료 :-)</q></td></tr>
@@ -179,6 +191,11 @@
     </ul></div>
   </div>
   <div class="shots">
+    <figure data-src="img/srv/u_view_2.jpg"><figcaption>상세 · 진행중<small>오늘 인증 완료 · 10/19</small></figcaption></figure>
+    <figure data-src="img/srv/u_mypage.jpg"><figcaption>마이페이지<small>진행중 카드 · 10/19</small></figcaption></figure>
+    <figure data-src="img/srv/u_my_challenge.jpg"><figcaption>나의 챌린지<small>진행중 · 종료 · 10/19</small></figcaption></figure>
+    <figure data-src="img/srv/u_verify_2.jpg"><figcaption>인증하기<small>오늘 이미 올림 · 10/19</small></figcaption></figure>
+    <figure data-src="img/srv/u_verify_2_stamp.jpg"><figcaption>인증하기 · 도장 누름<small>그날 사진 · 날짜 · 10/19</small></figcaption></figure>
     <figure data-src="img/v_ing.jpg"><figcaption>상세 · 진행중<small>오늘 인증 전 · 10/16</small></figcaption></figure>
     <figure data-src="img/v_ing_done.jpg"><figcaption>상세 · 진행중<small>오늘의 루틴 완료 · 10/16</small></figcaption></figure>
     <figure data-src="img/verify_ing.jpg"><figcaption>인증하기<small>사진 올리기 전 · 10/16</small></figcaption></figure>
@@ -243,7 +260,8 @@
     <div class="diff"><b>피그마와 다른 점</b><ul><li>마이페이지: 피그마 <q>참여중인 챌린지가 없어요</q> ↔ 서버 종료 카드 표시</li></ul></div>
   </div>
   <div class="shots">
-    <figure data-src="img/srv/view_end.jpg"><figcaption>상세 · 종료<small>10/19</small></figcaption></figure>
+    <figure data-src="img/srv/view_end.jpg"><figcaption>상세 · 종료<small>비로그인 · 10/19</small></figcaption></figure>
+    <figure data-src="img/srv/u_view_1.jpg"><figcaption>상세 · 종료<small>참여했던 회원 · 10/19</small></figcaption></figure>
     <figure data-src="img/v_end.jpg"><figcaption>상세 · 종료<small>10/16</small></figcaption></figure>
   </div>
 
